@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recenze zákazníků | Karásek s.r.o.</title>
+<meta name="description" content="Google 4,9 ze 110 recenzí, Firmy.cz 98,9 % z 38 hodnocení. Citace zákazníků doslova a video recenze. Karásek s.r.o., showroom České Budějovice.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;subset=latin-ext&amp;display=swap" rel="stylesheet">
+<style>
+/* Recenze, směr A (recenze.html). Hodnocení a video vedle sebe, citace jako velká typografie, krátký důkaz ze staveb. */
+:root{
+  --ink:#0f1418; --muted:#4a545c; --bg:#fff; --soft:#f4f6f7; --dark:#1d2328; --line:#dde2e5;
+  --red:#D22630; --red-h:#b51f28;
+  --zahrada:#46bb59; --zaskleni:#00b8f1; --pergola:#ff9a1f; --stineni:#ff2d16;
+  --r-card:16px; --r-btn:12px;
+  --shadow:0 18px 48px rgba(15,20,24,.12), 0 2px 6px rgba(15,20,24,.06);
+  --pad:32px; --max:1320px; --f:"Plus Jakarta Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{margin:0;font-family:var(--f);font-weight:500;font-size:17px;line-height:1.55;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-weight:700;line-height:1.12;letter-spacing:-.02em;margin:0}
+p{margin:0}
+.wrap{max-width:calc(var(--max) + 2*var(--pad));margin:0 auto;padding:0 var(--pad)}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:16px;top:-60px;background:var(--ink);color:#fff;padding:10px 16px;border-radius:var(--r-btn);z-index:99}
+.skip:focus{top:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 17px/1.2 var(--f);border:0;border-radius:var(--r-btn);padding:16px 22px;cursor:pointer;text-decoration:none;text-align:center;transition:background .15s,transform .15s}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:var(--red-h)}
+.btn-line{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1px #c3cad0}
+.btn-line:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn:active{transform:translateY(1px)}
+.lnk{font-weight:700;font-size:16px;text-underline-offset:4px}
+.crumbs{display:flex;gap:10px;align-items:center;font-size:15px;font-weight:600;color:var(--muted);padding:24px 0 8px}
+.crumbs a{text-underline-offset:4px;color:var(--ink)}
+
+/* hero: hodnocení + video */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:72px;align-items:center;padding:24px 0 88px}
+body .hero h1{font-size:60px;line-height:1.05;letter-spacing:-.03em;max-width:700px}
+.hero .lead{margin-top:20px;font-size:19px;color:var(--muted);max-width:560px}
+.rate{display:grid;grid-template-columns:1fr 1fr;margin-top:40px;border-top:1px solid var(--ink)}
+.rate>div{padding:24px 24px 0 0}
+.rate>div+div{padding-left:32px;border-left:1px solid var(--line)}
+.rate b{display:block;font-size:64px;font-weight:700;letter-spacing:-.04em;line-height:1}
+.rate .st{display:flex;gap:2px;margin:12px 0 8px}
+.rate .st svg{width:22px;height:22px}
+.rate span.l{display:block;font-size:16px;color:var(--muted);line-height:1.4}
+.rate .sp{height:36px}
+.hero .acts{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;margin-top:32px}
+.vid{position:relative;border-radius:var(--r-card);overflow:hidden;aspect-ratio:9/16;background:#222;box-shadow:var(--shadow)}
+.vid img,.vid iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+.play{position:absolute;left:50%;transform:translateX(-50%);bottom:22px;white-space:nowrap;display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--ink);border:0;border-radius:999px;padding:10px 18px 10px 12px;font:700 15px/1 var(--f);cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.play i{width:30px;height:30px;border-radius:50%;background:var(--ink);display:grid;place-items:center}
+.play svg{width:12px;height:12px}
+.vcap{margin-top:12px;font-size:15px;color:var(--muted);text-align:center}
+
+/* citace */
+section.sec{padding:88px 0}
+.soft{background:var(--soft)}
+.head{display:flex;align-items:end;justify-content:space-between;gap:32px;margin-bottom:36px}
+.head h2{font-size:44px;max-width:760px}
+.head p{color:var(--muted);max-width:420px}
+.qg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.q{margin:0;background:#fff;border-radius:var(--r-card);padding:32px 32px 28px;box-shadow:0 0 0 1px var(--line);display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+.q p{font-size:21px;line-height:1.5;font-weight:600;letter-spacing:-.01em}
+.q cite{font-style:normal;font-weight:700;font-size:16px}
+.q.big{grid-column:span 2;padding:40px 44px 36px;background:var(--ink);color:#fff;box-shadow:none}
+.q.big p{font-size:32px;line-height:1.3;font-weight:700;letter-spacing:-.02em}
+.q.big cite{color:#fff}
+.q.wide{grid-column:span 2}
+.q.wide p{font-size:25px}
+.gl{display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:32px;border-radius:var(--r-card);background:#fff;box-shadow:inset 0 0 0 2px var(--ink);text-decoration:none}
+.gl b{font-size:24px;line-height:1.2;letter-spacing:-.01em}
+.gl span{font-size:16px;color:var(--muted)}
+.gl u{font-weight:700;text-underline-offset:4px}
+.gl:hover{background:var(--soft)}
+
+/* důkaz: stavby */
+.proof{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.pr{position:relative;display:flex;flex-direction:column;border-radius:var(--r-card);overflow:hidden;background:#fff;box-shadow:0 0 0 1px var(--line);text-decoration:none}
+.pr img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;transition:transform .5s}
+.pr:hover img{transform:scale(1.03)}
+.pr .tx{padding:16px 18px 20px;display:grid;gap:6px}
+.pr small{font-size:14px;font-weight:600;color:var(--muted)}
+.pr h3{font-size:18px;line-height:1.3;letter-spacing:-.01em}
+.pr:focus-visible{outline-offset:3px}
+.more{display:flex;gap:16px 28px;align-items:center;margin-top:32px;flex-wrap:wrap}
+
+/* CTA */
+.cta{background:var(--dark);color:#fff;padding:72px 0}
+.cta .wrap{display:flex;align-items:center;justify-content:space-between;gap:32px 56px;flex-wrap:wrap}
+.cta h2{font-size:40px;max-width:640px}
+.cta p{margin-top:12px;color:#d3d9dd;font-size:18px}
+.cta p a{color:#fff;font-weight:700;white-space:nowrap}
+.cta .btn{min-height:60px;padding:18px 32px;font-size:18px}
+
+@media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} .btn,.pr img{transition:none} .pr:hover img{transform:none} }
+@media (max-width:1100px){
+  .hero{grid-template-columns:minmax(0,1fr) 300px;gap:40px}
+  body .hero h1{font-size:48px}
+  .rate b{font-size:50px}
+  .proof{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .q.big p{font-size:27px}
+}
+@media (max-width:820px){
+  :root{--pad:16px}
+  body{font-size:16px}
+  html{scroll-padding-top:72px}
+  .crumbs{font-size:14px;padding:14px 0 4px}
+  .hero{grid-template-columns:minmax(0,1fr);gap:28px;padding:8px 0 48px}
+  body .hero h1{font-size:38px;line-height:1.08}
+  .hero .lead{font-size:16px;margin-top:12px}
+  .rate{margin-top:24px}
+  .rate>div{padding:16px 12px 0 0}
+  .rate>div+div{padding-left:16px}
+  .rate b{font-size:36px}
+  .rate .st svg{width:18px;height:18px}
+  .rate span.l{font-size:15px}
+  .rate .sp{height:0}
+  .hero .acts{margin-top:20px}
+  .hero .acts .btn{width:100%}
+  .vid{max-width:340px;margin:0 auto}
+  section.sec{padding:56px 0}
+  .head{flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:20px}
+  .head h2{font-size:30px}
+  .qg{grid-template-columns:minmax(0,1fr);gap:12px}
+  .q,.q.big,.q.wide{grid-column:auto;padding:22px 20px 20px}
+  .q p,.q.wide p{font-size:18px}
+  .q.big p{font-size:22px}
+  .gl{padding:22px 20px}
+  .proof{grid-template-columns:minmax(0,1fr);gap:14px}
+  .pr{flex-direction:row}
+  .pr img{width:128px;height:100%;min-height:96px;aspect-ratio:4/3;flex:none;object-fit:cover}
+  .pr .tx{padding:12px 14px;align-content:center}
+  .pr h3{font-size:16px}
+  .more{flex-direction:column;align-items:stretch}
+  .more .btn{width:100%}
+  .cta{padding:48px 0}
+  .cta h2{font-size:28px}
+  .cta .btn{width:100%}
+}
+</style>
+<link rel="stylesheet" href="vzhled.css">
+</head>
+<body data-page="recenze" data-oblast="">
+<a class="skip" href="#obsah">Přeskočit na obsah</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-star" viewBox="0 0 24 24"><path fill="#ff9a1f" d="M12 2l3 6.6 7.2.7-5.4 4.8 1.6 7.1L12 17.6 5.6 21.2l1.6-7.1L1.8 9.3 9 8.6z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 12 12"><path fill="#fff" d="M2 1l9 5-9 5z"/></symbol>
+</svg>
+
+<header id="hd"></header>
+
+<main id="obsah">
+<div class="wrap">
+  <nav class="crumbs" aria-label="Drobečková navigace"><a href="index.html">Úvod</a><span aria-hidden="true">/</span><span aria-current="page">Recenze</span></nav>
+  <section class="hero" aria-labelledby="h1">
+    <div>
+      <h1 id="h1">Co říkají zákazníci</h1>
+      <p class="lead">Hodnocení z veřejných zdrojů, citace doslova z recenzí a zákaznice na videu.</p>
+      <div class="rate">
+        <div>
+          <b>4,9</b>
+          <span class="st" role="img" aria-label="Hodnocení 4,9 z 5"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></span>
+          <span class="l">Google, ze 110 recenzí</span>
+        </div>
+        <div>
+          <b>98,9 %</b>
+          <span class="sp" aria-hidden="true"></span>
+          <span class="l">Firmy.cz, z 38 hodnocení</span>
+        </div>
+      </div>
+      <div class="acts">
+        <a class="btn btn-line" href="poptavka.html">Nezávazná poptávka</a>
+        <a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Kar%C3%A1sek+s.r.o.+Nemanick%C3%A1+5+%C4%8Cesk%C3%A9+Bud%C4%9Bjovice" target="_blank" rel="noopener">Všechny recenze na Google</a>
+      </div>
+    </div>
+    <div>
+      <div class="vid" data-yt="puPVwrDFp3w">
+        <img src="../assets/video/video-recenze-zakaznice.jpg" alt="Zákaznice vypráví o své zimní zahradě" width="404" height="720">
+        <button type="button" class="play"><i><svg aria-hidden="true"><use href="#i-play"/></svg></i>Pustit video recenzi</button>
+      </div>
+      <p class="vcap">Video recenze zákaznice</p>
+    </div>
+  </section>
+</div>
+
+<section class="sec soft" aria-labelledby="h-cit">
+  <div class="wrap">
+    <div class="head"><h2 id="h-cit">Slovy zákazníků</h2><p>Citace jsou doslova z recenzí.</p></div>
+    <div class="qg">
+      <blockquote class="q big"><p>„Poptávka, zaměření, montáž… vše proběhlo bez problémů. … Firmu bych zvolil znovu.“</p><cite>Jakub Vaníček</cite></blockquote>
+      <blockquote class="q"><p>„Ve sjednaný den přijeli pánové na montáž a za jeden den byla zimní zahrada hotová.“</p><cite>Tetřevová</cite></blockquote>
+      <blockquote class="q"><p>„Přestože jsme si vybrali výrobce, který sídlí 265 km od našeho domova, rozhodně toho nelitujeme.“</p><cite>Weidlichová</cite></blockquote>
+      <blockquote class="q"><p>„Ochotní řemeslníci, vše vysvětlili ukázali, na místě bez problémů sestavili. Zimní zahrada je moc pěkná.“</p><cite>Pajdla</cite></blockquote>
+      <blockquote class="q"><p>„Zasklívali nám pergolu a vše dopadlo skvěle.“</p><cite>Poláková</cite></blockquote>
+      <blockquote class="q wide"><p>„Vše dle dohody. Vysoká kvalita zasklení i práce.“</p><cite>Loška</cite></blockquote>
+      <a class="gl" href="https://www.google.com/maps/search/?api=1&amp;query=Kar%C3%A1sek+s.r.o.+Nemanick%C3%A1+5+%C4%8Cesk%C3%A9+Bud%C4%9Bjovice" target="_blank" rel="noopener"><b>Další recenze najdete přímo na Googlu</b><span>Google 4,9 ze 110 recenzí</span><u>Všechny recenze na Google</u></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="h-st">
+  <div class="wrap">
+    <div class="head"><h2 id="h-st">Podívejte se, co jsme postavili</h2><p>Výběr z hotových staveb. Všech zveřejněných realizací je 995.</p></div>
+    <div class="proof" id="proof"></div>
+    <div class="more">
+      <a class="btn btn-line" href="realizace.html">Všechny hotové stavby</a>
+      <a class="lnk" href="videa.html">Videa ze staveb</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta" aria-labelledby="h-cta">
+  <div class="wrap">
+    <div>
+      <h2 id="h-cta">Chcete být další spokojený zákazník?</h2>
+      <p>Napište nám, nebo zavolejte <a href="tel:+420777727328">+420 777 727 328</a>. Showroom Nemanická 5, České Budějovice, Po–Pá 8–16.</p>
+    </div>
+    <a class="btn btn-red" href="poptavka.html">Nezávazná poptávka</a>
+  </div>
+</section>
+</main>
+
+<footer id="kontakt"></footer>
+
+<script src="realizace-data.js"></script>
+<script src="web.js"></script>
+<script>
+(() => {
+  const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  /* hlavní akce v hlavičce vede na samostatnou poptávku */
+  document.querySelectorAll("[data-hd-ask]").forEach(a => a.setAttribute("href", "poptavka.html"));
+  /* výběr čtyř realizací z každé oblasti jako důkaz (bez vazby na citace) */
+  const IDS = ["29555", "24141", "23329", "21454"];
+  document.getElementById("proof").innerHTML = IDS.map(id => KR.stavby.find(s => s.id === id)).filter(Boolean).map(s =>
+    `<a class="pr" href="stavba.html?id=${s.id}"><img src="../assets/foto/${s.id}.jpg" alt="${esc(s.n)}" width="1400" height="1050"><span class="tx"><small>${esc(s.typ.map(k => KR.label.typ[k]).join(" + "))} · ${KRkdy(s.d)}</small><h3>${esc(s.n)}</h3></span></a>`).join("");
+  /* YouTube až po kliknutí */
+  document.querySelectorAll("[data-yt] .play").forEach(b => b.addEventListener("click", () => {
+    const box = b.closest("[data-yt]"), f = document.createElement("iframe");
+    f.src = `https://www.youtube-nocookie.com/embed/${box.dataset.yt}?autoplay=1&rel=0`;
+    f.title = b.textContent.trim(); f.allow = "autoplay; encrypted-media; picture-in-picture"; f.allowFullscreen = true;
+    box.innerHTML = ""; box.appendChild(f); f.focus();
+  }));
+})();
+</script>
+</body>
+</html>

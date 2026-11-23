@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zimní zahrady, zasklení teras, pergoly a stínění | Karásek s.r.o.</title>
+<meta name="description" id="mDesc" content="Co pro vás Karásek s.r.o. postaví: varianty ze skutečných staveb, video, hotové realizace a nezávazná poptávka. Showroom Nemanická 5, České Budějovice.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;subset=latin-ext&amp;display=swap" rel="stylesheet">
+<style>
+/* Stránka oblasti směru A (kategorie.html?oblast=zahrada|zaskleni|pergola|stineni).
+   Stejné tokeny, hlavička, panel a karty jako úvod A; signature = lišta 4 oblastí v barvách loga. */
+:root{
+  --ink:#0f1418; --muted:#4a545c; --bg:#fff; --soft:#f4f6f7; --dark:#1d2328; --line:#dde2e5;
+  --red:#D22630; --red-h:#b51f28;
+  --zahrada:#46bb59; --zaskleni:#00b8f1; --pergola:#ff9a1f; --stineni:#ff2d16;
+  --c:var(--zahrada);
+  --r-card:16px; --r-btn:12px;
+  --shadow:0 18px 48px rgba(15,20,24,.12), 0 2px 6px rgba(15,20,24,.06);
+  --pad:32px; --max:1320px; --f:"Plus Jakarta Sans",system-ui,sans-serif;
+}
+body[data-o="zaskleni"]{--c:var(--zaskleni)} body[data-o="pergola"]{--c:var(--pergola)} body[data-o="stineni"]{--c:var(--stineni)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{margin:0;font-family:var(--f);font-weight:500;font-size:17px;line-height:1.55;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-weight:700;line-height:1.05;letter-spacing:-.02em;margin:0}
+p{margin:0}
+.wrap{max-width:calc(var(--max) + 2*var(--pad));margin:0 auto;padding:0 var(--pad)}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:16px;top:-60px;background:var(--ink);color:#fff;padding:10px 16px;border-radius:var(--r-btn);z-index:99}
+.skip:focus{top:12px}
+.dot{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--c,#999);flex:none}
+
+/* tlačítka (úvod A) */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 17px/1.2 var(--f);border:0;border-radius:var(--r-btn);padding:16px 22px;cursor:pointer;text-decoration:none;text-align:center;transition:background .15s,transform .15s}
+.btn-dark{background:var(--dark);color:#fff}
+.btn-dark:hover{background:#000}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:var(--red-h)}
+.btn-line{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn-line:hover{background:var(--soft)}
+.btn-white{background:#fff;color:var(--ink)}
+.btn-white:hover{background:#e9edef}
+.btn:active{transform:translateY(1px)}
+.lnk{font-weight:700;font-size:16px;text-underline-offset:4px;background:none;border:0;padding:6px 0;color:inherit;cursor:pointer;font-family:inherit;text-decoration:underline}
+
+/* hlavička (úvod A + nabídka Produkty) */
+.top{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;height:76px;gap:24px}
+.logo{display:block;flex:none}
+.logo img{height:52px;width:auto}
+.nav{display:flex;align-items:center;gap:30px;margin-left:auto}
+.nav>a,.ddb{font:600 16px/1.55 var(--f);color:var(--ink);text-decoration:none;padding:6px 0;border:0;border-bottom:2px solid transparent;background:none;cursor:pointer}
+.nav>a:hover,.ddb:hover,.nav>a[aria-current],.ddb.cur{border-bottom-color:var(--ink)}
+.dd{position:relative}
+.ddb{display:inline-flex;align-items:center;gap:8px}
+.ddb::after{content:"";width:7px;height:7px;border:solid var(--ink);border-width:0 2px 2px 0;transform:translateY(-2px) rotate(45deg);transition:transform .15s}
+.dd.open .ddb::after{transform:translateY(1px) rotate(-135deg)}
+.ddp{display:none;position:absolute;top:calc(100% + 20px);left:50%;transform:translateX(-50%);width:620px;background:#fff;border-radius:16px;box-shadow:var(--shadow),0 0 0 1px var(--line);padding:10px;grid-template-columns:1fr 1fr;gap:6px}
+.dd.open .ddp{display:grid}
+.ddp a{display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:center;padding:8px;border-radius:12px;text-decoration:none}
+.ddp a:hover,.ddp a[aria-current]{background:var(--soft)}
+.ddp img{width:96px;height:68px;object-fit:cover;border-radius:8px;border-top:5px solid var(--k)}
+.ddp b{display:block;font-size:17px;font-weight:700;line-height:1.25}
+.ddp span{display:block;font-size:14px;color:var(--muted);line-height:1.35;margin-top:2px}
+.tel{display:flex;align-items:center;gap:8px;font-weight:700;font-size:16px;text-decoration:none;padding-left:24px;border-left:1px solid var(--line)}
+.tel svg{width:18px;height:18px}
+.m-only{display:none}
+.burger{background:none;border:0;padding:10px;cursor:pointer;color:var(--ink);border-radius:10px}
+.burger svg{width:26px;height:26px;display:block}
+
+/* lišta oblastí – přepínač 4 kategorií (proužky loga) */
+.obl{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:80px;z-index:39}
+.obl ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr)}
+.obl a{--k:#999;position:relative;display:flex;align-items:center;gap:10px;height:60px;padding:0 20px;font-weight:600;font-size:16px;text-decoration:none;color:var(--muted)}
+.obl li+li a{border-left:1px solid var(--line)}
+.obl li:last-child a{border-right:1px solid var(--line)}
+.obl li:first-child a{border-left:1px solid var(--line)}
+.obl a::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--k)}
+.obl a:hover{color:var(--ink);background:var(--soft)}
+.obl a[aria-current]{color:var(--ink);font-weight:800;background:var(--t)}
+[href$=zahrada],[value=zahrada]+span{--t:#e5f6e8}[href$=zaskleni],[value=zaskleni]+span{--t:#dbf6fd}[href$=pergola],[value=pergola]+span{--t:#fff1e0}[href$=stineni],[value=stineni]+span{--t:#ffe2de}
+.obl a[aria-current]::before{height:8px}
+
+/* záhlaví oblasti */
+.khero{position:relative;height:580px;overflow:hidden;background:#20282e;color:#fff}
+.khero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.khero .shade{position:absolute;inset:0;isolation:auto;background:
+  linear-gradient(90deg,rgba(10,14,17,.78) 0%,rgba(10,14,17,.5) 46%,rgba(10,14,17,.1) 80%),
+  linear-gradient(0deg,rgba(10,14,17,.6) 0%,rgba(10,14,17,0) 50%)}
+.kh-in{position:relative;height:100%;display:flex;flex-direction:column;justify-content:flex-start;padding-top:40px;padding-bottom:186px}
+.crumbs{display:flex;gap:10px;align-items:center;font-size:15px;font-weight:600;color:#fff;margin-bottom:auto}
+.crumbs a{text-underline-offset:4px}
+.khero .bar{width:120px;height:8px;border-radius:4px;background:var(--c);margin-bottom:22px}
+.khero h1{font-size:60px;max-width:900px;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.25)}
+.khero .lead{margin-top:24px;font-size:20px;line-height:1.5;max-width:640px;color:#fff;font-weight:500;text-shadow:0 1px 12px rgba(0,0,0,.35)}
+
+/* panel variant (stejná stavba jako panel úvodu) */
+.choose{position:relative;z-index:5;margin-top:-140px}
+.panel{background:#fff;border-radius:24px;box-shadow:var(--shadow);padding:34px 36px 36px;display:grid;grid-template-columns:1fr auto;grid-template-areas:"h acts" "picks picks";gap:24px 24px;align-items:center}
+.panel h2{grid-area:h;font-size:34px}
+.picks{grid-area:picks;display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));grid-auto-flow:column;gap:16px}
+/* fotodlaždice variant = stejná stavba jako dlaždice služeb na úvodu (Mark 2026-11-20: textové karty „takové suché“) */
+.pick{position:relative;isolation:isolate;display:block;height:190px;border-radius:16px;overflow:hidden;text-decoration:none;color:#fff;background:#20282e;transition:box-shadow .2s,transform .2s}
+.pick::before{content:"";position:absolute;inset:0;z-index:1;background:var(--c);mix-blend-mode:color;opacity:.3;transition:opacity .3s}
+.pick::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(8,12,15,0) 30%,rgba(8,12,15,.86) 100%)}
+.pick img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.pick .pt{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;flex-direction:column;gap:3px;padding:16px 18px;text-shadow:0 1px 12px rgba(0,0,0,.4)}
+.pick b{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:19px;font-weight:600;line-height:1.25;letter-spacing:-.01em}
+.pick .ps{font-size:14px;line-height:1.35;color:rgba(255,255,255,.92);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pick b svg{width:18px;height:18px;flex:none;transition:transform .15s}
+.pick:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(15,20,24,.18)!important}
+.pick:hover img{transform:scale(1.05)}
+.pick:hover::before{opacity:.12}
+.pick:hover b svg{transform:translateX(3px)}
+.acts{grid-area:acts;display:flex;align-items:center;gap:28px}
+.acts a{display:inline-flex;align-items:center;gap:10px;font-size:17px;font-weight:600;color:var(--muted);text-decoration:none}
+.acts a b{color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+.acts a:hover b{text-decoration-thickness:2px}
+.acts .pl{width:30px;height:30px;border-radius:50%;background:var(--ink);display:grid;place-items:center;flex:none}
+.acts .pl svg{width:11px;height:11px}
+.acts>a>svg{width:18px;height:18px;color:var(--ink)}
+.proof{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px;padding:22px 0 8px;font-size:16px;color:var(--muted);list-style:none;margin:0}
+.proof li{display:flex;align-items:center;gap:8px}
+.proof b{color:var(--ink);font-weight:700}
+.proof svg{width:17px;height:17px}
+.proof li+li::before{content:"";width:5px;height:5px;border-radius:50%;background:#9aa4ab;margin-right:20px}
+
+/* sekce */
+section{padding:112px 0}
+.soft{background:var(--soft)}
+.head{display:flex;align-items:end;justify-content:space-between;gap:32px;margin-bottom:40px}
+.head h2{font-size:56px;max-width:760px}
+.head p{color:var(--muted);max-width:480px;font-size:18px}
+
+/* varianty */
+.vars{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.var{background:#fff;border-radius:var(--r-card);overflow:hidden;box-shadow:0 0 0 1px var(--line);display:grid;grid-template-columns:1fr 1fr;border-top:8px solid var(--c);scroll-margin-top:110px}
+.var .media{position:relative;min-height:340px;background:var(--soft)}
+.var .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.var .body{padding:28px;display:flex;flex-direction:column;gap:14px}
+.var h3{font-size:24px;line-height:1.15}
+.var p{color:var(--muted)}
+.sys{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0}
+.sys li{font-size:15px;font-weight:600;padding:6px 12px;border-radius:8px;background:var(--soft)}
+.var .go{margin-top:auto;display:flex;gap:18px;align-items:center;flex-wrap:wrap;padding-top:4px}
+.var .go .btn{padding:14px 18px;font-size:16px}
+.vars.tri{grid-template-columns:repeat(3,1fr)}
+.vars.tri .var{grid-template-columns:1fr}
+.vars.tri .var .media{min-height:260px}
+
+/* video oblasti */
+.vband{background:#f3f5f6;color:var(--ink)}
+.vband .vtx li::before{background:#8a949b!important}
+.vgrid{display:grid;grid-template-columns:7fr 5fr;gap:56px;align-items:center}
+.vbox{position:relative;border-radius:var(--r-card);overflow:hidden;aspect-ratio:16/9;background:#111}
+.vbox img,.vbox iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+.vbox .shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,14,17,.45),rgba(10,14,17,0) 55%)}
+.play{position:absolute;left:20px;bottom:20px;display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--ink);border:0;border-radius:999px;padding:12px 20px 12px 12px;font:700 16px/1 var(--f);cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.play i{width:34px;height:34px;border-radius:50%;background:var(--ink);display:grid;place-items:center}
+.play svg{width:12px;height:12px}
+.vtx h2{font-size:40px;color:var(--ink)}
+.vtx .bar{width:80px;height:8px;border-radius:4px;background:var(--c);margin-bottom:24px}
+.vtx p{margin-top:16px;color:var(--muted);font-size:18px}
+.vtx ul{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:12px}
+.vtx li{display:flex;gap:12px;align-items:center;font-weight:600;font-size:17px}
+.vtx li::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--c);flex:none}
+.vtx .btns{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.vtx .lnk{color:var(--ink)}
+
+/* realizace oblasti (stejné karty jako úvod A) */
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+.chip{display:inline-flex;align-items:center;gap:10px;border:2px solid var(--line);background:#fff;border-radius:999px;padding:11px 20px;font:600 16px/1 var(--f);color:var(--ink);cursor:pointer;white-space:nowrap}
+.chip:hover{border-color:#aab3b9}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.card{background:#fff;border-radius:var(--r-card);overflow:hidden;box-shadow:0 0 0 1px var(--line);display:flex;flex-direction:column}
+.card .ph img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.card .cbar{display:flex;height:6px}
+.card .cbar i{flex:1}
+.card .tx{padding:20px 24px 24px;display:grid;grid-template-columns:1fr auto;gap:6px 20px;align-items:center;flex:1}
+.card .tags{grid-column:1/-1;display:flex;gap:16px;flex-wrap:wrap;font-size:15px;font-weight:600;color:var(--muted)}
+.card .tags span{display:inline-flex;align-items:center;gap:7px}
+.card .tags .dot{width:10px;height:10px}
+.card h3{font-size:21px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
+.card .dt{font-size:15px;color:var(--muted)}
+.card .btn{grid-row:2/4;grid-column:2;padding:13px 18px;font-size:16px}
+.more{display:flex;gap:16px 28px;align-items:center;justify-content:center;margin-top:40px;flex-wrap:wrap}
+
+
+.card a.ph{display:block}
+.card h3 a{text-decoration:none}
+.card h3 a:hover{text-decoration:underline;text-underline-offset:4px}
+/* postup: časová osa – linka se při doscrollování vykreslí a postupně rozsvítí 3 body (JS přidá .on) */
+.tl{--dot:44px;--gap:48px;--bgc:var(--soft);list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.tl li{position:relative}
+.tl li:not(:last-child)::before,.tl li:not(:last-child)::after{content:"";position:absolute;top:calc(var(--dot)/2 - 1px);left:calc(var(--dot)/2);right:calc(-1*var(--gap));height:2px;background:var(--line)}
+.tl li:not(:last-child)::after{background:var(--ink);transform:scaleX(0);transform-origin:0 50%;transition:transform .8s cubic-bezier(.45,0,.2,1)}
+.tl .n{position:relative;z-index:1;display:grid;place-items:center;width:var(--dot);height:var(--dot);border-radius:50%;background:var(--bgc);box-shadow:inset 0 0 0 2px var(--line),0 0 0 8px var(--bgc);font-size:16px;font-weight:700;color:var(--muted);transition:background .4s,color .4s,box-shadow .4s}
+.tl h3{font-size:24px;margin:24px 0 8px}
+.tl p{color:var(--muted);max-width:340px}
+.tl.on .n{background:var(--ink);color:#fff;box-shadow:inset 0 0 0 2px var(--ink),0 0 0 8px var(--bgc)}
+.tl.on li:not(:last-child)::after{transform:none}
+.tl.on li:nth-child(1)::after{transition-delay:.25s}
+.tl.on li:nth-child(2) .n{transition-delay:.9s}
+.tl.on li:nth-child(2)::after{transition-delay:1.05s}
+.tl.on li:nth-child(3) .n{transition-delay:1.7s}
+.tl-cta{display:flex;align-items:center;gap:14px 24px;flex-wrap:wrap;margin-top:44px;padding-top:28px;border-top:1px solid var(--line)}
+.tl-cta span{color:var(--muted)}
+.tl-cta span a{color:var(--ink);font-weight:700;text-underline-offset:4px;white-space:nowrap}
+/* showroom: fotka ~55 % + adresa a dvě akce, jemně se objeví (JS: .wait → bez) */
+.sroom{display:grid;grid-template-columns:55fr 45fr;border-radius:var(--r-card);overflow:hidden;background:#fff;box-shadow:0 0 0 1px var(--line);transition:opacity .7s ease,transform .7s ease}
+.sroom.wait{opacity:0;transform:translateY(12px)}
+.sroom .ph{position:relative;min-height:440px;margin:0}
+.sroom .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sroom .tx{padding:48px 48px 44px;display:flex;flex-direction:column;justify-content:center;gap:20px}
+.sroom h2,.sroom h3{font-size:38px}
+.sroom .tx>p{color:var(--muted);font-size:18px}
+.sroom dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 24px;font-size:18px}
+.sroom dt{color:var(--muted)}
+.sroom dd{margin:0;font-weight:700}
+.sroom dd a{text-decoration:none}
+.sroom .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
+@media (prefers-reduced-motion:reduce){ .tl .n,.tl li::after,.sroom{transition:none!important} }
+
+/* recenze */
+.rv{display:grid;grid-template-columns:340px 1fr;gap:56px;align-items:start}
+.vid{position:relative;border-radius:var(--r-card);overflow:hidden;aspect-ratio:9/16;background:#222}
+.vid img,.vid iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+.vid .play{left:50%;transform:translateX(-50%);bottom:22px;white-space:nowrap}
+.score{display:flex;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+.score div{background:#fff;border-radius:var(--r-card);padding:20px 26px;box-shadow:0 0 0 1px var(--line);flex:1;min-width:220px}
+.score b{display:flex;align-items:center;gap:8px;font-size:40px;font-weight:700;letter-spacing:-.03em;line-height:1}
+.score b svg{width:30px;height:30px}
+.score span{display:block;margin-top:8px;color:var(--muted);font-size:16px}
+.quotes{display:grid;gap:16px}
+.q{background:#fff;border-radius:var(--r-card);padding:26px 30px;box-shadow:0 0 0 1px var(--line);margin:0;display:grid;grid-template-columns:1fr auto;gap:10px 24px;align-items:end}
+.q p{font-size:19px;line-height:1.5;font-weight:500}
+.q cite{font-style:normal;color:var(--muted);font-size:15px;white-space:nowrap}
+
+/* další oblasti */
+.others{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.oc{--k:#999;display:flex;flex-direction:column;border-radius:var(--r-card);overflow:hidden;background:#fff;box-shadow:0 0 0 1px var(--line);text-decoration:none;border-top:8px solid var(--k);transition:box-shadow .15s,transform .15s}
+.oc:hover{transform:translateY(-2px);box-shadow:0 0 0 2px var(--k),0 12px 28px rgba(15,20,24,.10)}
+.oc img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.oc div{padding:20px 24px 24px;display:flex;flex-direction:column;gap:6px}
+.oc h3{font-size:22px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.oc h3 svg{width:22px;height:22px;flex:none}
+.oc p{color:var(--muted)}
+
+/* poptávka (úvod A) */
+.form-wrap{display:grid;grid-template-columns:5fr 7fr;gap:56px;align-items:start}
+.form-wrap h2{font-size:56px;margin-bottom:18px}
+.form-wrap .lead{color:var(--muted);font-size:18px;max-width:440px}
+.contact{margin-top:28px;display:flex;flex-direction:column;gap:10px;font-size:18px}
+.contact a{font-weight:700;text-decoration:none}
+#poptavka,#form{scroll-margin-top:96px}
+form{background:#fff;border-radius:24px;box-shadow:var(--shadow);padding:36px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+fieldset{grid-column:1/-1;border:0;margin:0;padding:0}
+legend,label{font-weight:700;font-size:16px;display:block;margin-bottom:8px}
+.areas{display:flex;flex-wrap:wrap;gap:10px}
+.areas label{margin:0}
+.areas input{position:absolute;opacity:0;pointer-events:none}
+.areas span{--k:var(--ink);display:inline-flex;align-items:center;gap:9px;padding:11px 16px;border-radius:999px;border:2px solid var(--line);font-weight:600;font-size:16px;cursor:pointer}
+.areas input:checked+span{border-color:var(--k);box-shadow:inset 0 0 0 1px var(--k);background:var(--t,#e9edef)}
+.areas input:focus-visible+span{outline:3px solid var(--ink);outline-offset:2px}
+.f{display:flex;flex-direction:column}
+.f.full{grid-column:1/-1}
+input[type=text],textarea,select{font:500 17px/1.4 var(--f);color:var(--ink);border:2px solid #c3cacf;border-radius:12px;padding:13px 15px;background:#fff;width:100%}
+select{appearance:none;-webkit-appearance:none;padding-right:44px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%230f1418' stroke-width='2.2'/%3E%3C/svg%3E") no-repeat right 16px center/13px}
+input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--ink);outline-offset:1px;border-color:var(--ink)}
+textarea{min-height:120px;resize:vertical}
+.send{grid-column:1/-1;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.send small{font-size:14px;color:var(--muted);flex:1;min-width:220px}
+.done{grid-column:1/-1;display:none;padding:16px 18px;border-radius:12px;background:var(--soft);font-weight:600}
+.done.on{display:block}
+
+/* patička (úvod A) */
+footer{background:var(--ink);color:#d3d9dd;padding:72px 0 40px;font-size:16px}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+footer img{height:56px;width:auto;margin-bottom:18px}
+footer h3{color:#fff;font-size:17px;font-weight:700;margin-bottom:14px;letter-spacing:0}
+footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+footer a{color:#fff;text-underline-offset:4px}
+footer .strip{display:flex;height:6px;border-radius:3px;overflow:hidden;width:180px;margin-top:22px}
+footer .strip i{flex:1}
+footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:#b7c0c6}
+.mbar{display:none}
+
+@media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} .pick,.btn,.oc{transition:none} }
+
+/* ---------- mobil ---------- */
+@media (max-width:820px){
+  :root{--pad:16px}
+  body{font-size:16px;padding-bottom:84px}
+  html{scroll-padding-top:72px}
+  .top .wrap{height:64px;gap:8px}
+  .logo img{height:42px}
+  .nav,.tel{display:none}
+  .m-only{display:flex;align-items:center;gap:2px;margin-left:auto}
+  .icon-tel{padding:10px;border-radius:10px;color:var(--ink)}
+  .icon-tel svg{width:24px;height:24px;display:block}
+  .nav.open{display:flex;position:absolute;left:0;right:0;top:64px;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-bottom:1px solid var(--line);padding:8px 16px 16px;box-shadow:0 12px 24px rgba(0,0,0,.08);max-height:calc(100vh - 64px);overflow-y:auto}
+  .nav.open>a{padding:14px 4px;border-bottom:1px solid var(--line);font-size:18px}
+  .nav.open .ddb{display:none}
+  .nav.open .ddp{display:grid;position:static;transform:none;width:auto;box-shadow:none;padding:6px 0 10px;grid-template-columns:1fr;border-bottom:1px solid var(--line);border-radius:0}
+  .nav.open .ddp a{grid-template-columns:72px 1fr;padding:6px 4px}
+  .nav.open .ddp img{width:72px;height:52px}
+  .obl{top:64px}
+  .obl .wrap{padding:0}
+  .obl ul{display:flex;overflow-x:auto;scrollbar-width:none}
+  .obl ul::-webkit-scrollbar{display:none}
+  .obl li{flex:none}
+  .obl a{height:52px;padding:0 16px;font-size:15px;white-space:nowrap}
+  .khero{height:440px}
+  .khero .shade{background:linear-gradient(0deg,rgba(10,14,17,.82) 0%,rgba(10,14,17,.45) 55%,rgba(10,14,17,.25) 100%)}
+  .kh-in{padding-top:20px;padding-bottom:64px}
+  .crumbs{font-size:14px}
+  .khero .bar{width:72px;height:6px;margin-bottom:16px}
+  .khero h1{font-size:38px;line-height:1.08}
+  .khero .lead{font-size:16px;margin-top:12px}
+  .choose{margin-top:-40px}
+  .panel{grid-template-columns:1fr;grid-template-areas:"h" "picks" "acts";padding:22px 16px 20px;border-radius:20px;gap:16px}
+  .panel h2{font-size:24px}
+  .picks{grid-template-columns:1fr 1fr;grid-auto-flow:row;gap:12px}
+  .picks{gap:10px}
+  .pick{height:116px;border-radius:14px}
+  .pick:nth-child(3):last-child{grid-column:1/-1}
+  .pick .pt{padding:10px 12px;gap:1px}
+  .pick b{font-size:16px;line-height:1.2}
+  .pick b svg{width:16px;height:16px}
+  .pick .ps{font-size:14px}
+  .acts a[href^="tel"]{display:none}
+  .acts{justify-content:center;min-height:44px}
+  .proof{justify-content:flex-start;flex-direction:column;gap:8px;padding:20px 0 0;font-size:15px}
+  .proof li+li::before{display:none}
+  section{padding:72px 0}
+  .head{flex-direction:column;align-items:flex-start;gap:12px;margin-bottom:24px}
+  .head h2,.form-wrap h2{font-size:32px}
+  .head p{font-size:16px}
+  .vars,.vars.tri{grid-template-columns:1fr;gap:18px}
+  .var{grid-template-columns:1fr}
+  .var .media,.vars.tri .var .media{min-height:220px}
+  .var .body{padding:20px 18px 22px}
+  .var h3{font-size:21px}
+  .vgrid{grid-template-columns:1fr;gap:28px}
+  .vtx h2{font-size:30px}
+  .vtx p{font-size:16px}
+  .play{left:12px;bottom:12px;font-size:15px;padding:10px 16px 10px 10px}
+  .chips{flex-wrap:nowrap;overflow-x:auto;margin:0 calc(-1*var(--pad)) 22px;padding:2px var(--pad) 8px;scrollbar-width:none}
+  .chips::-webkit-scrollbar{display:none}
+  .grid{grid-template-columns:1fr;gap:18px}
+  .card .tx{grid-template-columns:1fr;padding:16px 18px 18px}
+  .card .btn{grid-row:auto;grid-column:1;justify-self:start;margin-top:8px}
+  .card h3{font-size:19px}
+  .more{flex-direction:column;align-items:stretch}
+  /* časová osa svisle */
+  .tl{--dot:40px;--gap:0px;grid-template-columns:1fr}
+  .tl li{padding:0 0 26px calc(var(--dot) + 18px)}
+  .tl li:last-child{padding-bottom:0}
+  .tl li:not(:last-child)::before,.tl li:not(:last-child)::after{top:calc(var(--dot)/2);bottom:calc(-1*var(--dot)/2);left:calc(var(--dot)/2 - 1px);right:auto;width:2px;height:auto}
+  .tl li:not(:last-child)::after{transform:scaleY(0);transform-origin:50% 0}
+  .tl .n{position:absolute;left:0;top:0;box-shadow:inset 0 0 0 2px var(--line),0 0 0 6px var(--bgc)}
+  .tl.on .n{box-shadow:inset 0 0 0 2px var(--ink),0 0 0 6px var(--bgc)}
+  .tl h3{font-size:21px;margin:7px 0 6px}
+  .tl p{font-size:16px}
+  .tl-cta{margin-top:28px;padding-top:22px;gap:12px}
+  .tl-cta .btn{width:100%}
+  .tl-cta span{font-size:16px}
+  .sroom{grid-template-columns:1fr}
+  .sroom .ph{min-height:0;aspect-ratio:16/10}
+  .sroom .tx{padding:20px 18px 22px;gap:14px}
+  .sroom h2,.sroom h3{font-size:26px}
+  .sroom .tx>p{font-size:16px}
+  .sroom dl{font-size:16px;gap:6px 16px}
+  .sroom .btns .btn{flex:1 1 100%;padding:14px 16px;font-size:16px}
+  .rv{grid-template-columns:1fr;gap:28px}
+  .vid{max-width:300px;width:100%;margin:0 auto}
+  .score div{min-width:0;padding:16px 18px}
+  .score b{font-size:34px}
+  .q{grid-template-columns:1fr;padding:22px 20px}
+  .q p{font-size:17px}
+  .others{grid-template-columns:1fr;gap:16px}
+  .oc{display:grid;grid-template-columns:120px 1fr}
+  .oc img{height:100%;aspect-ratio:auto;min-height:112px}
+  .oc div{padding:14px 16px}
+  .oc h3{font-size:19px}
+  .oc p{font-size:15px}
+  .form-wrap{grid-template-columns:1fr;gap:32px}
+  form{grid-template-columns:1fr;padding:22px 16px;border-radius:20px}
+  .send .btn{width:100%}
+  footer{padding:56px 0 32px}
+  footer .cols{grid-template-columns:1fr 1fr;gap:32px}
+  footer .cols>div:first-child{grid-column:1/-1}
+  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line);box-shadow:0 -6px 18px rgba(0,0,0,.06)}
+  .mbar .btn-red{flex:1;min-height:54px;font-size:18px}
+  .mbar .call{width:54px;height:54px;flex:none;display:grid;place-items:center;border-radius:12px;box-shadow:inset 0 0 0 2px var(--ink);color:var(--ink)}
+  .mbar .call svg{width:22px;height:22px}
+}
+
+/* ---------- doplňky 2026-11-20 ---------- */
+/* dlaždice: silnější ztmavení zespodu, bílý text čitelný i na světlé fasádě */
+.pick::after{background:linear-gradient(180deg,rgba(8,12,15,0) 25%,rgba(8,12,15,.55) 55%,rgba(8,12,15,.88) 100%)}
+/* pás důkazů: 4 položky s vlastní čárovou ikonou */
+.proof{display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding:26px 0 6px}
+.proof li{display:flex;align-items:center;gap:14px;padding:4px 24px;color:var(--ink)}
+.proof li:first-child{padding-left:8px}
+.proof li+li{border-left:1px solid var(--line)}
+.proof li+li::before{display:none}
+.proof .pi{width:28px;height:28px;flex:none;color:var(--ink)}
+.proof b{display:block;font-size:21px;font-weight:700;line-height:1.2;letter-spacing:-.01em}
+.proof span span{display:block;font-size:15px;color:var(--muted);line-height:1.35}
+/* showroom pod časovou osou, karty katalogu pod lepicí hlavičkou + lištou oblastí */
+.tl-cta+.sroom{margin-top:56px}
+[id^="k-"]{scroll-margin-top:160px}
+@keyframes hl{0%,55%{box-shadow:0 0 0 3px var(--ink),0 14px 32px rgba(15,20,24,.16)}100%{box-shadow:0 0 0 0 rgba(15,20,24,0)}}
+.hl{animation:hl 2.4s ease-out}
+@media (prefers-reduced-motion:reduce){ .hl{animation:none;box-shadow:0 0 0 3px var(--ink)} }
+@media (max-width:820px){
+  /* nízké dlaždice: tmavší přechod výš, ať je bílý text čitelný i na světlé fasádě (i dvouřádkové názvy) */
+  .pick::after{background:linear-gradient(180deg,rgba(8,12,15,.32) 0%,rgba(8,12,15,.78) 30%,rgba(8,12,15,.92) 100%)}
+  .pick .pt{text-shadow:0 1px 3px rgba(0,0,0,.55),0 0 14px rgba(0,0,0,.45)}
+  .acts{flex-wrap:wrap;gap:10px 24px}
+  .tl-cta+.sroom{margin-top:36px}
+  [id^="k-"]{scroll-margin-top:132px}
+  .proof{grid-template-columns:1fr 1fr;gap:14px 0;padding:20px 0 0}
+  .proof li{padding:2px 12px;gap:10px;align-items:flex-start}
+  .proof li:nth-child(odd){border-left:0;padding-left:4px}
+  .proof .pi{width:26px;height:26px;margin-top:1px}
+  .proof b{font-size:19px}
+  /* kompaktní mobil (Mark: „kompaktní premium design“) */
+  section{padding:56px 0}
+  .var .media,.vars.tri .var .media{min-height:0;aspect-ratio:16/10}
+  .var .body{padding:16px 16px 18px;gap:10px}
+  .var .go .btn{flex:1}
+}
+</style>
+<link rel="stylesheet" href="vzhled.css">
+</head>
+<body data-page="kategorie" data-o="zahrada" data-oblast="zahrada">
+<a class="skip" href="#obsah">Přeskočit na obsah</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-tel" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 12 12"><path fill="#fff" d="M2 1l9 5-9 5z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path fill="#ff9a1f" d="M12 2l3 6.6 7.2.7-5.4 4.8 1.6 7.1L12 17.6 5.6 21.2l1.6-7.1L1.8 9.3 9 8.6z"/></symbol>
+  <!-- ikony pásu důkazů: jedna rodina, 28 px, čára 1.75, kulaté konce a spoje, barva currentColor (kopírovatelné i do realizace.html) -->
+  <symbol id="p-recenze" viewBox="0 0 28 28"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h15A2.5 2.5 0 0 1 24 6.5v10a2.5 2.5 0 0 1-2.5 2.5H13l-5 4.5V19H6.5A2.5 2.5 0 0 1 4 16.5z"/><path d="M14 7.4l1.5 3 3.3.5-2.4 2.3.6 3.3-3-1.6-3 1.6.6-3.3-2.4-2.3 3.3-.5z"/></g></symbol>
+  <symbol id="p-hodnoceni" viewBox="0 0 28 28"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3.5l8.5 3.2v6.4c0 5.6-3.6 9.6-8.5 11.4-4.9-1.8-8.5-5.8-8.5-11.4V6.7z"/><path d="M10 14.2l2.8 2.8 5.4-5.6"/></g></symbol>
+  <symbol id="p-realizace" viewBox="0 0 28 28"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 24h23"/><path d="M4 24V12.6L10.5 7l6.5 5.6V24"/><path d="M8.5 24v-5h4v5"/><path d="M17 13.6l8 2V24"/><path d="M21 14.6V24"/><path d="M17 18.6h8"/></g></symbol>
+  <symbol id="p-showroom" viewBox="0 0 28 28"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 25s-8-7-8-13.2a8 8 0 0 1 16 0C22 18 14 25 14 25z"/><path d="M10.4 12.4L14 9.2l3.6 3.2"/><path d="M11.6 11.4v4h4.8v-4"/></g></symbol>
+  <symbol id="i-sip" viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header id="hd"></header>
+
+<nav class="obl" aria-label="Oblasti">
+  <div class="wrap"><ul id="obl"></ul></div>
+</nav>
+
+<main id="obsah">
+<div class="khero">
+  <img id="kImg" src="" alt="">
+  <div class="shade"></div>
+  <div class="wrap kh-in">
+    <nav class="crumbs" aria-label="Drobečková navigace"><a href="index.html">Úvod</a><span aria-hidden="true">/</span><span>Služby</span><span aria-hidden="true">/</span><span aria-current="page" id="kCrumb"></span></nav>
+    <div class="bar" aria-hidden="true"></div>
+    <h1 id="kH1"></h1>
+    <p class="lead" id="kLead"></p>
+  </div>
+</div>
+
+<div class="wrap choose">
+  <div class="panel" role="group" aria-labelledby="q">
+    <h2 id="q"></h2>
+    <div class="picks" id="picks"></div>
+    <div class="acts">
+      <a href="#video" id="toVideo"><i class="pl" aria-hidden="true"><svg><use href="#i-play"/></svg></i><b>Pustit video</b></a>
+      <a href="tel:+420777727328"><svg aria-hidden="true"><use href="#i-tel"/></svg>Raději zavolat: <b>777 727 328</b></a>
+      <a href="#poptavka" class="ask" data-krp-dotaz="Co vybrat">Nevíte, co vybrat? <b>Zeptejte se</b></a>
+    </div>
+  </div>
+  <ul class="proof" aria-label="Hodnocení a fakta">
+    <li><svg class="pi" aria-hidden="true"><use href="#p-recenze"/></svg><span><b>4,9</b><span>Google, ze 110 recenzí</span></span></li>
+    <li><svg class="pi" aria-hidden="true"><use href="#p-hodnoceni"/></svg><span><b>98,9 %</b><span>Firmy.cz, z 38 hodnocení</span></span></li>
+    <li><svg class="pi" aria-hidden="true"><use href="#p-realizace"/></svg><span><b>995</b><span>zveřejněných realizací</span></span></li>
+    <li><svg class="pi" aria-hidden="true"><use href="#p-showroom"/></svg><span><b>Showroom</b><span>České Budějovice</span></span></li>
+  </ul>
+</div>
+
+<!-- Co pro vás postavíme: varianty ze skutečných staveb -->
+<section id="nabidka">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="nH"></h2>
+      <p>Každá varianta je ze skutečné stavby. Podívejte se na hotové realizace, nebo se rovnou zeptejte na tu svou.</p>
+    </div>
+    <div class="vars" id="vars"></div>
+  </div>
+</section>
+
+<!-- katalog všech typů (katalog.js + sluzby-doplnky.js; bez nich sekce zůstane skrytá) -->
+<section id="vse" class="soft" hidden>
+  <div class="wrap">
+    <div class="head">
+      <h2>Všechno, co u nás najdete</h2>
+    </div>
+    <div id="katalog"></div>
+  </div>
+</section>
+
+<!-- srovnání variant (sluzby-doplnky.js) -->
+<section id="srovnani" hidden>
+  <div class="wrap" id="srovnaniObsah"></div>
+</section>
+
+<!-- video oblasti -->
+<section id="video" class="vband">
+  <div class="wrap vgrid">
+    <div class="vbox" id="vbox"></div>
+    <div class="vtx">
+      <div class="bar" aria-hidden="true"></div>
+      <h2 id="vH"></h2>
+      <p id="vP"></p>
+      <ul id="vL"></ul>
+      <div class="btns" id="vB"></div>
+    </div>
+  </div>
+</section>
+
+<!-- realizace oblasti s filtrem -->
+<section id="realizace">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="rH"></h2>
+      <p>Vyberte systém. U každé stavby se můžete zeptat na podobnou.</p>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="Filtr realizací podle systému"></div>
+    <div class="grid" id="grid" aria-live="polite"></div>
+    <div class="more">
+      <a class="btn btn-line" id="moreLink" href="realizace.html">Další stavby s filtrem</a>
+      <a class="lnk" href="https://karasek.cz/reference/">Všech 995 realizací na karasek.cz</a>
+    </div>
+  </div>
+</section>
+
+<!-- postup -->
+<section id="postup" class="soft">
+  <div class="wrap">
+    <div class="head">
+      <h2>Jak to probíhá</h2>
+      <p>Tři kroky, stejně jak je popisují naši zákazníci.</p>
+    </div>
+    <ol class="tl">
+      <li><span class="n" aria-hidden="true">1</span><h3>Poptávka</h3><p>Napište nebo zavolejte. Stačí fotka a přibližné rozměry, připravíme předběžnou nezávaznou nabídku.</p></li>
+      <li><span class="n" aria-hidden="true">2</span><h3>Zaměření</h3><p>Přijedeme, zaměříme a navrhneme řešení přesně pro váš dům.</p></li>
+      <li><span class="n" aria-hidden="true">3</span><h3>Montáž</h3><p>Stavbu vyrobíme a namontujeme. Montujeme po celé České republice.</p></li>
+    </ol>
+    <div class="tl-cta">
+      <a class="btn btn-red" href="#poptavka" data-krp>Nezávazná poptávka</a>
+      <span>nebo zavolejte <a href="tel:+420777727328">777 727 328</a>, nebo nám <a href="#poptavka" data-krp-dotaz="Dotaz">napište dotaz</a></span>
+    </div>
+    <div class="sroom" id="showroom">
+      <figure class="ph"><img src="../assets/video/video-move-showroom.jpg" alt="Showroom Karásek s.r.o.: posuvné zasklení naživo" loading="lazy"></figure>
+      <div class="tx">
+        <h3>Přijďte si to osahat do showroomu</h3>
+        <p>Posuvné systémy si prohlédnete naživo a probereme vaši terasu nad fotkami a rozměry.</p>
+        <dl>
+          <dt>Adresa</dt><dd>Nemanická 5, České Budějovice</dd>
+          <dt>Otevřeno</dt><dd>Po–Pá 8–16</dd>
+          <dt>Telefon</dt><dd><a href="tel:+420777727328">+420 777 727 328</a></dd>
+        </dl>
+        <div class="btns">
+          <a class="btn btn-dark" href="https://mapy.cz/?q=Nemanick%C3%A1%205%20%C4%8Cesk%C3%A9%20Bud%C4%9Bjovice" target="_blank" rel="noopener">Naplánovat trasu</a>
+          <a class="btn btn-line" href="#poptavka" data-krp-dotaz="Showroom">Domluvit návštěvu</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- recenze -->
+<section id="recenze">
+  <div class="wrap">
+    <div class="head">
+      <h2>Co říkají zákazníci</h2>
+      <p>Citace jsou doslova z recenzí.</p>
+    </div>
+    <div class="rv">
+      <div class="vid" data-yt="puPVwrDFp3w">
+        <img src="../assets/video/video-recenze-zakaznice.jpg" alt="Zákaznice vypráví o své zimní zahradě">
+        <button type="button" class="play"><i><svg aria-hidden="true"><use href="#i-play"/></svg></i>Pustit video recenzi</button>
+      </div>
+      <div>
+        <div class="score">
+          <div><b>4,9 <svg aria-hidden="true"><use href="#i-star"/></svg></b><span>Google, ze 110 recenzí</span></div>
+          <div><b>98,9 %</b><span>Firmy.cz, z 38 hodnocení</span></div>
+        </div>
+        <div class="quotes" id="quotes"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- další oblasti -->
+<section id="dalsi" class="soft">
+  <div class="wrap">
+    <div class="head">
+      <h2>Spojte to s další oblastí</h2>
+      <p>Oblasti se dají spojit v jednu stavbu: zasklená pergola se stíněním, zimní zahrada s posuvnými stěnami.</p>
+    </div>
+    <div class="others" id="others"></div>
+  </div>
+</section>
+
+<!-- poptávka -->
+<!-- časté dotazy (sluzby-doplnky.js) -->
+<section id="faq" hidden>
+  <div class="wrap" id="faqObsah"></div>
+</section>
+
+<section id="poptavka">
+  <div class="wrap form-wrap">
+    <div>
+      <h2>Nezávazná poptávka</h2>
+      <p class="lead" id="pLead">Napište, co chcete u domu. Ozveme se a domluvíme zaměření.</p>
+      <div class="contact">
+        <a href="tel:+420777727328">+420 777 727 328</a>
+        <span>Nemanická 5, České Budějovice</span>
+        <span>Otevřeno Po–Pá 8–16</span>
+      </div>
+    </div>
+    <form id="form" novalidate>
+      <fieldset>
+        <legend>Co vás zajímá</legend>
+        <div class="areas">
+          <label><input type="radio" name="oblast" value="zahrada"><span style="--k:var(--zahrada)"><i class="dot" style="--c:var(--zahrada)"></i>Zimní zahrada</span></label>
+          <label><input type="radio" name="oblast" value="zaskleni"><span style="--k:var(--zaskleni)"><i class="dot" style="--c:var(--zaskleni)"></i>Zasklení terasy</span></label>
+          <label><input type="radio" name="oblast" value="pergola"><span style="--k:var(--pergola)"><i class="dot" style="--c:var(--pergola)"></i>Pergola</span></label>
+          <label><input type="radio" name="oblast" value="stineni"><span style="--k:var(--stineni)"><i class="dot" style="--c:var(--stineni)"></i>Stínění</span></label>
+          <label><input type="radio" name="oblast" value="nevim"><span>Ještě nevím</span></label>
+        </div>
+      </fieldset>
+      <div class="f full"><label for="var">Varianta</label><select id="var" name="varianta"></select></div>
+      <div class="f"><label for="jm">Jméno</label><input id="jm" name="jmeno" type="text" autocomplete="name"></div>
+      <div class="f"><label for="obec">PSČ nebo obec</label><input id="obec" name="obec" type="text" autocomplete="postal-code"></div>
+      <div class="f full"><label for="kon">Telefon nebo e-mail</label><input id="kon" name="kontakt" type="text" autocomplete="tel"></div>
+      <div class="f full"><label for="zp">Zpráva</label><textarea id="zp" name="zprava" placeholder="Např. rozměry terasy, co se vám líbí"></textarea></div>
+      <div class="send">
+        <button type="submit" class="btn btn-red">Odeslat poptávku</button>
+        <small>Odesláním souhlasíte se zpracováním údajů pro vyřízení poptávky.</small>
+      </div>
+      <p class="done" id="done" role="status">Ukázka návrhu: poptávka se nikam neodeslala.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer id="kontakt"></footer>
+<script src="web.js"></script>
+
+<div class="mbar">
+  <a class="call" href="tel:+420777727328" aria-label="Zavolat +420 777 727 328"><svg aria-hidden="true"><use href="#i-tel"/></svg></a>
+  <button type="button" class="btn btn-red" data-ask="">Nezávazná poptávka</button>
+</div>
+
+<script src="realizace-data.js"></script>
+<script src="obsah-sluzeb.js"></script><script src="katalog.js"></script><script src="sluzby-doplnky.js"></script>
+<script>
+/* Obsah 4 oblastí. Jen fakta z BRIEF.md a z textů staveb (realizace-data.js / prehled-realizaci.json); popisy variant
+   jsou zkrácené věty z textů konkrétních staveb, na které varianta odkazuje. Recenze nejsou přiřazené ke stavbám. */
+const OBL = {
+  zahrada: {
+    nazev: "Zimní zahrady", jedn: "zimní zahradu", tab: "Zimní zahrady", foto: "17372", kratce: "Sezonní i celoroční, se skrytým žlabem.",
+    h1: "Zimní zahrady, sezonní i celoroční",
+    lead: "Hliníková konstrukce se skrytým žlabem, střecha ze skla nebo polykarbonátu a posuvné stěny, které otevřete do zahrady.",
+    otazka: "Jakou zimní zahradu chcete?", nabidka: "Zimní zahrady, které stavíme",
+    var: [
+      { k: "therm", n: "Celoroční s Patio Living Therm", f: "17372", t: "Posuvné izolační zasklení s přerušeným tepelným mostem. Zimní zahradu pak používáte po celý rok.", s: ["Patio Living Therm", "izolační dvojsklo"], q: { system: "therm" } },
+      { k: "sezonni", n: "Sezonní se skrytým žlabem", f: "25190", t: "Konstrukce se skrytým žlabem a šikmou střechou. Krytina z čirého bezpečnostního skla Connex nebo z polykarbonátu.", s: ["sklo Connex", "polykarbonát", "Combi"], q: { system: "connex" } },
+      { k: "bezramova", n: "U domu s bezrámovými stěnami", f: "23300", t: "Napojením na lodžii rodinného domu vzniklo víc obytné plochy a útulné zázemí pro každý den.", s: ["Patio Living Move", "sklo Connex"], q: { system: "move" } },
+      { k: "baldachyn", n: "Se stíněním baldachýnem", f: "23293", t: "Antracitová konstrukce se skrytým žlabem. Baldachýnové zastínění chrání proti přehřívání.", s: ["baldachýn", "RAL 7016"], q: { system: "baldachyn" } }
+    ],
+    video: { yt: "CDzwiIPHD5s", poster: "../assets/video/video-therm-zimni-zahrada.jpg", alt: "Rostislav Karásek v temperované zimní zahradě",
+      h: "Celoroční zimní zahrada naživo", p: "Patio Living Therm ukazuje Rostislav Karásek, jednatel a majitel firmy.",
+      body: ["posuvné izolační zasklení", "přerušený tepelný most", "izolační dvojsklo"] },
+    recenze: ["Tetřevová", "Pajdla", "Weidlichová"]
+  },
+  zaskleni: {
+    nazev: "Zasklení teras", jedn: "zasklení", tab: "Zasklení teras", foto: "24199", kratce: "Bezrámové Move, rámové Combi a Plus.",
+    h1: "Zasklení teras, pergol a zahradních domků",
+    lead: "Posuvné zasklení bezrámové, rámové i fixní, s kaleným bezpečnostním sklem ESG. Chráněný prostor před deštěm, větrem i sněhem.",
+    otazka: "Jaké zasklení chcete?", nabidka: "Zasklení, které montujeme",
+    var: [
+      { k: "move", n: "Bezrámové Patio Living Move", f: "29532", t: "Výhled bez rušivých profilů. Generace 3.0 má podvozky s dvojitými kolečky a umožní širší a těžší panely.", s: ["Patio Living Move", "ESG 8 mm", "alinox"], q: { system: "move" } },
+      { k: "combi", n: "Rámové Combi", f: "24151", t: "Promění dřevěnou pergolu v obytný prostor po celý rok, chráněný před deštěm, větrem i chladem.", s: ["Combi", "Combi IZO s dvojsklem", "antracit"], q: { system: "combi" } },
+      { k: "plus", n: "Rámové Plus", f: "23236", t: "Sezonní posuvné zasklení s rámečkem pouze 30 mm. Lakujeme i do barvy RAL, třeba RAL 8003.", s: ["Plus", "kalené sklo"], q: { system: "plus" } },
+      { k: "kombinace", n: "Fixní zasklení a kombinace", f: "17435", t: "Bezrámové zasklení na průchozích stěnách, rámové a fixní tam, kde se neotevírá. Fixní díly umí i prosklený štít.", s: ["Patio Living Move", "Plus", "fixní zasklení"], q: {} }
+    ],
+    video: { yt: "wmvKgEBCEmQ", poster: "../assets/video/video-move-showroom.jpg", alt: "Posuvné bezrámové zasklení v showroomu",
+      h: "Patio Living Move 3.0 naživo", p: "Bezrámové posuvné zasklení nové generace.",
+      body: ["podvozky s dvojitými kolečky", "širší a těžší panely", "skla otevřete z obou stran"],
+      dalsi: { yt: "aOCThW3DFrc", t: "Pustit video Combi antracit" } },
+    recenze: ["Loška", "Poláková", "Jakub Vaníček"]
+  },
+  pergola: {
+    nazev: "Pergoly", jedn: "pergolu", tab: "Pergoly", foto: "17454", kratce: "Hliníkové i bioklimatické, se zasklením.",
+    h1: "Hliníkové pergoly se skrytým žlabem",
+    lead: "Se skleněnou nebo polykarbonátovou střechou i bioklimatické s ovládanou střechou. Doplníte je zasklením a stíněním.",
+    otazka: "Jakou pergolu chcete?", nabidka: "Pergoly, které stavíme",
+    var: [
+      { k: "bioklima", n: "Bioklimatická se zasklením", f: "18873", t: "Inteligentně ovládaná střecha a rámové zasklení Combi. Maximální ochrana a variabilní využití prostoru.", s: ["Combi", "Somfy", "RAL 7016"], q: { system: "combi" } },
+      { k: "screen", n: "Se skrytým žlabem a screen roletami", f: "23329", t: "Moderní design s vysokou odolností. Ovládání Somfy IO s možností plného propojení do mobilní aplikace.", s: ["Somfy IO", "screen rolety", "polykarbonát"], q: { system: "rolety" } },
+      { k: "sklo", n: "Se skleněnou střechou", f: "17692", t: "Antracitová konstrukce se skrytým žlabem a jednou zasklenou stěnou. Střechu zevnitř stíní baldachýn.", s: ["sklo Connex", "Plus", "baldachýn"], q: { system: "connex" } }
+    ],
+    video: { yt: "xfAfjtb2okg", poster: "../assets/foto/23329.jpg", alt: "Hliníková pergola se skrytým žlabem u bazénu",
+      h: "Pergola se skrytým žlabem naživo", p: "Video o hliníkové pergole se skrytým žlabem.",
+      body: ["skrytý žlab v konstrukci", "ovládání Somfy IO", "propojení do mobilní aplikace"] },
+    recenze: ["Poláková", "Jakub Vaníček", "Loška"]
+  },
+  stineni: {
+    nazev: "Stínění", jedn: "stínění", tab: "Stínění", foto: "21454", kratce: "Baldachýny, screen rolety, žaluzie, markýzy.",
+    h1: "Stínění teras, pergol a zimních zahrad",
+    lead: "Baldachýny do zimních zahrad, markýzy, screen rolety a žaluzie proti přehřívání, i s motory Somfy.",
+    otazka: "Jaké stínění chcete?", nabidka: "Stínění, které montujeme",
+    var: [
+      { k: "baldachyn", n: "Baldachýn do zimní zahrady", f: "23293", t: "Pojezd na ložiskových kolečkách v hliníkové kolejnici. Chrání proti přehřívání pod skleněnou střechou.", s: ["baldachýn", "béžový dekor"], q: { system: "baldachyn" } },
+      { k: "screen", n: "Screen rolety v pergole", f: "23329", t: "Ovládání Somfy IO s možností plného propojení do mobilní aplikace.", s: ["screen rolety", "Somfy IO"], q: { system: "somfy" } },
+      { k: "zaluzie", n: "Hliníkové žaluzie", f: "21506", t: "Vnitřní stínění zasklené terasy, hliníkové žaluzie s lamelou do tvaru písmena L.", s: ["žaluzie", "Combi"], q: { system: "rolety" } },
+      { k: "rolety", n: "Roletky bez kazety", f: "17332", t: "Zasklení terasy jsme později doplnili o vnitřní stínění v provedení roletek bez kazety.", s: ["rolety", "Combi"], q: { system: "rolety" } }
+    ],
+    video: { yt: "R574CH3Njp0", poster: "https://i.ytimg.com/vi/R574CH3Njp0/hqdefault.jpg", alt: "Markýza ARESBOX, náhled videa",
+      h: "Markýza ARESBOX naživo", p: "Venkovní stínění terasy markýzou ARESBOX.",
+      body: ["markýza ARESBOX", "motory Somfy", "baldachýny do zimních zahrad"] },
+    recenze: ["Jakub Vaníček", "Weidlichová", "Loška"]
+  }
+};
+const CITACE = {
+  "Jakub Vaníček": "„Poptávka, zaměření, montáž… vše proběhlo bez problémů. … Firmu bych zvolil znovu.“",
+  "Tetřevová": "„Ve sjednaný den přijeli pánové na montáž a za jeden den byla zimní zahrada hotová.“",
+  "Weidlichová": "„Přestože jsme si vybrali výrobce, který sídlí 265 km od našeho domova, rozhodně toho nelitujeme.“",
+  "Pajdla": "„Ochotní řemeslníci, vše vysvětlili ukázali, na místě bez problémů sestavili. Zimní zahrada je moc pěkná.“",
+  "Poláková": "„Zasklívali nám pergolu a vše dopadlo skvěle.“",
+  "Loška": "„Vše dle dohody. Vysoká kvalita zasklení i práce.“"
+};
+
+(() => {
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const mobile = matchMedia("(max-width: 820px)").matches;
+  const KEYS = Object.keys(OBL);
+  const q = new URLSearchParams(location.search);
+  const o = KEYS.includes(q.get("oblast")) ? q.get("oblast") : "zahrada";
+  const O = OBL[o];
+  const sip = '<svg aria-hidden="true"><use href="#i-sip"/></svg>';
+  document.body.dataset.o = o; document.body.dataset.oblast = o;
+  // SEO/GEO: titulek, popis a strukturovaná data podle oblasti (jen fakta z BRIEF.md: název, IČO, telefon, showroom, otevírací doba)
+  document.title = `${O.h1} | Karásek s.r.o., České Budějovice`;
+  $("#mDesc").setAttribute("content", `${O.lead} Varianty ze skutečných staveb a nezávazná poptávka. Showroom Nemanická 5, České Budějovice, tel. +420 777 727 328.`);
+  const abs = h => new URL(h, location.href).href;
+  const FIRMA = { "@type": "HomeAndConstructionBusiness", name: "Karásek s.r.o.", url: "https://karasek.cz/", telephone: "+420777727328",
+    identifier: { "@type": "PropertyValue", propertyID: "IČO", value: "25164589" },
+    address: { "@type": "PostalAddress", streetAddress: "Nemanická 5", addressLocality: "České Budějovice", addressCountry: "CZ" } };
+  const ld = document.createElement("script"); ld.type = "application/ld+json";
+  ld.textContent = JSON.stringify([
+    { "@context": "https://schema.org", "@type": "Service", name: O.h1, serviceType: O.nazev, description: O.lead, url: abs("kategorie.html?oblast=" + o), provider: FIRMA,
+      hasOfferCatalog: { "@type": "OfferCatalog", name: O.nabidka, itemListElement: O.var.map(v => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: v.n, description: v.t } })) } },
+    { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Úvod", item: abs("index.html") },
+      { "@type": "ListItem", position: 2, name: O.nazev, item: abs("kategorie.html?oblast=" + o) } ] }
+  ]);
+  document.head.appendChild(ld);
+
+  // lišta oblastí + nabídka Produkty
+  $("#obl").innerHTML = KEYS.map(k => `<li><a href="kategorie.html?oblast=${k}" style="--k:var(--${k})"${k === o ? ' aria-current="page"' : ""}>${OBL[k].tab}</a></li>`).join("");
+  $$(".ddp a").forEach(a => { if (a.getAttribute("href").endsWith("=" + o)) a.setAttribute("aria-current", "page"); });
+
+  // záhlaví
+  $("#kImg").src = `../assets/foto/${O.foto}.jpg`; $("#kImg").alt = `${O.nazev}: realizace Karásek s.r.o.`; $("#kImg").style.objectPosition = O.pos || "50% 50%";
+  $("#kCrumb").textContent = O.nazev;
+  $("#kH1").textContent = O.h1;
+  $("#kLead").textContent = O.lead;
+  $("#q").textContent = O.otazka;
+  $("#picks").innerHTML = O.var.map(v => `<a class="pick" data-a="${o}" href="#v-${v.k}"><img src="../assets/foto/${v.f}.jpg" alt=""><span class="pt"><b>${v.n}${sip}</b><span class="ps">${v.s.join(" · ")}</span></span></a>`).join("");
+
+  // varianty
+  $("#nH").textContent = O.nabidka;
+  $("#vars").classList.toggle("tri", O.var.length === 3);
+  const rq = v => "realizace.html" + KR.toQuery({ typ: o, ...v.q });
+  $("#vars").innerHTML = O.var.map(v => `<article class="var" id="v-${v.k}">
+      <div class="media"><img src="../assets/foto/${v.f}.jpg" alt="${O.nazev}: ${v.n}" loading="lazy"></div>
+      <div class="body">
+        <h3>${v.n}</h3>
+        <p>${v.t}</p>
+        <ul class="sys">${v.s.map(x => `<li>${x}</li>`).join("")}</ul>
+        <div class="go"><button type="button" class="btn btn-dark" data-ask="${o}" data-var="${v.k}">Chci tuto variantu</button><a class="lnk" href="${rq(v)}">Hotové stavby</a></div>
+      </div></article>`).join("");
+
+  // video oblasti
+  const V = O.video;
+  $("#vbox").innerHTML = `<img src="${V.poster}" alt="${V.alt}" loading="lazy"><div class="shade"></div><button type="button" class="play" data-yt="${V.yt}"><i><svg aria-hidden="true"><use href="#i-play"/></svg></i>Pustit video</button>`;
+  $("#vH").textContent = V.h; $("#vP").textContent = V.p;
+  $("#vL").innerHTML = V.body.map(x => `<li>${x}</li>`).join("");
+  $("#vB").innerHTML = `<button type="button" class="btn btn-red" data-ask="${o}">Chci ${O.jedn}</button>` +
+    (V.dalsi ? `<button type="button" class="lnk" data-yt="${V.dalsi.yt}">${V.dalsi.t}</button>` : "");
+  function playIn(box, id, title) {
+    const f = document.createElement("iframe");
+    f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+    f.title = title; f.allow = "autoplay; encrypted-media; picture-in-picture"; f.allowFullscreen = true;
+    box.innerHTML = ""; box.appendChild(f); f.focus();
+  }
+  document.addEventListener("click", e => {
+    const b = e.target.closest("button[data-yt]"); if (!b) return;
+    playIn($("#vbox"), b.dataset.yt, V.h);
+    if (!b.closest("#vbox")) $("#video").scrollIntoView();
+  });
+  $("#toVideo").addEventListener("click", e => {
+    e.preventDefault(); $("#video").scrollIntoView();
+    if (!$("#vbox iframe")) playIn($("#vbox"), V.yt, V.h);
+  });
+  $$(".vid .play").forEach(b => b.addEventListener("click", () => playIn(b.closest(".vid"), b.closest(".vid").dataset.yt, b.textContent.trim())));
+
+  // realizace oblasti: čipy jen se systémy, které v oblasti opravdu jsou
+  $("#rH").textContent = "Hotové stavby: " + O.nazev.toLowerCase();
+  const inO = KR.filter({ typ: o, system: "", barva: "", lokalita: "" }).sort((a, b) => b.d.localeCompare(a.d));
+  const sysIn = KR.systemy.flatMap(([, l]) => l).filter(([k]) => inO.some(s => s.sys.includes(k)));
+  let sys = "";
+  $("#chips").innerHTML = `<button type="button" class="chip" data-s="" aria-pressed="true">Vše</button>` +
+    sysIn.map(([k, n]) => `<button type="button" class="chip" data-s="${k}" aria-pressed="false">${n}</button>`).join("");
+  const STEP = mobile ? 3 : 4;
+  function render() {
+    const list = inO.filter(s => !sys || s.sys.includes(sys));
+    $("#grid").innerHTML = list.slice(0, STEP).map(s => {
+      const [y, m] = s.d.split("-");
+      return `<article class="card"><a class="ph" href="stavba.html?id=${s.id}" tabindex="-1" aria-hidden="true"><img src="../assets/foto/${s.id}.jpg" alt="${s.n.replace(/"/g, "&quot;")}" loading="lazy"></a>
+        <div class="cbar" aria-hidden="true">${s.typ.map(x => `<i style="background:var(--${x})"></i>`).join("")}</div>
+        <div class="tx"><div class="tags">${s.typ.map(x => `<span><i class="dot" style="--c:var(--${x})"></i>${KR.label.typ[x]}</span>`).join("")}</div>
+        <h3><a href="stavba.html?id=${s.id}">${s.n}</a></h3><p class="dt">zveřejněno ${m}/${y}</p>
+        <button type="button" class="btn btn-red" data-like="${s.id}">Chci podobnou</button></div></article>`;
+    }).join("");
+    $("#moreLink").href = "realizace.html" + KR.toQuery({ typ: o, system: sys });
+    $("#moreLink").textContent = list.length > STEP ? "Další stavby s filtrem" : "Otevřít ve filtru realizací";
+  }
+  $("#chips").addEventListener("click", e => {
+    const c = e.target.closest(".chip"); if (!c) return;
+    sys = c.dataset.s; $$(".chip").forEach(x => x.setAttribute("aria-pressed", String(x === c))); render();
+  });
+  render();
+
+  // recenze
+  $("#quotes").innerHTML = O.recenze.map(j => `<blockquote class="q"><p>${CITACE[j]}</p><cite>${j}</cite></blockquote>`).join("");
+
+  // další oblasti
+  $("#others").innerHTML = KEYS.filter(k => k !== o).map(k => `<a class="oc" href="kategorie.html?oblast=${k}" style="--k:var(--${k})"><img src="../assets/foto/${OBL[k].foto}.jpg" alt="" loading="lazy"><div><h3>${OBL[k].nazev}${sip}</h3><p>${OBL[k].kratce}</p></div></a>`).join("");
+
+  // poptávka s předvyplněnou oblastí a variantou
+  const selV = $("#var");
+  const fillVar = a => {
+    const list = OBL[a] ? OBL[a].var : [];
+    selV.innerHTML = `<option value="">Ještě nevím</option>` + list.map(v => `<option value="${v.k}">${v.n}</option>`).join("");
+  };
+  const setO = a => { const r = $(`input[name=oblast][value=${a}]`); if (r) r.checked = true; fillVar(a); };
+  setO(o);
+  $$("input[name=oblast]").forEach(r => r.addEventListener("change", () => fillVar(r.value)));
+  $("#pLead").textContent = `Napište, jakou ${O.jedn} chcete. Ozveme se a domluvíme zaměření.`;
+  function ask(a, vk, msg) {
+    setO(a || o);
+    if (vk) selV.value = vk;
+    if (msg) $("#zp").value = msg;
+    document.documentElement.style.scrollBehavior = "auto";
+    (mobile ? $("#form") : $("#poptavka")).scrollIntoView({ block: "start" });
+    document.documentElement.style.scrollBehavior = "";
+    $("#jm").focus({ preventScroll: true });
+  }
+  document.addEventListener("click", e => {
+    const b = e.target.closest("[data-ask]"); if (b) { ask(b.dataset.ask, b.dataset.var); return; }
+    const l = e.target.closest("[data-like]");
+    if (l) {
+      // sdílený poptávkový panel z web.js (předvyplněná stavba), jinak formulář na této stránce
+      if (typeof window.KRpoptat === "function") { window.KRpoptat({ id: l.dataset.like, oblast: o }); return; }
+      const s = KR.stavby.find(x => x.id === l.dataset.like); ask(o, "", "Líbí se mi realizace: " + s.n);
+    }
+  });
+  $("#form").addEventListener("submit", e => { e.preventDefault(); $("#done").classList.add("on"); });
+
+  // --- poptávka / dotaz ze sdíleného panelu web.js, bez něj odkaz #poptavka ---
+  document.addEventListener("click", e => {
+    const a = e.target.closest("[data-krp],[data-krp-dotaz]"); if (!a || typeof window.KRpoptat !== "function") return;
+    e.preventDefault();
+    window.KRpoptat(a.hasAttribute("data-krp-dotaz") ? { dotaz: true, tema: a.dataset.krpDotaz, oblast: o } : { oblast: o });
+  });
+
+  // --- katalog, srovnání a časté dotazy (katalog.js / sluzby-doplnky.js; když ještě nejsou, sekce zůstanou skryté) ---
+  const zkus = (fn, el) => { try { fn(el, o); return el.children.length > 0; } catch (err) { console.warn(err); return false; } };
+  if (window.KRkatalog && typeof KRkatalog.vykresli === "function" && zkus(KRkatalog.vykresli, $("#katalog"))) {
+    $("#vse").hidden = false;
+    const n = $$('#katalog [id^="k-"]').length;
+    if (n) $(".acts").insertAdjacentHTML("beforeend", `<a href="#vse" class="all">Všechny typy <b>(${n})</b></a>`);
+  }
+  if (typeof window.KRsrovnani === "function" && zkus(window.KRsrovnani, $("#srovnaniObsah"))) $("#srovnani").hidden = false;
+  if (typeof window.KRfaq === "function" && zkus(window.KRfaq, $("#faqObsah"))) $("#faq").hidden = false;
+  // odkaz z menu na #k-<slug>: posun na kartu pod lepicí hlavičku a krátké zvýraznění
+  const naKartu = () => {
+    if (!/^#k-/.test(location.hash)) return;
+    const el = document.getElementById(decodeURIComponent(location.hash.slice(1))); if (!el) return;
+    el.scrollIntoView({ block: "start", behavior: reduce ? "auto" : "smooth" });
+    el.classList.remove("hl"); void el.offsetWidth; el.classList.add("hl");
+    setTimeout(() => el.classList.remove("hl"), 2400);
+  };
+  addEventListener("hashchange", naKartu);
+  if (location.hash) requestAnimationFrame(naKartu);
+
+  // --- časová osa a showroom: animace při doscrollování (reduced-motion → rovnou hotové) ---
+  const tl = $(".tl"), sroom = $(".sroom");
+  if (reduce || !("IntersectionObserver" in window)) { if (tl) tl.classList.add("on"); }
+  else {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add("on"); e.target.classList.remove("wait"); io.unobserve(e.target);
+    }), { threshold: .3 });
+    if (tl) io.observe(tl);
+    // showroom skryjeme až při prvním posunu stránky (statický snímek bez posunu ho ukáže celý)
+    if (sroom) addEventListener("scroll", () => { if (sroom.getBoundingClientRect().top > innerHeight) { sroom.classList.add("wait"); io.observe(sroom); } }, { once: true, passive: true });
+  }
+
+})();
+</script>
+</body>
+</html>

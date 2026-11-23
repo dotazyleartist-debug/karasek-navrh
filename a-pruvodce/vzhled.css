@@ -1,0 +1,76 @@
+/* Vzhled 2 (Mark 2026-11-20): klidný, přehledný systém pro všechny stránky směru A.
+   Pravidlo barev: barva služby se objevuje JEN jako jemný nádech přes fotku té služby.
+   Žádné barevné tečky, proužky, záložky ani barevné rámečky. Rozhraní je neutrální,
+   vybraný stav = tmavý rámeček, červená #D22630 jen na poptávku. Načítá se jako poslední. */
+
+/* 1. pryč s barevnými značkami */
+.dot,.card .bar,.khero .bar,.vtx .bar,.strip,.ft .strip,footer .strip,.obl{display:none!important}
+.step .n::after{display:none!important}
+.var,.pc,.oc,.mt{border-top:0!important}
+.ddp img{border-top:0!important}
+.vtx li::before{width:6px!important;height:6px!important;background:rgba(255,255,255,.7)!important}
+
+/* 2. vedlejší tlačítko: světlý rámeček, ne tmavý */
+.btn-line{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1px #c3cad0}
+.btn-line:hover{background:#fff;box-shadow:inset 0 0 0 1.5px var(--ink)}
+
+.hd-mb{border:1px solid #c3cad0!important}
+.mbar .call{box-shadow:inset 0 0 0 1px #c3cad0!important}
+
+/* 3. vybraný stav všude stejný a neutrální */
+.chip[aria-pressed="true"],.opt[aria-pressed="true"],.typ .opt[aria-pressed="true"],
+.areas input:checked+span{border-color:var(--ink)!important;box-shadow:none!important;background:#f1f3f4!important;color:var(--ink)!important;font-weight:700}
+.fld.on{box-shadow:none}
+
+/* 4. karty a dlaždice: neutrální najetí myší */
+.pick:hover,.oc:hover,.mt:hover,.mt[aria-current]{box-shadow:0 0 0 1px var(--ink),0 14px 32px rgba(15,20,24,.12)!important}
+.card{transition:box-shadow .2s}
+.card:hover{box-shadow:0 0 0 1px #c3cad0,0 14px 32px rgba(15,20,24,.10)}
+.card .ph{overflow:hidden}
+.card .ph img{transition:transform .5s ease}
+.card:hover .ph img{transform:scale(1.03)}
+.card .tags{font-size:14px;letter-spacing:.02em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.card .tags span+span::before{content:"·";margin-right:7px}
+
+/* 5. nádech barvy služby přes fotku služby */
+.mt,.oc{position:relative}
+.mt::before,.oc::before{content:"";position:absolute;left:0;top:0;width:100%;aspect-ratio:16/10;background:var(--k);mix-blend-mode:color;opacity:.3;pointer-events:none;transition:opacity .3s}
+.mt:hover::before,.oc:hover::before{opacity:.12}
+.khero .shade::before{content:"";position:absolute;inset:0;background:var(--c);mix-blend-mode:color;opacity:.28}
+.pc .media::after{content:"";position:absolute;inset:0;background:var(--c);mix-blend-mode:color;opacity:.26;pointer-events:none}
+.pc .media:has(iframe)::after{display:none}
+.pc .play{z-index:2}
+/* červená stínění je silná: menší dávka, ať nepřebije fotku ani tlačítko poptávky */
+.pick[data-a="stineni"]::before,a[href$="oblast=stineni"]::before,.pc[style*="stineni"] .media::after{opacity:.17}
+body[data-o="stineni"] .khero .shade::before{opacity:.08}
+.pick[data-a="stineni"]:hover::before{opacity:.08}
+
+@media (max-width:820px){
+  .oc::before{width:120px;height:100%;aspect-ratio:auto}
+}
+@media (prefers-reduced-motion:reduce){ .card .ph img,.mt::before,.oc::before{transition:none} .card:hover .ph img{transform:none} }
+
+/* 6. Písmo (Mark 2026-11-20: „moc velký a hodně tlustý“): menší a lehčí škála */
+h1,h2{font-weight:700;letter-spacing:-.022em}
+h3{font-weight:700}
+.hero h1{font-size:64px;line-height:1.06}
+.khero h1{font-size:60px;line-height:1.06;max-width:900px}
+.khero .lead{font-size:19px;font-weight:500}
+.head h2{font-size:44px}
+.panel h2{font-size:30px}
+.vtx h2{font-size:40px}
+.form-wrap h2{font-size:44px}
+.pick b{font-weight:600}
+
+/* 7. Hlavní akce červeně (Mark 2026-11-20: „cta tlačítka by měla být červená“) */
+.btn-dark{background:var(--red);color:#fff}
+.btn-dark:hover{background:var(--red-h)}
+
+@media (max-width:820px){
+  .hero h1{font-size:40px;line-height:1.08}
+  .khero h1{font-size:38px;line-height:1.08}
+  .khero .lead{font-size:16px}
+  .head h2,.form-wrap h2{font-size:32px}
+  .panel h2{font-size:24px}
+  .vtx h2{font-size:30px}
+}
