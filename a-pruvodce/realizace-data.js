@@ -71,7 +71,7 @@ window.KR = (() => {
      "Do zahradní pergoly jsme realizovali rámové zasklení COMBI v kombinaci sestav 4D + 3D + 3D. … Zasklení bylo instalováno přímo mezi dřevěné sloupky pergoly, takže konstrukce působí přirozeně a neruší celkový vzhled zahrady.",
      "https://karasek.cz/reference/ramove-zaskleni-do-pergoly-v-zahrade-combi-4d3d3d/"],
     ["23300","Sezonní zimní zahrada úzká, bezrámové zasklení","2025-09",["zahrada"],["move","connex"],"antracit","sever",
-     "Napojením na lodžii rodinného domu došlo k výraznému zvětšení obytné plochy a vytvoření útulného zázemí pro každodenní využití. … Realizace se uskutečnila na severu Čech.",
+     "Napojením na rodinný dům došlo k výraznému zvětšení obytné plochy a vytvoření útulného zázemí pro každodenní využití. … Realizace se uskutečnila na severu Čech.",
      "https://karasek.cz/reference/sezonni-zimni-zahrada-uzka-bezramove-zaskleni/"],
     ["22218","Zasklení terasy rodinného domu, RAL 7016 antracit","2025-07",["zaskleni"],[],"antracit","",
      "Další z klasických realizací, kdy vznikne chráněný prostor před deštěm, větrem i sněhem. Konečně mají zákazníci použitelný venkovní prostor po celý rok.",

@@ -30,7 +30,7 @@ window.KRobsah = (() => {
     zahrada: {
       faq: [
         { q: "Kolik stojí zimní zahrada a na čem cena závisí?",
-          a: "Pevný ceník za metr čtvereční nemáme: každý dům má jinou dispozici, sněhovou oblast a požadavky na kotvení. Cenu nejvíc ovlivňuje statika konstrukce (krokve 105, 130 nebo 150 mm podle zatížení), střecha (bezpečnostní sklo Connex 3.3.2, nebo úspornější dutinkový polykarbonát 16 mm) a boční zasklení (rámové Plus a Combi, nebo bezrámové Patio Living Move). Modelové příklady pro nejčastější rozměry najdete v článku o ceně za m².",
+          a: "Pevný ceník za metr čtvereční nemáme: každý dům má jinou dispozici, sněhovou oblast a požadavky na kotvení. Cenu nejvíc ovlivňuje statika konstrukce (krokve 105, 130 nebo 150 mm podle zatížení), střecha (bezpečnostní sklo Connex 3.3.2, nebo úspornější dutinkový polykarbonát 16 mm) a boční zasklení (rámové Plus a Combi, nebo bezrámové Patio Living Move). Cenu spočítáme po zaměření zdarma.",
           zdroj: B.cenaZZ },
         { q: "Potřebuji na zimní zahradu stavební povolení?",
           a: "U rodinného domu bývá zimní zahrada součástí změny stavby. Hlídá se plocha do 40 m², výška do 5 m, odstup alespoň 2 m od hranice pozemku a to, aby na pozemku zůstala alespoň polovina vsakovací plochy. Řešit je potřeba i napojení na dům, požární pásy a odvodnění. Když nám pošlete popis, rozměry a 2–3 fotky, posoudíme, jestli záměr spadá do režimu bez povolení.",
@@ -63,7 +63,7 @@ window.KRobsah = (() => {
     zaskleni: {
       faq: [
         { q: "Kolik stojí zasklení pergoly nebo terasy?",
-          a: "Jednou částkou to říct nejde. Cenu tvoří typ systému (rámový, nebo bezrámový), typ bezpečnostního skla, rozměry, sklon střechy a atypické tvary, případné pomocné profily a náročnost montáže. Rámový systém je ekonomicky výhodnější, bezrámový má vyšší pořizovací náklady. Modelové příklady pro pergolu 6 × 3 a 5 × 4 m jsou v článku o ceně zasklení.",
+          a: "Jednou částkou to říct nejde. Cenu tvoří typ systému (rámový, nebo bezrámový), typ bezpečnostního skla, rozměry, sklon střechy a atypické tvary, případné pomocné profily a náročnost montáže. Rámový systém je ekonomicky výhodnější, bezrámový má vyšší pořizovací náklady. Cenu spočítáme po zaměření zdarma.",
           zdroj: B.cenaZas },
         { q: "Rámové, nebo bezrámové zasklení?",
           a: "Obecně nelze říct, který je lepší. Rámový systém je těsnější pro zimní období a levnější, bezrámový je tu pro nerušený výhled. Všechny naše systémy jsou atestované a velmi odolné větru. Konkrétní typ doporučíme podle vaší poptávky.",
@@ -93,7 +93,7 @@ window.KRobsah = (() => {
     pergola: {
       faq: [
         { q: "Kolik stojí hliníková pergola?",
-          a: "Ceník ke stažení neposíláme, protože každá pergola je jiná. Cenou nejvíc hýbe rozměr a statika, typ střechy (textilie, sklo, polykarbonát, lamely), barva, příprava podloží a montáž, elektro a řízení (Somfy, LED, senzory) a boční prvky jako screeny nebo posuvné zasklení. Pošlete rozměry a fotky místa a připravíme kalkulaci na míru.",
+          a: "Ceník ke stažení neposíláme, protože každá pergola je jiná. Cenou nejvíc hýbe rozměr a statika, typ střechy (textilie, sklo, polykarbonát, lamely), barva, příprava podloží a montáž, elektro a řízení (Somfy, LED, senzory) a boční prvky jako screeny nebo posuvné zasklení. Pošlete rozměry a fotky místa a připravíme kalkulaci na míru. Cenu spočítáme po zaměření zdarma.",
           zdroj: B.cenaPer },
         { q: "Potřebuji na pergolu stavební povolení?",
           a: "Ve většině případů ne, pokud dodržíte plochu do 40 m², výšku do 5 m, odstup alespoň 2 m od hranice a alespoň polovinu pozemku necháte vsakovat. Pozor na rozdíl: pergola je lehké zastínění, přístřešek je stavba, a stejná konstrukce může spadat do obou kategorií podle záměru a provedení.",
@@ -133,7 +133,7 @@ window.KRobsah = (() => {
           a: "Nejúčinnější je markýza nad střešní krytinou: sluneční energii zachytí látka a mezerou mezi ní a sklem proudí vzduch. Je finančně náročnější, dodává se vždy s motorem a odolností proti větru. Pod střechou pomůže baldachýn, nebo plissé mezi jednotlivými poli; plissé se ale nehodí do otevřených pergol kvůli vlhkosti.",
           zdroj: S.markyzyZZ },
         { q: "Klasická, nebo kazetová markýza?",
-          a: "Klasická markýza nemá látku chráněnou boxem, proto se montuje pod přesah střechy nebo atiku a patří k levnějším typům. Kazetová má hliníkový box, který látku chrání a prodlužuje její životnost; je obecně dražší. Výklopné markýzy se hodí na lodžie a skleněné fasády.",
+          a: "Klasická markýza nemá látku chráněnou boxem, proto se montuje pod přesah střechy nebo atiku a patří k levnějším typům. Kazetová má hliníkový box, který látku chrání a prodlužuje její životnost; je obecně dražší. Výklopné markýzy se hodí na skleněné fasády.",
           zdroj: S.markyzy },
         { q: "Dá se stínění ovládat motorem?",
           a: "Ano. Žaluzie a rolety dodáváme na kliku či provázek i s motorem a umíme doplnit automatické řízení podle větru. Markýzy jsou na kliku i s motorem, nadstřešní markýzy vždy s motorem.",

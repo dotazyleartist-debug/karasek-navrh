@@ -7,13 +7,13 @@
   const SL = [
     ["zahrada", "Zimní zahrady", "25190", "Sezonní i celoroční, s hliníkovou konstrukcí a skrytým žlabem."],
     ["zaskleni", "Zasklení teras", "29532", "Bezrámové Patio Living Move, rámové Combi a Plus."],
-    ["pergola", "Pergoly", "18873", "Hliníkové se skrytým žlabem i bioklimatické s ovládanou střechou."],
+    ["pergola", "Pergoly", "23329", "Hliníkové se skrytým žlabem, se skleněnou či polykarbonátovou střechou."],
     ["stineni", "Stínění", "21454", "Baldachýny, screen rolety, žaluzie a markýzy, i s motory Somfy."]
   ];
   /* Podprodukty z původního webu (Mark 2026-11-20: „přišli jsme o hodně kategorií“); odkaz kategorie.html?oblast=<o>#k-<slug> */
   const SUB = {
     zahrada: [["sezonni", "Sezonní zimní zahrady"], ["celorocni", "Celoroční zimní zahrady"], ["led", "LED osvětlení"]],
-    zaskleni: [["ramove", "Rámové zasklení"], ["bezramove", "Bezrámové zasklení"], ["izolacni", "Izolační zasklení Patio Living Therm"], ["lamelove", "Posuvné lamelové stěny Patio Living Tilt"], ["balkony", "Zasklívání balkonů a lodžií"], ["steny", "Dělící stěny a příčky"], ["podlahy", "Podlahy Termowood a WPC"]],
+    zaskleni: [["ramove", "Rámové zasklení"], ["bezramove", "Bezrámové zasklení"], ["izolacni", "Izolační zasklení Patio Living Therm"], ["lamelove", "Posuvné lamelové stěny Patio Living Tilt"], ["steny", "Dělící stěny a příčky"], ["podlahy", "Podlahy Termowood a WPC"]],
     pergola: [["sklo", "Pergoly se skleněnou střechou"], ["polykarbonat", "Pergoly s polykarbonátem"], ["bioklima", "Lamelové bioklimatické pergoly"], ["carporty", "Carporty"], ["vytahovaci", "Pergoly s vytahovací střechou"], ["latkova", "Pergoly s látkovou střechou"]],
     stineni: [["markyzy", "Markýzy"], ["markyzy-zz", "Markýzy pro zimní zahrady a pergoly"], ["velux", "Doplňky Velux"], ["site", "Sítě proti hmyzu"], ["zaluzie", "Venkovní žaluzie a rolety"], ["vnitrni", "Vnitřní zastínění"], ["baldachyn", "Baldachýnové zastínění"]]
   };
@@ -144,7 +144,7 @@ body:has(.hd-menu.open) .bn{display:none!important}
   if (hd) {
     hd.className = "hd";
     const ca = c => cur(c);
-    const realiz = page === "realizace" || page === "stavba" || page === "mapa" ;
+    const realiz = page === "realizace" || page === "stavba" ;
     hd.innerHTML = `<div class="wrap">
   <a class="hd-logo" href="index.html" aria-label="Karásek s.r.o. – úvod"><img src="../assets/logo.svg" alt="Karásek" width="104" height="52"></a>
   <nav class="hd-nav" aria-label="Hlavní menu">
@@ -227,7 +227,7 @@ body:has(.hd-menu.open) .bn{display:none!important}
     ft.innerHTML = `<div class="wrap"><nav class="cols" aria-label="Mapa webu">
   <div><img src="../assets/logo-bila.svg" alt="Karásek" width="112" height="56"><p>Karásek s.r.o.<br>Nemanická 5, České Budějovice<br>Showroom Po–Pá 8–16<br><a href="tel:+420777727328">+420 777 727 328</a><br>IČO 25164589</p></div>
   <div class="fs"><h3>Služby</h3><ul>${SL.map(([k, n]) => li(`kategorie.html?oblast=${k}`, n)).join("")}${li(`${home}#produkty`, "Všechny typy staveb", ' class="all"')}</ul></div>
-  <div><h3>Realizace</h3><ul>${li("realizace.html", "Hotové stavby")}${li("mapa.html", "Mapa realizací")}${li(P.recenze, "Recenze")}${li(P.videa, "Videa")}</ul>
+  <div><h3>Realizace</h3><ul>${li("realizace.html", "Hotové stavby")}${li(P.recenze, "Recenze")}${li(P.videa, "Videa")}</ul>
     <h3>Rádce</h3><ul>${li("radce.html", "Jak vybrat a na co myslet")}</ul></div>
   <div><h3>O firmě</h3><ul>${li(P.onas, "O nás")}${li(P.postup, "Jak to probíhá")}${li(P.showroom, "Showroom")}${li(P.kontakt, "Kontakt")}${li("poptavka.html", "Nezávazná poptávka")}</ul></div>
   <div><h3>Právní informace</h3><ul>${li("https://karasek.cz/ochrana-osobnich-udaju/", "Ochrana osobních údajů")}${li("https://karasek.cz/cookies-web/", "Cookies")}</ul></div>

@@ -16,7 +16,6 @@ window.KRkatalog = (() => {
       k("bezramove", "Bezrámové zasklení", "Systémy bez svislých profilů, které neruší výhled z terasy; nosným prvkem je bezpečnostní kalené sklo. Hodí se na všechny typy pergol a teras.", P("zaskleni-pergol-a-teras/bezramove-zaskleni-pergol-a-teras"), { typ: "zaskleni", system: "move" }),
       k("izolacni", "Izolační zasklení Patio Living Therm", "Rámový posuvný systém s drážkou pro izolační dvojsklo 24 mm a přerušeným tepelným mostem. Vhodný pro temperované prostory.", P("zaskleni-pergol-a-teras/izolacni-zaskleni-pergol-a-teras"), { system: "therm" }),
       k("lamelove", "Posuvné lamelové stěny Patio Living Tilt", "Posuvné boční panely s hliníkovými lamelami nebo screenovou látkou. Chrání před větrem, sluncem a částečně i deštěm a přidají pergole soukromí.", P("zaskleni-pergol-a-teras/posuvne-lamelove-steny")),
-      k("balkony", "Zasklívání balkonů a lodžií", "Zasklení rozšíří užitnou plochu bytu, sníží hluk, prach a exhalace z okolí a pomůže ušetřit na vytápění. Dodáváme rámové i bezrámové zasklení.", P("zaskleni-pergol-a-teras/zasklivani-balkonu-a-lodzii")),
       k("steny", "Dělící stěny a příčky", "Mobilní příčky pro oddělení místností v bytech, domech i komerčních objektech bez stavebních úprav. Rámové a bezrámové posuvné stěny i shrnovací dveře.", P("zaskleni-pergol-a-teras/delici-steny-a-pricky")),
       k("podlahy", "Podlahy Termowood a WPC", "Podlahy k hliníkovým konstrukcím a zasklení teras či pergol: tepelně upravené dřevo ThermoWood nebo dřevoplastové podlahy WPC.", P("zaskleni-pergol-a-teras/podlahy-termowood-a-wpc"))
     ],
@@ -29,12 +28,12 @@ window.KRkatalog = (() => {
       k("latkova", "Pergoly s látkovou střechou", "Hliníková konstrukce se zastíněním pro terasy, kde nejde o celoroční použití a kde chcete látku úplně odsunout. Například pergola ZEN nebo Veranda Box.", P("pergoly/pergoly-s-latkovou-strechou"))
     ],
     stineni: [
-      k("markyzy", "Markýzy", "Klasické, kazetové a výklopné markýzy na kliku či s motorem, vyráběné na zakázku. Vyberete si z mnoha dekorů látek i barvu konstrukce.", P("stinici-technika/markyzy")),
+      k("markyzy", "Markýzy", "Klasické, kazetové a výklopné markýzy na kliku či s motorem, vyráběné na zakázku. Vyberete si z mnoha dekorů látek i barvu konstrukce. Realizace pouze v Jižních Čechách.", P("stinici-technika/markyzy")),
       k("markyzy-zz", "Markýzy pro zimní zahrady a pergoly", "Nejúčinnější je stínění nad střešní krytinou, pod kterým proudí vzduch a brání přehřívání. Pod střechu se hodí podvěsná markýza, baldachýn nebo plissé.", P("stinici-technika/markyzy-pro-zimni-zahrady-a-pergoly")),
       k("velux", "Doplňky Velux", "Jsme autorizovaným prodejcem vnitřního a vnějšího zastínění střešních oken Velux: žaluzie, rolety, plissé, sítě proti hmyzu a další.", P("stinici-technika/doplnky-velux")),
       k("site", "Sítě proti hmyzu", "Sítě do oken i dveří: snadno demontovatelné, rolovací, s panty nebo plissé tam, kde je málo místa. Všechny v barvách podle vzorníku RAL.", P("stinici-technika/site-proti-hmyzu")),
-      k("zaluzie", "Venkovní žaluzie a rolety", "Ochrana před ostrým sluncem i pro soukromí, na kliku, provázek nebo s motorem. Doplnit lze automatické řízení podle větru.", P("stinici-technika/venkovni-zaluzie-a-rolety"), { system: "rolety" }),
-      k("vnitrni", "Vnitřní zastínění", "Hliníkové či dřevěné žaluzie, rolety, duo-rolety, plissé a japonské stěny do domu, bytu, pergoly i zimní zahrady.", P("stinici-technika/vnitrni-zastineni")),
+      k("zaluzie", "Venkovní žaluzie a rolety", "Ochrana před ostrým sluncem i pro soukromí, na kliku, provázek nebo s motorem. Doplnit lze automatické řízení podle větru. Realizace pouze v Jižních Čechách.", P("stinici-technika/venkovni-zaluzie-a-rolety"), { system: "rolety" }),
+      k("vnitrni", "Vnitřní zastínění", "Hliníkové či dřevěné žaluzie, rolety, duo-rolety, plissé a japonské stěny do domu, bytu, pergoly i zimní zahrady. Realizace pouze v Jižních Čechách.", P("stinici-technika/vnitrni-zastineni")),
       k("baldachyn", "Baldachýnové zastínění", "Podvěsná terasová markýza s kladkovou mechanikou a akrylovou látkou, až 600 × 600 cm. Lze ji namontovat i na stávající dřevěnou pergolu.", P("stinici-technika/baldachynove-zastineni"), { system: "baldachyn" })
     ]
   };
