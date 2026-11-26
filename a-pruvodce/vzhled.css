@@ -1,7 +1,6 @@
 /* Vzhled 2 (Mark 2026-11-20): klidný, přehledný systém pro všechny stránky směru A.
-   Pravidlo barev: barva služby se objevuje JEN jako jemný nádech přes fotku té služby.
-   Žádné barevné tečky, proužky, záložky ani barevné rámečky. Rozhraní je neutrální,
-   vybraný stav = tmavý rámeček, červená #D22630 jen na poptávku. Načítá se jako poslední. */
+   Žádné barevné tečky, proužky, záložky ani barevné rámečky. Načítá se jako poslední.
+   Barvy od 26. 11. 2026 řídí oddíl 8 (modrá značka podle dokumentu NÁPADY od klienta). */
 
 /* 1. pryč s barevnými značkami */
 .dot,.card .bar,.khero .bar,.vtx .bar,.strip,.ft .strip,footer .strip,.obl{display:none!important}
@@ -73,4 +72,52 @@ h3{font-weight:700}
   .head h2,.form-wrap h2{font-size:32px}
   .panel h2{font-size:24px}
   .vtx h2{font-size:30px}
+}
+
+/* 8. Modrá značka (klient 26. 11. 2026, dokument NÁPADY): modrá z loga #00b8f1 odstupňovaná k bílé,
+   konkurence má červenou a zelenou. Sekce se barevně neliší, fotky jsou bez barevného nádechu.
+   Tokeny (kontrast proti bílé):
+   --modra-logo #00b8f1  jen dekor (2,3:1, nikdy text ani tlačítko)
+   --modra      #0072a3  tlačítka, odkazy, vybraný stav (bílý text 5,3:1)
+   --modra-h    #005f8a  najetí myší (7,0:1)
+   --modra-50   #eef7fc  měkké pozadí sekcí, --modra-100 #dcf0fa štítky, --modra-tma #0b3a52 patička
+   Staré názvy --red/--red-h a barvy služeb zůstávají jen jako aliasy, aby nebylo nutné přepisovat 15 stránek. */
+:root{
+  --modra-logo:#00b8f1; --modra:#0072a3; --modra-h:#005f8a;
+  --modra-50:#e3f2fb; --modra-100:#dcf0fa; --modra-tma:#0b3a52;
+  --red:var(--modra); --red-h:var(--modra-h);
+  --zahrada:var(--modra); --zaskleni:var(--modra); --pergola:var(--modra); --stineni:var(--modra);
+  --soft:var(--modra-50); --line:#d5e3ea;
+}
+/* fotky v přirozených barvách: pryč s nádechem barvy služby */
+.mt::before,.oc::before,.khero .shade::before,.pc .media::after{display:none!important}
+/* patička a tmavé plochy v tmavé modré značky */
+footer,.ft{background:var(--modra-tma)!important}
+footer .low,.ft .low{border-top-color:rgba(255,255,255,.16)!important}
+/* vybraný stav v modré (místo šedé) */
+.chip[aria-pressed="true"],.opt[aria-pressed="true"],.typ .opt[aria-pressed="true"],
+.areas input:checked+span,.kf-ch label:has(input:checked),.kf-tags input:checked+span{
+  border-color:var(--modra)!important;background:var(--modra-50)!important;color:var(--ink)!important;box-shadow:inset 0 0 0 1px var(--modra)!important}
+.chip[data-a="vse"][aria-pressed="true"]{background:var(--modra)!important;color:#fff!important;border-color:var(--modra)!important}
+/* štítky systémů a drobné plochy: světlá modrá */
+.sys li{background:var(--modra-100)!important;color:#0b3a52}
+/* odkazy v textu a karty při najetí */
+main p a:not([class]),main li > a:not([class]):not(:has(img)):not(.khero *):not(nav *){color:var(--modra)}
+main p a:not([class]):hover{color:var(--modra-h)}
+.khero a,.khero p a{color:inherit!important}
+.card:hover,.pick:hover,.oc:hover,.mt:hover,.mt[aria-current]{box-shadow:0 0 0 1px var(--modra),0 14px 32px rgba(11,58,82,.12)!important}
+:focus-visible{outline:3px solid var(--modra)!important;outline-offset:2px}
+
+/* 9. Po design-eye 26. 11.: modrá viditelná už v první obrazovce, fotky dál bez nádechu */
+.hero .rw{color:#8fdcf8}               /* modrá z loga zesvětlená k bílé; na ztmaveném videu kontrast > 7:1 */
+.hero .rw .pq{color:#fff}
+.hero .rw{text-shadow:0 1px 12px rgba(0,0,0,.45)} /* světlé pruhy videa (střecha, obloha) nesmí srazit kontrast pod 3:1 */
+.vctl .hero-cta{order:-2}
+.vctl .pause{order:-1}
+@media (min-width:821px){ .hero h1{font-size:74px} }
+@media (max-width:820px){
+  .vctl .hero-cta{display:none}        /* na mobilu je poptávka ve spodní liště */
+  .rk .facts{flex-wrap:wrap!important;overflow:visible!important;mask-image:none!important;-webkit-mask-image:none!important}
+  .rk .facts li{white-space:normal!important}
+  .tabs{mask-image:linear-gradient(90deg,#000 82%,transparent);-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent)}
 }

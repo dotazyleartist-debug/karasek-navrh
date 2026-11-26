@@ -7,7 +7,7 @@
   const SL = [
     ["zahrada", "Zimní zahrady", "25190", "Sezonní i celoroční, s hliníkovou konstrukcí a skrytým žlabem."],
     ["zaskleni", "Zasklení teras", "29532", "Bezrámové Patio Living Move, rámové Combi a Plus."],
-    ["pergola", "Pergoly", "23329", "Hliníkové se skrytým žlabem, se skleněnou či polykarbonátovou střechou."],
+    ["pergola", "Pergoly", "18873", "Hliníkové se skrytým žlabem i bioklimatické s ovládanou střechou."],
     ["stineni", "Stínění", "21454", "Baldachýny, screen rolety, žaluzie a markýzy, i s motory Somfy."]
   ];
   /* Podprodukty z původního webu (Mark 2026-11-20: „přišli jsme o hodně kategorií“); odkaz kategorie.html?oblast=<o>#k-<slug> */
@@ -15,7 +15,7 @@
     zahrada: [["sezonni", "Sezonní zimní zahrady"], ["celorocni", "Celoroční zimní zahrady"], ["led", "LED osvětlení"]],
     zaskleni: [["ramove", "Rámové zasklení"], ["bezramove", "Bezrámové zasklení"], ["izolacni", "Izolační zasklení Patio Living Therm"], ["lamelove", "Posuvné lamelové stěny Patio Living Tilt"], ["steny", "Dělící stěny a příčky"], ["podlahy", "Podlahy Termowood a WPC"]],
     pergola: [["sklo", "Pergoly se skleněnou střechou"], ["polykarbonat", "Pergoly s polykarbonátem"], ["bioklima", "Lamelové bioklimatické pergoly"], ["carporty", "Carporty"], ["vytahovaci", "Pergoly s vytahovací střechou"], ["latkova", "Pergoly s látkovou střechou"]],
-    stineni: [["markyzy", "Markýzy"], ["markyzy-zz", "Markýzy pro zimní zahrady a pergoly"], ["velux", "Doplňky Velux"], ["site", "Sítě proti hmyzu"], ["zaluzie", "Venkovní žaluzie a rolety"], ["vnitrni", "Vnitřní zastínění"], ["baldachyn", "Baldachýnové zastínění"]]
+    stineni: [["markyzy", "Markýzy"], ["markyzy-zz", "Markýzy pro zimní zahrady a pergoly"], ["velux", "Doplňky Velux"], ["site", "Sítě proti hmyzu"], ["screen", "Screen rolety ZIP"], ["zaluzie", "Venkovní žaluzie a rolety"], ["vnitrni", "Vnitřní zastínění"], ["baldachyn", "Baldachýnové zastínění"]]
   };
   const cur0 = c => c ? ' aria-current="page"' : "";
   const subL = k => SUB[k].map(([s, n]) => `<li><a href="produkt.html?o=${k}&amp;p=${s}"${cur0(page === "produkt" && obl() === k && new URLSearchParams(location.search).get("p") === s)}>${n}</a></li>`).join("");

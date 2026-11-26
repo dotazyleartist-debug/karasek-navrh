@@ -62,13 +62,16 @@ p{margin:0}
 .par:has(>section:only-child){grid-template-columns:minmax(0,1fr)}
 .par:has(>section:only-child) dl,.par dl{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 32px}
 .par:has(>section:only-child) dl{grid-template-columns:repeat(3,minmax(0,1fr))}
-.ph-hero .btn-dark{background:var(--ink);color:#fff}
-.ph-hero .btn-dark:hover{background:#2b343b}
+.ph-hero .btn-dark{background:var(--red);color:#fff}
+.ph-hero .btn-dark:hover{background:var(--red-h)}
 .par section{background:var(--soft);border-radius:var(--r-card);padding:24px 26px}
 .par h3{font-size:20px;margin-bottom:12px}
 .par dl{margin:0;display:grid;gap:10px}
 .par dt{font-size:14px;font-weight:700;color:var(--muted)}
 .par dd{margin:0;font-size:16px;line-height:1.45}
+.vyh{margin:14px 0 0;padding:0 0 0 20px;font-size:16px;line-height:1.45}
+.vyh li+li{margin-top:6px}
+.par dd{overflow-wrap:anywhere}
 .src{margin-top:16px;font-size:14px;color:var(--muted)}
 .src a{text-underline-offset:3px}
 .vwrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;align-items:center;margin-top:28px}
@@ -127,7 +130,7 @@ p{margin:0}
   .nf h1{font-size:34px}
 }
 </style>
-<link rel="stylesheet" href="vzhled.css">
+<link rel="stylesheet" href="vzhled.css?v=20261126d">
 </head>
 <body data-page="produkt" data-oblast="zahrada">
 <a class="skip" href="#obsah">Přeskočit na obsah</a>
@@ -137,6 +140,7 @@ p{margin:0}
 <script src="realizace-data.js"></script>
 <script src="katalog.js"></script>
 <script src="obsah-sluzeb.js"></script>
+<script src="katalogy-2026.js"></script>
 <script src="web.js"></script>
 <script>
 (() => {
@@ -166,6 +170,9 @@ p{margin:0}
   /* stavby tohoto typu; když filtr nic nedá, stavby z celé služby (a řekneme to) */
   let f = p.f, S = f ? KR.filter(f) : [], zalozni = false;
   if (!S.length) { f = { typ: o }; S = KR.filter(f); zalozni = true; }
+  /* filtr podle systému bere i jiné typy: když existují stavby s názvem typu, ukážeme jen ty */
+  const KW = { bioklima: /bioklim|lamelov/i }[p.k];
+  if (KW && S.some(s => KW.test(s.n))) S = S.filter(s => KW.test(s.n));
   const hero = S[idx % S.length] || S[0];
   const qs = "realizace.html?" + new URLSearchParams(f);
 
@@ -190,6 +197,12 @@ p{margin:0}
     "stineni/markyzy": ["R574CH3Njp0", "Markýza ARESBOX", null, "Video k markýze ARESBOX."] };
   const V = VID[key], vPoster = V ? (V[2] || (S[1] || S[0]).id && `../assets/foto/${(S[1] || S[0]).id}.jpg`) : "";
 
+  /* sekce z katalogů Karásek 2026 (katalogy-2026.js), jen pro typy, které katalog má */
+  const KAT = (window.KRkatalog2026 || {})[key];
+  const katHtml = KAT ? `<section class="sec" aria-labelledby="hSys"><div class="wrap"><h2 id="hSys">Systémy a parametry</h2><p class="sub">${esc(KAT.uvod)}</p>
+<div class="par">${KAT.systemy.map(s => `<section><h3>${esc(s.n)}</h3><dl>${s.par.map(([a, b]) => `<div><dt>${esc(a)}</dt><dd>${esc(b)}</dd></div>`).join("")}</dl>${s.vyhody && s.vyhody.length ? `<ul class="vyh">${s.vyhody.map(v => `<li>${esc(v)}</li>`).join("")}</ul>` : ""}</section>`).join("")}</div>
+<p class="src">Podle katalogu Karásek 2026 (${esc(KAT.zdroj.join(", "))}). Rozměry a provedení upřesníme při zaměření.</p></div></section>` : "";
+
   const sib = list.filter(x => x.k !== p.k);
   const mini = S.slice(0, 3);
   const zdroj = (u, t) => `<a href="${esc(u)}" target="_blank" rel="noopener">${t}</a>`;
@@ -202,6 +215,7 @@ p{margin:0}
 ${par.length ? `<section class="sec" aria-labelledby="hPar"><div class="wrap"><h2 id="hPar">Parametry</h2>
 <div class="par">${par.map(g => `<section><h3>${esc(g.h)}</h3><dl>${g.d.map(([a, b]) => `<div><dt>${esc(a)}</dt><dd>${esc(b)}</dd></div>`).join("")}</dl></section>`).join("")}</div>
 <p class="src">Údaje z popisu na ${zdroj(p.url, "karasek.cz")}. U konkrétní stavby se rozměry a provedení řídí zaměřením.</p></div></section>` : ""}
+${katHtml}
 ${V ? `<section class="sec" aria-labelledby="hVid"><div class="wrap"><h2 id="hVid">Video</h2><div class="vwrap"><div class="vid" id="vid"><img src="${vPoster}" alt="${esc(V[3])}" loading="lazy"><button type="button" class="btn play"><svg aria-hidden="true" viewBox="0 0 12 12"><path fill="currentColor" d="M2 1l9 5-9 5z"/></svg>Pustit video</button></div><div><h3>${esc(V[1])}</h3><p>${esc(V[3])} Video se načte z YouTube až po kliknutí.</p></div></div></div></section>` : ""}
 <section class="sec" aria-labelledby="hSt"><div class="wrap"><h2 id="hSt">Hotové stavby tohoto typu</h2>
 ${zalozni ? `<p class="sub">K tomuto typu zatím nemáme zvlášť označené stavby. Ukazujeme stavby ze služby ${NAZ[o]}.</p>` : ""}

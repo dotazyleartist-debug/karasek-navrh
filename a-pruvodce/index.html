@@ -496,7 +496,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
   .people{gap:12px}
 }
 </style>
-<link rel="stylesheet" href="vzhled.css">
+<link rel="stylesheet" href="vzhled.css?v=20261126d">
 </head>
 <body data-page="uvod">
 <a class="skip" href="#obsah">Přeskočit na obsah</a>
@@ -524,6 +524,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
     <h1><span class="sr">Zimní zahrady, zasklení teras, pergoly a stínění, které využijete celý rok.</span><span class="rot" aria-hidden="true"><span class="rw" id="rw" style="--k:var(--zahrada)">Zimní zahrada<span class="pq">,</span></span></span><span class="rs" aria-hidden="true">kterou využijete celý rok<span class="pq">.</span></span></h1>
     <a class="nv" id="nv" href="stavba.html?id=17372"><i class="dot" id="nvDot" style="--c:var(--zahrada)"></i><span>Na videu: <b id="nvName">Celoroční zimní zahrada a izolační posuvné zasklení Patio Living Therm</b></span><svg aria-hidden="true"><use href="#i-sip"/></svg></a>
     <div class="vctl">
+      <a class="btn btn-red hero-cta" href="poptavka.html">Nezávazná poptávka</a>
       <div class="track" aria-hidden="true"><span id="prog"></span></div>
       <button class="pause" id="pause" type="button" aria-pressed="false">
         <svg viewBox="0 0 14 14" aria-hidden="true"><path id="pauseIco" fill="#fff" d="M2 1h3.5v12H2zM8.5 1H12v12H8.5z"/></svg>
@@ -623,7 +624,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
         </div>
         <div class="body">
           <h3>Pergoly</h3>
-          <p>Hliníkové pergoly se skrytým žlabem, se skleněnou nebo polykarbonátovou střechou.</p>
+          <p>Hliníkové pergoly se skrytým žlabem, se skleněnou nebo polykarbonátovou střechou i bioklimatické s lamelami.</p>
           <ul class="sys"><li>Somfy motory</li><li>Connex</li><li>polykarbonát</li></ul>
           <div class="go"><button type="button" class="btn btn-red" data-ask="pergola">Poptat pergolu</button><a class="lnk" href="kategorie.html?oblast=pergola">Varianty a realizace</a></div>
         </div>
@@ -797,7 +798,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
   else {
     v.src = mobile ? "../assets/video/hero-mobil.mp4" : "../assets/video/hero-pc.mp4";
     v.play().catch(() => {});
-    const ROT = [["17372", "Zimní zahrada,", "zahrada"], ["24158", "Zasklená pergola,", "zaskleni"], ["25483", "Zasklená dřevěná pergola,", "zaskleni"], ["24199", "Zasklená terasa,", "zaskleni"], ["23329", "Hliníková pergola,", "pergola"]];
+    const ROT = [["17372", "Zimní zahrada,", "zahrada"], ["24158", "Zasklená pergola,", "zaskleni"], ["25483", "Zasklená dřevěná pergola,", "zaskleni"], ["24199", "Zasklená terasa,", "zaskleni"], ["18873", "Bioklimatická pergola,", "pergola"]];
     const rw = $("#rw"), nv = $("#nv");
     let cur = 0;
     const swap = i => {
