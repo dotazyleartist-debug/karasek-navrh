@@ -792,13 +792,21 @@ const CITACE = {
   $("#nH").textContent = O.nabidka;
   $("#vars").classList.toggle("tri", O.var.length === 3);
   const rq = v => "realizace.html" + KR.toQuery({ typ: o, ...v.q });
+  /* detail varianty: nejbližší typ z katalog.js (oblast/typ); přibližné: bezramova, combi, plus, kombinace, screen (pergola), zaluzie, rolety */
+  const DET = {
+    zahrada: { therm: "zahrada/celorocni", sezonni: "zahrada/sezonni", bezramova: "zaskleni/bezramove", baldachyn: "stineni/baldachyn" },
+    zaskleni: { move: "zaskleni/bezramove", combi: "zaskleni/ramove", plus: "zaskleni/ramove", kombinace: "zaskleni/ramove" },
+    pergola: { bioklima: "pergola/bioklima", screen: "stineni/screen", sklo: "pergola/sklo" },
+    stineni: { baldachyn: "stineni/baldachyn", screen: "stineni/screen", zaluzie: "stineni/vnitrni", rolety: "stineni/vnitrni" }
+  };
+  const det = v => { const [oo, pp] = DET[o][v.k].split("/"); return `produkt.html?o=${oo}&p=${pp}`; };
   $("#vars").innerHTML = O.var.map(v => `<article class="var" id="v-${v.k}">
       <div class="media"><img src="../assets/foto/${v.f}.jpg" alt="${O.nazev}: ${v.n}" loading="lazy"></div>
       <div class="body">
         <h3>${v.n}</h3>
         <p>${v.t}</p>
         <ul class="sys">${v.s.map(x => `<li>${x}</li>`).join("")}</ul>
-        <div class="go"><button type="button" class="btn btn-dark" data-ask="${o}" data-var="${v.k}">Chci tuto variantu</button><a class="lnk" href="${rq(v)}">Hotové stavby</a></div>
+        <div class="go"><a class="btn btn-dark" href="${det(v)}">Detail varianty</a><a class="lnk" href="${rq(v)}">Hotové stavby</a></div>
       </div></article>`).join("");
 
   // video oblasti
