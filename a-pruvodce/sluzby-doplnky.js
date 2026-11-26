@@ -68,7 +68,7 @@
     }).join("")}</ul>
 <p class="kd-src">Zdroj popisů: <a href="https://karasek.cz/produkty/" target="_blank" rel="noopener">karasek.cz/produkty</a></p></div>`;
     el.querySelectorAll(".kd-a button").forEach(b => b.addEventListener("click", () => {
-      const p = K.find(x => x.k === b.dataset.k); poptat({ dotaz: true, tema: p.n, oblast });
+      const p = K.find(x => x.k === b.dataset.k); poptat({ tema: p.n, oblast });
     }));
     const zvyrazni = () => {
       const h = decodeURIComponent(location.hash || ""); if (!/^#k-/.test(h)) return;
@@ -91,7 +91,7 @@
     el.classList.add("kd");
     el.innerHTML = `<div class="wrap"><h2 class="kd-h">Časté otázky</h2><div class="kf">${O.faq.map(f => `<details><summary>${esc(f.q)}</summary><div class="kf-a"><p>${esc(f.a)}</p><span class="kf-z">Zdroj: ${zdroje(f.zdroj).map(u => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(host(u))}</a>`).join(", ")}</span></div></details>`).join("")}</div>
 <p class="kf-end">Nenašli jste odpověď? <button type="button">Zeptejte se nás</button></p></div>`;
-    el.querySelector(".kf-end button").addEventListener("click", () => poptat({ dotaz: true, tema: "Něco jiného", oblast }));
+    el.querySelector(".kf-end button").addEventListener("click", () => poptat({ tema: "Něco jiného", oblast }));
     const ld = document.createElement("script"); ld.type = "application/ld+json";
     ld.textContent = JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage",
       mainEntity: O.faq.map(f => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) });
@@ -109,6 +109,6 @@
 <ul class="ks-m">${S.radky.map(r => `<li><h3>${esc(r[0])}</h3><dl>${r.slice(1).map((c, i) => `<div><dt>${esc(S.sloupce[i + 1])}</dt><dd>${v(c)}</dd></div>`).join("")}</dl></li>`).join("")}</ul>
 <div class="ks-e"><p>Nevíte, co vybrat? Poradíme.</p><button type="button" class="btn btn-red">Poradit s výběrem</button></div>
 <p class="kd-src">Zdroj: ${zdroje(S.zdroj).map(u => `<a href="${esc(u)}" target="_blank" rel="noopener">karasek.cz</a>`).slice(0, 1).join("")}</p></div>`;
-    el.querySelector(".ks-e .btn").addEventListener("click", () => poptat({ dotaz: true, tema: "Co vybrat", oblast }));
+    el.querySelector(".ks-e .btn").addEventListener("click", () => poptat({ tema: "Co vybrat", oblast }));
   };
 })();

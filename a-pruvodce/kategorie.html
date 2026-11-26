@@ -439,7 +439,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
   .var .go .btn{flex:1}
 }
 </style>
-<link rel="stylesheet" href="vzhled.css?v=20261126d">
+<link rel="stylesheet" href="vzhled.css?v=20261126e">
 </head>
 <body data-page="kategorie" data-o="zahrada" data-oblast="zahrada">
 <a class="skip" href="#obsah">Přeskočit na obsah</a>
@@ -487,7 +487,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
   <ul class="proof" aria-label="Hodnocení a fakta">
     <li><svg class="pi" aria-hidden="true"><use href="#p-recenze"/></svg><span><b>4,9</b><span>Google, ze 110 recenzí</span></span></li>
     <li><svg class="pi" aria-hidden="true"><use href="#p-hodnoceni"/></svg><span><b>98,9 %</b><span>Firmy.cz, z 38 hodnocení</span></span></li>
-    <li><svg class="pi" aria-hidden="true"><use href="#p-realizace"/></svg><span><b>995</b><span>zveřejněných realizací</span></span></li>
+    <li><svg class="pi" aria-hidden="true"><use href="#p-realizace"/></svg><span><b>6500+</b><span>realizací celkem</span><span class="pr-sub">995 zveřejněných realizací</span></span></li>
     <li><svg class="pi" aria-hidden="true"><use href="#p-showroom"/></svg><span><b>Showroom</b><span>České Budějovice</span></span></li>
   </ul>
 </div>
@@ -543,7 +543,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
     <div class="grid" id="grid" aria-live="polite"></div>
     <div class="more">
       <a class="btn btn-line" id="moreLink" href="realizace.html">Další stavby s filtrem</a>
-      <a class="lnk" href="https://karasek.cz/reference/">Všech 995 realizací na karasek.cz</a>
+      <a class="lnk" href="https://karasek.cz/reference/">Všech 995 zveřejněných realizací na karasek.cz</a>
     </div>
   </div>
 </section>
@@ -562,7 +562,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
     </ol>
     <div class="tl-cta">
       <a class="btn btn-red" href="#poptavka" data-krp>Nezávazná poptávka</a>
-      <span>nebo zavolejte <a href="tel:+420777727328">777 727 328</a>, nebo nám <a href="#poptavka" data-krp-dotaz="Dotaz">napište dotaz</a></span>
+      <span>nebo zavolejte <a href="tel:+420777727328">777 727 328</a></span>
     </div>
     <div class="sroom" id="showroom">
       <figure class="ph"><img src="../assets/video/video-move-showroom.jpg" alt="Showroom Karásek s.r.o.: posuvné zasklení naživo" loading="lazy"></figure>
@@ -570,7 +570,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
         <h3>Přijďte si to osahat do showroomu</h3>
         <p>Posuvné systémy si prohlédnete naživo a probereme vaši terasu nad fotkami a rozměry.</p>
         <dl>
-          <dt>Adresa</dt><dd>Nemanická 5, České Budějovice</dd>
+          <dt>Adresa</dt><dd><a class="kr-trasa" href="https://www.google.com/maps/dir/?api=1&destination=Kar%C3%A1sek%20s.r.o.%2C%20Nemanick%C3%A1%20437%2F5%2C%20%C4%8Cesk%C3%A9%20Bud%C4%9Bjovice" target="_blank" rel="noopener" aria-label="Trasa do showroomu v Mapách Google">Nemanická 5, České Budějovice</a></dd>
           <dt>Otevřeno</dt><dd>Po–Pá 8–16</dd>
           <dt>Telefon</dt><dd><a href="tel:+420777727328">+420 777 727 328</a></dd>
         </dl>
@@ -630,7 +630,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
       <p class="lead" id="pLead">Napište, co chcete u domu. Ozveme se a domluvíme zaměření.</p>
       <div class="contact">
         <a href="tel:+420777727328">+420 777 727 328</a>
-        <span>Nemanická 5, České Budějovice</span>
+        <span><a class="kr-trasa" href="https://www.google.com/maps/dir/?api=1&destination=Kar%C3%A1sek%20s.r.o.%2C%20Nemanick%C3%A1%20437%2F5%2C%20%C4%8Cesk%C3%A9%20Bud%C4%9Bjovice" target="_blank" rel="noopener" aria-label="Trasa do showroomu v Mapách Google">Nemanická 5, České Budějovice</a></span>
         <span>Otevřeno Po–Pá 8–16</span>
       </div>
     </div>
@@ -650,6 +650,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
       <div class="f"><label for="obec">PSČ nebo obec</label><input id="obec" name="obec" type="text" autocomplete="postal-code"></div>
       <div class="f full"><label for="kon">Telefon nebo e-mail</label><input id="kon" name="kontakt" type="text" autocomplete="tel"></div>
       <div class="f full"><label for="zp">Zpráva</label><textarea id="zp" name="zprava" placeholder="Např. rozměry terasy, co se vám líbí"></textarea></div>
+      <div class="f full" data-kup></div>
       <div class="send">
         <button type="submit" class="btn btn-red">Odeslat poptávku</button>
         <small>Odesláním souhlasíte se zpracováním údajů pro vyřízení poptávky.</small>
@@ -885,13 +886,14 @@ const CITACE = {
       const s = KR.stavby.find(x => x.id === l.dataset.like); ask(o, "", "Líbí se mi realizace: " + s.n);
     }
   });
+  window.KRpriloha($("#form [data-kup]"));
   $("#form").addEventListener("submit", e => { e.preventDefault(); $("#done").classList.add("on"); });
 
-  // --- poptávka / dotaz ze sdíleného panelu web.js, bez něj odkaz #poptavka ---
+  // --- poptávka ze sdíleného panelu web.js, bez něj odkaz #poptavka ---
   document.addEventListener("click", e => {
     const a = e.target.closest("[data-krp],[data-krp-dotaz]"); if (!a || typeof window.KRpoptat !== "function") return;
     e.preventDefault();
-    window.KRpoptat(a.hasAttribute("data-krp-dotaz") ? { dotaz: true, tema: a.dataset.krpDotaz, oblast: o } : { oblast: o });
+    window.KRpoptat(a.hasAttribute("data-krp-dotaz") ? { tema: a.dataset.krpDotaz, oblast: o } : { oblast: o });
   });
 
   // --- katalog, srovnání a časté dotazy (katalog.js / sluzby-doplnky.js; když ještě nejsou, sekce zůstanou skryté) ---

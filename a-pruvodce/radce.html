@@ -84,7 +84,7 @@ p{margin:0}
   .cta{padding:40px 0 48px}.cta h2{font-size:26px}.cta .btn{width:100%}
 }
 </style>
-<link rel="stylesheet" href="vzhled.css?v=20261126d">
+<link rel="stylesheet" href="vzhled.css?v=20261126e">
 </head>
 <body data-page="radce">
 <a class="skip" href="#temata">Přeskočit na články</a>
@@ -142,7 +142,7 @@ ${r.length > lim ? `<button type="button" class="more" data-m="${t.id}">Další 
   $("#q").addEventListener("input", kresli);
   $("#temata").addEventListener("click", e => {
     const m = e.target.closest("[data-m]"); if (m) { open.add(m.dataset.m); kresli(); return; }
-    const a = e.target.closest("[data-a]"); if (a) poptat({ dotaz: true, tema: a.dataset.a === "Cena a rozpočet" ? "Na čem závisí cena" : a.dataset.a === "Výběr systému" ? "Co vybrat" : a.dataset.a === "Povolení a montáž" ? "Zaměření a montáž" : "Něco jiného" });
+    const a = e.target.closest("[data-a]"); if (a) poptat({ tema: a.dataset.a === "Cena a rozpočet" ? "Na čem závisí cena" : a.dataset.a === "Výběr systému" ? "Co vybrat" : a.dataset.a === "Povolení a montáž" ? "Zaměření a montáž" : "Něco jiného" });
   });
   $("#cta").addEventListener("click", () => poptat({}));
   kresli();

@@ -28,6 +28,9 @@ window.KR = (() => {
   ];
   // [soubor, název, datum, typy, systémy, barva, lokalita, výtah, odkaz]
   const R = [
+    ["29570","Sezonní zimní zahrada, napojená na původní pergolu, antracit 7016, PCD 16","2026-07",["zahrada"],["pcd","combi","esg"],"antracit","",
+     "Tato realizace sezónní zimní zahrady v moderním antracitovém odstínu se strukturou (RAL 7016) dokonale ukazuje, jak elegantně lze zvětšit obytný prostor domu. … Zastřešení se sklonem 11° je osazeno mléčným 16mm komůrkovým polykarbonátem, který propouští dostatek světla, ale zároveň příjemně cloní ostré slunce.",
+     "https://karasek.cz/reference/sezonni-zimni-zahrada-napojena-na-puvodni-pergolu-antracit-7016-pcd-16/"],
     ["29532","Bezrámové zasklení Patio Living Move do dřevěné pergoly, ESG 8 mm, alinox","2026-07",["zaskleni"],["move","esg"],"alinox","",
      "Při této realizaci jsme vsadili na maximální čistotu designu a nerušený výhled do zahrady. … Profily jsme zvolili v luxusním provedení imitace nerezu (alinox), což v kombinaci s masivním dřevem vytváří neobyčejně elegantní kontrast.",
      "https://karasek.cz/reference/bezramove-zaskleni-patio-livnig-move-do-drevene-pergoly-esg-8-mm-alinox/"],

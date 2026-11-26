@@ -6,17 +6,18 @@
 # Použití: python ken-burns.py pc|mobil
 import sys, subprocess, numpy as np, cv2, os
 here = os.path.dirname(os.path.abspath(__file__))
-FOTO = ["17372", "24158", "25483", "24199", "18873"]
+# 26. 11. 2026 (klient, video s nápady): jen 4 produkty v pořadí zimní zahrada, zasklená terasa, pergola, stínění
+FOTO = ["17372", "24199", "18873", "23329"]
 # (zoom od, zoom do, střed x od→do, střed y od→do) – jemný nájezd, směr se střídá
-POHYB = [(1.00, 1.07, .50, .52, .50, .48), (1.07, 1.00, .47, .52, .50, .50), (1.00, 1.07, .50, .47, .52, .50),
-         (1.07, 1.00, .52, .48, .50, .50), (1.00, 1.07, .48, .52, .50, .50)]
+POHYB = [(1.00, 1.07, .50, .52, .50, .48), (1.07, 1.00, .52, .48, .50, .50), (1.00, 1.07, .48, .52, .50, .50),
+         (1.07, 1.00, .47, .52, .48, .50)]
 # mobil: vodorovný střed výřezu na výšku (podle hlavního objektu fotky)
-MOB_X = [.40, .50, .50, .45, .50]
+MOB_X = [.40, .45, .50, .40]
 mode = sys.argv[1] if len(sys.argv) > 1 else "pc"
 W, H = (1920, 1080) if mode == "pc" else (720, 1280)
 FPS, SEG, FADE = 30, 5.0, 1.0
 STEP = SEG - FADE                    # záběr začíná každé 4 s
-DUR = STEP * len(FOTO)               # 20 s, kruhová smyčka
+DUR = STEP * len(FOTO)               # 16 s, kruhová smyčka
 N = int(round(DUR * FPS))
 imgs = [cv2.imread(os.path.join(here, "..", "foto", f + ".jpg")).astype(np.float32) for f in FOTO]
 

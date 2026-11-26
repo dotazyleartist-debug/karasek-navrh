@@ -99,7 +99,7 @@ p{margin:0}
   .call .tel{font-size:28px}
 }
 </style>
-<link rel="stylesheet" href="vzhled.css?v=20261126d">
+<link rel="stylesheet" href="vzhled.css?v=20261126e">
 </head>
 <body data-page="poptavka" data-oblast="">
 <a class="skip" href="#obsah">Přeskočit na obsah</a>
@@ -139,7 +139,7 @@ p{margin:0}
       <section class="call" aria-labelledby="h-tel">
         <h2 id="h-tel">Raději telefonem?</h2>
         <a class="tel" href="tel:+420777727328">+420 777 727 328</a>
-        <p>Showroom Nemanická 5, České Budějovice<br>Otevřeno Po–Pá 8–16</p>
+        <p><a class="kr-trasa" href="https://www.google.com/maps/dir/?api=1&destination=Kar%C3%A1sek%20s.r.o.%2C%20Nemanick%C3%A1%20437%2F5%2C%20%C4%8Cesk%C3%A9%20Bud%C4%9Bjovice" target="_blank" rel="noopener" aria-label="Trasa do showroomu v Mapách Google">Showroom Nemanická 5, České Budějovice</a><br>Otevřeno Po–Pá 8–16</p>
         <a class="lnk" href="showroom.html">Showroom a jak se k nám dostanete</a>
       </section>
       <div class="trust">
@@ -184,7 +184,7 @@ p{margin:0}
     const f = $("#kfEl input:not([type=hidden]):not([type=radio])"); if (f) f.focus({ preventScroll: true });
   }, true);
 
-  $("#kfEl").addEventListener("kf-rezim", e => { const [h, l] = KRpoptat.nadpis(e.detail.dotaz, e.detail.s); $("#fH").textContent = h; $("#fL").textContent = l; });
+  $("#kfEl").addEventListener("kf-rezim", e => { const [h, l] = KRpoptat.nadpis(e.detail.s); $("#fH").textContent = h; $("#fL").textContent = l; });
   const f = KRpoptat.vlozit($("#kfEl"), { id: stavba ? stavba.id : "", oblast });
 
   if (q.get("id") && !stavba) { const n = $("#note"); n.hidden = false; n.textContent = "Stavbu s číslem " + q.get("id") + " jsme nenašli. Poptávku můžete poslat i tak."; }

@@ -136,7 +136,7 @@ section.sec{padding:96px 0}
   .dl{grid-template-columns:110px minmax(0,1fr)}
 }
 </style>
-<link rel="stylesheet" href="vzhled.css?v=20261126d">
+<link rel="stylesheet" href="vzhled.css?v=20261126e">
 </head>
 <body data-page="kontakt">
 <a class="skip" href="#obsah">Přeskočit na obsah</a>
@@ -169,7 +169,7 @@ section.sec{padding:96px 0}
         </div>
         <div>
           <span class="k">Showroom</span>
-          <b class="adr">Nemanická 5, Areál Řempa, 370 10 České Budějovice</b>
+          <b class="adr"><a class="kr-trasa" href="https://www.google.com/maps/dir/?api=1&destination=Kar%C3%A1sek%20s.r.o.%2C%20Nemanick%C3%A1%20437%2F5%2C%20%C4%8Cesk%C3%A9%20Bud%C4%9Bjovice" target="_blank" rel="noopener" aria-label="Trasa do showroomu v Mapách Google">Nemanická 5, Areál Řempa, 370 10 České Budějovice</a></b>
           <span class="sub">Po–Pá 8–16 · parkování zdarma · <a href="showroom.html">O showroomu</a></span>
         </div>
       </div>
@@ -200,7 +200,7 @@ section.sec{padding:96px 0}
     <div>
       <h2>Adresa a hodiny</h2>
       <dl class="dl">
-        <dt>Showroom</dt><dd>Nemanická 5, Areál Řempa<br>370 10 České Budějovice</dd>
+        <dt>Showroom</dt><dd><a class="kr-trasa" href="https://www.google.com/maps/dir/?api=1&destination=Kar%C3%A1sek%20s.r.o.%2C%20Nemanick%C3%A1%20437%2F5%2C%20%C4%8Cesk%C3%A9%20Bud%C4%9Bjovice" target="_blank" rel="noopener" aria-label="Trasa do showroomu v Mapách Google">Nemanická 5, Areál Řempa<br>370 10 České Budějovice</a></dd>
         <dt>Otevřeno</dt><dd>Po–Pá 8–16</dd>
         <dt>Parkování</dt><dd>zdarma</dd>
         <dt>Kde montujeme</dt><dd>Po celé ČR, nejvíc v Jižních Čechách, na Plzeňsku a Vysočině</dd>
@@ -240,7 +240,7 @@ section.sec{padding:96px 0}
 <script>
 (() => {
   const h = document.getElementById("fH"), l = document.getElementById("fL"), el = document.getElementById("fForm");
-  el.addEventListener("kf-rezim", e => { const [a, b] = KRpoptat.nadpis(e.detail.dotaz, e.detail.s); h.textContent = a; l.textContent = b; });
+  el.addEventListener("kf-rezim", e => { const [a, b] = KRpoptat.nadpis(e.detail.s); h.textContent = a; l.textContent = b; });
   KRpoptat.vlozit(el, {});
 })();
 </script>

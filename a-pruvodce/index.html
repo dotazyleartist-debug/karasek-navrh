@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Zimní zahrady, zasklení teras, pergoly a stínění | Karásek s.r.o., České Budějovice</title>
-<meta name="description" content="Karásek s.r.o. staví zimní zahrady, zasklení teras, hliníkové pergoly a stínění. 995 zveřejněných realizací, Google 4,9 ze 110 recenzí. Showroom Nemanická 5, České Budějovice, Po–Pá 8–16.">
+<meta name="description" content="Karásek s.r.o. staví zimní zahrady, zasklení teras, hliníkové pergoly a stínění. 6500+ realizací, z toho 995 zveřejněných, Google 4,9 ze 110 recenzí. Showroom Nemanická 5, České Budějovice, Po–Pá 8–16.">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Karásek s.r.o.","url":"https://karasek.cz/","telephone":"+420777727328",
 "identifier":{"@type":"PropertyValue","propertyID":"IČO","value":"25164589"},
@@ -87,7 +87,8 @@ p{margin:0}
 .rw{display:inline-block;padding-bottom:.45em;transition:opacity .45s ease,transform .45s ease}
 .rw.out{opacity:0;transform:translateY(-.35em)}
 .rw.pre{opacity:0;transform:translateY(.35em);transition:none}
-.rs{display:block}
+.rs{display:block;transition:opacity .45s ease}
+.rs.out{opacity:0}
 /* koncová interpunkce těsně k slovu (kerning dával viditelnou mezeru „zahrada ,“) */
 .pq{margin-left:-.06em}
 .nv{display:inline-flex;align-items:center;gap:10px;margin-top:30px;max-width:760px;font-size:16px;font-weight:600;color:rgba(255,255,255,.92);text-decoration:none;text-shadow:0 1px 10px rgba(0,0,0,.45);transition:opacity .45s ease}
@@ -496,7 +497,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
   .people{gap:12px}
 }
 </style>
-<link rel="stylesheet" href="vzhled.css?v=20261126d">
+<link rel="stylesheet" href="vzhled.css?v=20261126e">
 </head>
 <body data-page="uvod">
 <a class="skip" href="#obsah">Přeskočit na obsah</a>
@@ -521,7 +522,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
   <video id="hv" autoplay muted loop playsinline preload="metadata" poster="../assets/video/hero-pc-poster.jpg" aria-hidden="true"></video>
   <div class="shade"></div>
   <div class="wrap hero-in">
-    <h1><span class="sr">Zimní zahrady, zasklení teras, pergoly a stínění, které využijete celý rok.</span><span class="rot" aria-hidden="true"><span class="rw" id="rw" style="--k:var(--zahrada)">Zimní zahrada<span class="pq">,</span></span></span><span class="rs" aria-hidden="true">kterou využijete celý rok<span class="pq">.</span></span></h1>
+    <h1><span class="sr">Zimní zahrady, zasklení teras, pergoly a stínění, které využijete celý rok.</span><span class="rot" aria-hidden="true"><span class="rw" id="rw" style="--k:var(--kat-zahrada)">Zimní zahrada<span class="pq">,</span></span></span><span class="rs" id="rs" aria-hidden="true">kterou využijete celý rok<span class="pq">.</span></span></h1>
     <a class="nv" id="nv" href="stavba.html?id=17372"><i class="dot" id="nvDot" style="--c:var(--zahrada)"></i><span>Na videu: <b id="nvName">Celoroční zimní zahrada a izolační posuvné zasklení Patio Living Therm</b></span><svg aria-hidden="true"><use href="#i-sip"/></svg></a>
     <div class="vctl">
       <a class="btn btn-red hero-cta" href="poptavka.html">Nezávazná poptávka</a>
@@ -557,7 +558,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
   <ul class="proof" aria-label="Hodnocení a fakta">
     <li><svg class="pi" aria-hidden="true"><use href="#p-recenze"/></svg><span><b>4,9</b><span>Google, ze 110 recenzí</span></span></li>
     <li><svg class="pi" aria-hidden="true"><use href="#p-hodnoceni"/></svg><span><b>98,9 %</b><span>Firmy.cz, z 38 hodnocení</span></span></li>
-    <li><svg class="pi" aria-hidden="true"><use href="#p-realizace"/></svg><span><b>995</b><span>zveřejněných realizací</span></span></li>
+    <li><svg class="pi" aria-hidden="true"><use href="#p-realizace"/></svg><span><b>6500+</b><span>realizací celkem</span><span class="pr-sub">995 zveřejněných realizací</span></span></li>
     <li><svg class="pi" aria-hidden="true"><use href="#p-showroom"/></svg><span><b>Showroom</b><span>České Budějovice</span></span></li>
   </ul>
 </div>
@@ -579,7 +580,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
     <div class="grid" id="grid" aria-live="polite"></div>
     <div class="more">
       <a class="btn btn-line" id="moreLink" href="realizace.html">Další stavby s filtrem</a>
-      <a class="all" href="https://karasek.cz/reference/">Všech 995 realizací na karasek.cz</a>
+      <a class="all" href="https://karasek.cz/reference/">Všech 995 zveřejněných realizací na karasek.cz</a>
     </div>
   </div>
 </section>
@@ -659,7 +660,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
     </ol>
     <div class="tl-cta">
       <a class="btn btn-red" href="#poptavka" data-krp>Nezávazná poptávka</a>
-      <span>nebo zavolejte <a href="tel:+420777727328">777 727 328</a>, nebo nám <a href="#poptavka" data-krp-dotaz="Dotaz">napište dotaz</a></span>
+      <span>nebo zavolejte <a href="tel:+420777727328">777 727 328</a></span>
     </div>
   </div>
 </section>
@@ -696,7 +697,6 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
     <div class="rv-cta">
       <b>Chcete být další spokojený zákazník?</b>
       <a class="btn btn-red" href="#poptavka" data-krp>Nezávazná poptávka</a>
-      <a href="#poptavka" data-krp-dotaz="Dotaz">nebo se zeptejte</a>
       <a class="lnk" href="recenze.html">Všechny recenze a video</a>
     </div>
   </div>
@@ -711,7 +711,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
         <h2>Přijďte si to osahat do showroomu</h2>
         <p>Posuvné systémy si prohlédnete naživo a probereme vaši terasu nad fotkami a rozměry.</p>
         <dl>
-          <dt>Adresa</dt><dd>Nemanická 5, České Budějovice</dd>
+          <dt>Adresa</dt><dd><a class="kr-trasa" href="https://www.google.com/maps/dir/?api=1&destination=Kar%C3%A1sek%20s.r.o.%2C%20Nemanick%C3%A1%20437%2F5%2C%20%C4%8Cesk%C3%A9%20Bud%C4%9Bjovice" target="_blank" rel="noopener" aria-label="Trasa do showroomu v Mapách Google">Nemanická 5, České Budějovice</a></dd>
           <dt>Otevřeno</dt><dd>Po–Pá 8–16</dd>
           <dt>Telefon</dt><dd><a href="tel:+420777727328">+420 777 727 328</a></dd>
         </dl>
@@ -741,7 +741,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
       <p class="lead">Napište, co chcete u domu. Ozveme se a domluvíme zaměření.</p>
       <div class="contact">
         <a href="tel:+420777727328">+420 777 727 328</a>
-        <span>Nemanická 5, České Budějovice</span>
+        <span><a class="kr-trasa" href="https://www.google.com/maps/dir/?api=1&destination=Kar%C3%A1sek%20s.r.o.%2C%20Nemanick%C3%A1%20437%2F5%2C%20%C4%8Cesk%C3%A9%20Bud%C4%9Bjovice" target="_blank" rel="noopener" aria-label="Trasa do showroomu v Mapách Google">Nemanická 5, České Budějovice</a></span>
         <span>Otevřeno Po–Pá 8–16</span>
       </div>
     </div>
@@ -764,6 +764,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
       <div class="f"><label for="obec">PSČ nebo obec</label><input id="obec" name="obec" type="text" autocomplete="postal-code"></div>
       <div class="f full"><label for="kon">Telefon nebo e-mail</label><input id="kon" name="kontakt" type="text" autocomplete="tel"></div>
       <div class="f full"><label for="zp">Zpráva</label><textarea id="zp" name="zprava" placeholder="Např. rozměry terasy, co se vám líbí"></textarea></div>
+      <div class="f full" data-kup></div>
       <div class="send">
         <button type="submit" class="btn btn-red">Odeslat poptávku</button>
         <small>Odesláním souhlasíte se zpracováním údajů pro vyřízení poptávky.</small>
@@ -798,21 +799,23 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
   else {
     v.src = mobile ? "../assets/video/hero-mobil.mp4" : "../assets/video/hero-pc.mp4";
     v.play().catch(() => {});
-    const ROT = [["17372", "Zimní zahrada,", "zahrada"], ["24158", "Zasklená pergola,", "zaskleni"], ["25483", "Zasklená dřevěná pergola,", "zaskleni"], ["24199", "Zasklená terasa,", "zaskleni"], ["18873", "Bioklimatická pergola,", "pergola"]];
-    const rw = $("#rw"), nv = $("#nv");
+    // 26. 11. 2026 (klient): v hero jen 4 produkty, slovo v barvě kategorie; druhý řádek u stínění je návrh k odsouhlasení
+    const ROT = [["17372", "Zimní zahrada,", "zahrada", "kterou využijete celý rok."], ["24199", "Zasklená terasa,", "zaskleni", "kterou využijete celý rok."], ["18873", "Pergola,", "pergola-txt", "kterou využijete celý rok."], ["23329", "Stínění,", "stineni", "které využijete celé léto."]];
+    const rw = $("#rw"), rs = $("#rs"), nv = $("#nv");
     let cur = 0;
     const swap = i => {
-      cur = i; const [id, w, k] = ROT[i], st = KR.stavby.find(x => x.id === id);
-      rw.classList.add("out"); nv.classList.add("out");
+      cur = i; const [id, w, k, r2] = ROT[i], st = KR.stavby.find(x => x.id === id);
+      rw.classList.add("out"); nv.classList.add("out"); rs.classList.add("out");
       setTimeout(() => {
         // text jen z konstanty ROT, koncová interpunkce do .pq (bez mezery před čárkou)
-        rw.innerHTML = w.replace(/([,.])$/, '<span class="pq">$1</span>'); rw.style.setProperty("--k", `var(--${k})`);
+        rw.innerHTML = w.replace(/([,.])$/, '<span class="pq">$1</span>'); rw.style.setProperty("--k", `var(--kat-${k})`);
+        rs.innerHTML = r2.replace(/([,.])$/, '<span class="pq">$1</span>'); rs.classList.remove("out");
         $("#nvName").textContent = st.n; $("#nvDot").style.setProperty("--c", `var(--${k})`); nv.href = "stavba.html?id=" + id;
         rw.classList.remove("out"); rw.classList.add("pre"); nv.classList.remove("out");
         requestAnimationFrame(() => requestAnimationFrame(() => rw.classList.remove("pre")));
       }, 450);
     };
-    const tick = () => { if (v.duration) { const i = Math.floor(((v.currentTime + 0.5) % 20) / 4) % ROT.length; if (i !== cur) swap(i); } if (v.duration) prog.style.transform = `scaleX(${(v.currentTime / v.duration).toFixed(4)})`; requestAnimationFrame(tick); };
+    const tick = () => { if (v.duration) { const i = Math.floor(((v.currentTime + 0.5) % (ROT.length * 4)) / 4) % ROT.length; if (i !== cur) swap(i); } if (v.duration) prog.style.transform = `scaleX(${(v.currentTime / v.duration).toFixed(4)})`; requestAnimationFrame(tick); };
     requestAnimationFrame(tick);
   }
   pause.addEventListener("click", () => {
@@ -930,13 +933,14 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
     if (typeof window.KRpoptat === "function") { window.KRpoptat({ id: r[0], oblast: r[3][0] }); return; }
     ask(r[3][0], "Líbí se mi realizace: " + r[1]);
   });
+  window.KRpriloha($("#form [data-kup]"));
   $("#form").addEventListener("submit", e => { e.preventDefault(); $("#done").classList.add("on"); });
 
-  // --- poptávka / dotaz ze sdíleného panelu web.js, bez něj odkaz #poptavka ---
+  // --- poptávka ze sdíleného panelu web.js, bez něj odkaz #poptavka ---
   document.addEventListener("click", e => {
     const a = e.target.closest("[data-krp],[data-krp-dotaz]"); if (!a || typeof window.KRpoptat !== "function") return;
     e.preventDefault();
-    window.KRpoptat(a.hasAttribute("data-krp-dotaz") ? { dotaz: true, tema: a.dataset.krpDotaz } : {});
+    window.KRpoptat(a.hasAttribute("data-krp-dotaz") ? { tema: a.dataset.krpDotaz } : {});
   });
   // --- citace na mobilu: tečky a počítadlo podle posunu ---
   const qs = $("#quotes"), qn = $(".qnav");

@@ -146,7 +146,7 @@ body:has(.hd-menu.open) .bn{display:none!important}
     const ca = c => cur(c);
     const realiz = page === "realizace" || page === "stavba" ;
     hd.innerHTML = `<div class="wrap">
-  <a class="hd-logo" href="index.html" aria-label="Karásek s.r.o. – úvod"><img src="../assets/logo.svg" alt="Karásek" width="104" height="52"></a>
+  <a class="hd-logo" href="index.html" aria-label="Karásek s.r.o. – úvod"><img src="../assets/logo.svg?v=20261126" alt="Karásek" width="104" height="52"></a>
   <nav class="hd-nav" aria-label="Hlavní menu">
     <button type="button" class="hd-sl${page === "kategorie" || page === "produkt" ? " cur" : ""}" aria-expanded="false" aria-controls="hdMega">Služby</button>
     <a href="realizace.html"${ca(realiz)}>Realizace</a>
@@ -164,10 +164,10 @@ body:has(.hd-menu.open) .bn{display:none!important}
 </div>
 <div class="hd-mega" id="hdMega"><div class="wrap">
   <div class="g">${SL.map(s => `<div class="col">${tile(s, "mt")}<ul class="ms" aria-label="${s[1]}: typy">${subL(s[0])}</ul></div>`).join("")}</div>
-  <div class="low"><a href="realizace.html">Všechny hotové stavby s filtrem</a><a href="radce.html">Rádce: jak vybrat</a><a href="${P.postup}">Jak to probíhá</a><a href="${P.videa}">Videa z realizací</a><span>Showroom Nemanická 5, České Budějovice · Po–Pá 8–16</span></div>
+  <div class="low"><a href="realizace.html">Všechny hotové stavby s filtrem</a><a href="radce.html">Rádce: jak vybrat</a><a href="${P.postup}">Jak to probíhá</a><a href="${P.videa}">Videa z realizací</a><span><a class="kr-trasa" href="https://www.google.com/maps/dir/?api=1&destination=Kar%C3%A1sek%20s.r.o.%2C%20Nemanick%C3%A1%20437%2F5%2C%20%C4%8Cesk%C3%A9%20Bud%C4%9Bjovice" target="_blank" rel="noopener" aria-label="Trasa do showroomu v Mapách Google">Showroom Nemanická 5, České Budějovice</a> · Po–Pá 8–16</span></div>
 </div></div>
 <div class="hd-menu" id="hdMenu" role="dialog" aria-modal="true" aria-label="Menu">
-  <div class="hm-top"><img src="../assets/logo.svg" alt="Karásek" width="84" height="42"><button type="button" class="hm-x"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 1.5l7 7M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Zavřít</button></div>
+  <div class="hm-top"><img src="../assets/logo.svg?v=20261126" alt="Karásek" width="84" height="42"><button type="button" class="hm-x"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 1.5l7 7M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Zavřít</button></div>
   <h2>Služby</h2>
   <ul class="hm-s">${SL.map(([k, n, f]) => `<li><div class="hm-r"><a class="hm-t" href="kategorie.html?oblast=${k}"${ca(page === "kategorie" && obl() === k)}><img src="../assets/foto/${f}.jpg" alt="" loading="lazy"><b>${n}</b></a><button type="button" class="hm-ab" aria-expanded="false" aria-controls="hmS-${k}" aria-label="Typy: ${n}">Typy</button></div>
     <ul class="hm-sub" id="hmS-${k}" hidden>${subL(k)}<li><a href="kategorie.html?oblast=${k}">Vše o službě ${n}</a></li></ul></li>`).join("")}</ul>
@@ -183,7 +183,7 @@ body:has(.hd-menu.open) .bn{display:none!important}
   <div class="hm-c">
     <a class="btn btn-red" href="${ask}" data-hd-ask>Nezávazná poptávka</a>
     <a class="btn btn-line" href="tel:+420777727328">${TEL.replace("<svg", '<svg width="20" height="20"')}+420 777 727 328</a>
-    <p>Showroom Nemanická 5, České Budějovice · Po–Pá 8–16</p>
+    <p><a class="kr-trasa" href="https://www.google.com/maps/dir/?api=1&destination=Kar%C3%A1sek%20s.r.o.%2C%20Nemanick%C3%A1%20437%2F5%2C%20%C4%8Cesk%C3%A9%20Bud%C4%9Bjovice" target="_blank" rel="noopener" aria-label="Trasa do showroomu v Mapách Google">Showroom Nemanická 5, České Budějovice</a> · Po–Pá 8–16</p>
   </div>
 </div>`;
     const sl = hd.querySelector(".hd-sl"), mega = hd.querySelector(".hd-mega");
@@ -225,20 +225,20 @@ body:has(.hd-menu.open) .bn{display:none!important}
     ft.className = "ft";
     const li = (h, n, ex = "") => `<li><a href="${h}"${ex}>${n}</a></li>`;
     ft.innerHTML = `<div class="wrap"><nav class="cols" aria-label="Mapa webu">
-  <div><img src="../assets/logo-bila.svg" alt="Karásek" width="112" height="56"><p>Karásek s.r.o.<br>Nemanická 5, České Budějovice<br>Showroom Po–Pá 8–16<br><a href="tel:+420777727328">+420 777 727 328</a><br>IČO 25164589</p></div>
+  <div><img src="../assets/logo-bila.svg?v=20261126" alt="Karásek" width="112" height="56"><p>Karásek s.r.o.<br><a class="kr-trasa" href="https://www.google.com/maps/dir/?api=1&destination=Kar%C3%A1sek%20s.r.o.%2C%20Nemanick%C3%A1%20437%2F5%2C%20%C4%8Cesk%C3%A9%20Bud%C4%9Bjovice" target="_blank" rel="noopener" aria-label="Trasa do showroomu v Mapách Google">Nemanická 5, České Budějovice</a><br>Showroom Po–Pá 8–16<br><a href="tel:+420777727328">+420 777 727 328</a><br>IČO 25164589</p></div>
   <div class="fs"><h3>Služby</h3><ul>${SL.map(([k, n]) => li(`kategorie.html?oblast=${k}`, n)).join("")}${li(`${home}#produkty`, "Všechny typy staveb", ' class="all"')}</ul></div>
   <div><h3>Realizace</h3><ul>${li("realizace.html", "Hotové stavby")}${li(P.recenze, "Recenze")}${li(P.videa, "Videa")}</ul>
     <h3>Rádce</h3><ul>${li("radce.html", "Jak vybrat a na co myslet")}</ul></div>
   <div><h3>O firmě</h3><ul>${li(P.onas, "O nás")}${li(P.postup, "Jak to probíhá")}${li(P.showroom, "Showroom")}${li(P.kontakt, "Kontakt")}${li("poptavka.html", "Nezávazná poptávka")}</ul></div>
   <div><h3>Právní informace</h3><ul>${li("https://karasek.cz/ochrana-osobnich-udaju/", "Ochrana osobních údajů")}${li("https://karasek.cz/cookies-web/", "Cookies")}</ul></div>
-</nav><div class="low"><span>© Karásek s.r.o. · Nemanická 5, České Budějovice · IČO 25164589</span><span>Zimní zahrady · Zasklení teras · Pergoly · Stínění</span></div></div>`;
+</nav><div class="low"><span>© Karásek s.r.o. · <a class="kr-trasa" href="https://www.google.com/maps/dir/?api=1&destination=Kar%C3%A1sek%20s.r.o.%2C%20Nemanick%C3%A1%20437%2F5%2C%20%C4%8Cesk%C3%A9%20Bud%C4%9Bjovice" target="_blank" rel="noopener" aria-label="Trasa do showroomu v Mapách Google">Nemanická 5, České Budějovice</a> · IČO 25164589</span><span>Zimní zahrady · Zasklení teras · Pergoly · Stínění</span></div></div>`;
   }
 
   /* ---------- Poptávkový panel + karta realizace (Mark 2026-11-20: „hned form modul“, „prodávat, co jsme dělali“) ----------
      API: KRpoptat({id, oblast, zamer}) otevře poptávkový panel (PC zprava 480 px, mobil celá obrazovka zdola);
           id = stavba z KR (miniatura, předvyplněná zpráva), oblast = zahrada|zaskleni|pergola|stineni, zamer = podobna|info.
-          KRpoptat({dotaz:true, tema, id}) otevře režim „Zeptejte se, poradíme“ (tema = Co vybrat|Na čem závisí cena|Zaměření a montáž|Showroom|Něco jiného).
-          KRpoptat.zavrit() panel zavře. Tlačítko [data-poptat="id"] (+ data-oblast, data-dotaz) otevře panel bez vlastního JS.
+          KRpoptat({tema}) předvyplní zprávu tématem (Showroom = domluva návštěvy); formulář je vždy poptávka s přílohami.
+          KRpoptat.zavrit() panel zavře. Tlačítko [data-poptat="id"] (+ data-oblast, data-tema) otevře panel bez vlastního JS.
           KRpoptat.vlozit(el, {id, oblast}) vloží stejný formulář přímo do stránky (detail stavby).
           KRkarta(stavba, {f}) vrátí HTML karty realizace (.card.rk). Tlačítka s [data-poptat="id"] otevřou panel.
      Formulář je demo: nic se neodesílá, po odeslání jen poděkování. Fakta jen z BRIEF.md (telefon, showroom). */
@@ -349,94 +349,111 @@ form.kf{display:grid;grid-template-columns:1fr!important;background:none!importa
 @media (prefers-reduced-motion:reduce){ .kp-box,.kp-scrim{transition:none} }`;
 
   const X = `<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 1.5l7 7M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`;
-  /* Formulář má 2 režimy: poptávka (výchozí) a dotaz ({dotaz:true}, pro nerozhodnuté: téma, „Co vás zajímá?“, stačí e-mail NEBO telefon).
-     Přepnutí režimu vyšle na kontejneru událost „kf-rezim“ (detail {dotaz, s}), panel i detail stavby podle ní mění nadpis. */
+  /* Formulář je vždy nezávazná poptávka s přílohami (klient: samostatné psaní otázek na webu nechceme).
+     Při vložení panel i stránky mění nadpis přes událost „kf-rezim“ (detail {s}). */
   let nForm = 0;
-  const TEMATA = ["Co vybrat", "Na čem závisí cena", "Zaměření a montáž", "Showroom", "Něco jiného"];
-  const NADPIS = (d, s) => d ? ["Zeptejte se, poradíme", "Napište, co vás zajímá. Stačí e-mail, nebo telefon.", "Dotaz"]
-    : s ? ["Máte zájem o podobnou stavbu?", "Napište pár údajů, ozveme se vám a domluvíme další postup.", "Nezávazná poptávka"]
+  const NADPIS = s => s ? ["Máte zájem o podobnou stavbu?", "Napište pár údajů, ozveme se vám a domluvíme další postup.", "Nezávazná poptávka"]
     : ["Nezávazná poptávka", "Vyberte, o co máte zájem, a napište pár údajů. Ozveme se vám.", "Nezávazná poptávka"];
-  const zprava = (s, zam) => !s ? "" : zam === "info"
+  const zprava = (s, zam, tema) => !s ? (tema === "Showroom" ? "Dobrý den, chtěl(a) bych si domluvit návštěvu showroomu. " : tema ? `Dobrý den, zajímá mě téma: ${tema}. ` : "") : zam === "info"
     ? `Dobrý den, chci víc informací o vaší stavbě „${s.n}“. `
-    : zam === "dotaz" ? `Dotaz ke stavbě „${s.n}“: `
     : `Dobrý den, líbí se mi vaše stavba „${s.n}“ a mám zájem o podobnou. `;
 
+  /* Sdílená příloha (fotky, plánek, nákres) pro všechny formuláře poptávky: KRpriloha(el) vloží pole do prázdného kontejneru.
+     Seznam souborů drží DataTransfer, takže jde po jednom odebírat. Prototyp nic neodesílá. */
+  const velikost = n => n < 1048576 ? Math.max(1, Math.round(n / 1024)) + " kB" : (n / 1048576).toFixed(1).replace(".", ",") + " MB";
+  let nUp = 0;
+  window.KRpriloha = el => {
+    const p = "kup" + (++nUp);
+    el.classList.add("kup");
+    el.innerHTML = `<label class="kup-l" for="${p}">Fotky, plánek nebo nákres <i>(nepovinné)</i></label>
+<p class="kup-h" id="${p}h">Přidejte fotky domu nebo terasy, plánek či nákres. JPG, PNG nebo PDF.</p>
+<input type="file" class="kup-in" id="${p}" name="prilohy" multiple accept="image/*,.pdf" aria-describedby="${p}h">
+<label class="kup-b" for="${p}" aria-hidden="true">Přidat soubory</label>
+<ul class="kup-ls" aria-live="polite"></ul>`;
+    const inp = el.querySelector("input"), ul = el.querySelector("ul");
+    let dt = new DataTransfer();
+    const kresli = fokus => {
+      inp.files = dt.files;
+      ul.textContent = "";
+      [...dt.files].forEach((f, i) => {
+        const li = document.createElement("li"), n = document.createElement("span"), z = document.createElement("span"), b = document.createElement("button");
+        n.className = "kup-n"; n.textContent = f.name; z.className = "kup-s"; z.textContent = velikost(f.size);
+        b.type = "button"; b.className = "kup-x"; b.textContent = "Odebrat"; b.setAttribute("aria-label", "Odebrat soubor " + f.name);
+        b.addEventListener("click", () => {
+          const d = new DataTransfer(); [...dt.files].forEach((g, j) => { if (j !== i) d.items.add(g); });
+          dt = d; kresli(true);
+        });
+        li.append(n, z, b); ul.append(li);
+      });
+      if (fokus) { const t = ul.querySelector("button") || inp; t.focus(); }
+    };
+    inp.addEventListener("change", () => {
+      [...inp.files].forEach(f => { if (![...dt.files].some(g => g.name === f.name && g.size === f.size && g.lastModified === f.lastModified)) dt.items.add(f); });
+      kresli(false);
+    });
+    return el;
+  };
+
   function formular(el, o = {}, keep = {}) {
-    const s = najdi(o.id), p = "kf" + (++nForm), ob = o.oblast || (s ? s.typ[0] : ""), D = !!o.dotaz;
+    const s = najdi(o.id), p = "kf" + (++nForm), ob = o.oblast || (s ? s.typ[0] : "");
     const radio = (name, v, t, on) => `<label><input type="radio" name="${name}" value="${v}"${on ? " checked" : ""}><span class="r" aria-hidden="true"></span>${t}</label>`;
     const fld = (n, lab, typ, ac, req, extra = "") => `<div class="kf-f"><label for="${p}${n}">${lab}</label><input type="${typ}" id="${p}${n}" name="${n}" autocomplete="${ac}"${typ === "tel" ? ' inputmode="tel"' : ""}${req ? ` required aria-describedby="${p}${n}E"` : ""} value="${esc(keep[n] || "")}"${extra}>${req ? `<p class="kf-err" id="${p}${n}E"></p>` : ""}</div>`;
-    const zamer = s ? `<fieldset><legend>Co si přejete?</legend><div class="kf-ch z3">${radio("zamer", "podobna", "Chci podobnou stavbu", !D && o.zamer !== "info")}${radio("zamer", "info", "Chci víc informací o této stavbě", !D && o.zamer === "info")}${radio("zamer", "dotaz", "Mám jen dotaz", D)}</div></fieldset>` : "";
-    const prepni = s ? "" : `<button type="button" class="kf-sw" data-kf-sw>${D ? "Chci raději nezávaznou poptávku" : "Nevíte si rady? Napište nám jen dotaz"}</button>`;
-    el.innerHTML = D ? `<form class="kf" novalidate>
-  ${zamer}
-  <fieldset><legend>Téma <i class="kf-i">(nepovinné)</i></legend><div class="kf-tags">${TEMATA.map(t => `<label><input type="radio" name="tema" value="${t}"${o.tema === t ? " checked" : ""}><span>${t}</span></label>`).join("")}</div></fieldset>
-  <div class="kf-f"><label for="${p}z">Co vás zajímá?</label><textarea id="${p}z" name="zprava" rows="4" required aria-describedby="${p}zE" placeholder="Například jaký systém zasklení se hodí k našemu domu…">${esc(keep.zprava || zprava(s, "dotaz"))}</textarea><p class="kf-err" id="${p}zE"></p></div>
-  <div class="kf-2">${fld("email", "E-mail", "email", "email", true)}${fld("telefon", "Telefon", "tel", "tel", false)}</div>
-  <p class="kf-hint">Stačí vyplnit jedno, e-mail, nebo telefon.</p>
-  ${fld("jmeno", 'Jméno <i>(nepovinné)</i>', "text", "name", false)}
-  ${s ? `<input type="hidden" name="stavba" value="${s.id}">` : ""}
-  <p class="kf-gd">Odesláním souhlasíte se zpracováním údajů pro vyřízení dotazu.</p>
-  <button type="submit" class="btn btn-red">Poslat dotaz</button>
-  ${prepni}
-  <p class="kf-tel">nebo zavolejte <a href="tel:+420777727328">777 727 328</a></p>
-</form>` : `<form class="kf" novalidate>
+    const zamer = s ? `<fieldset><legend>Co si přejete?</legend><div class="kf-ch">${radio("zamer", "podobna", "Chci podobnou stavbu", o.zamer !== "info")}${radio("zamer", "info", "Chci víc informací o této stavbě", o.zamer === "info")}</div></fieldset>` : "";
+    el.innerHTML = `<form class="kf" novalidate>
   ${s ? zamer : `<fieldset><legend>O co máte zájem?</legend><div class="kf-ch">${OBL.map(([k, n]) => radio("oblast", k, n, k === ob)).join("")}</div></fieldset>`}
   <div class="kf-2">${fld("jmeno", "Jméno a příjmení", "text", "name", true)}${fld("telefon", "Telefon", "tel", "tel", true)}${fld("email", 'E-mail <i>(nepovinný)</i>', "email", "email", false)}${fld("obec", "Obec", "text", "address-level2", false)}</div>
-  <div class="kf-f"><label for="${p}z">Zpráva</label><textarea id="${p}z" name="zprava" rows="3" placeholder="Co plánujete, přibližné rozměry, fotka domu…">${esc(keep.zprava || zprava(s, o.zamer === "info" ? "info" : "podobna"))}</textarea></div>
+  <div class="kf-f"><label for="${p}z">Zpráva</label><textarea id="${p}z" name="zprava" rows="3" placeholder="Co plánujete, přibližné rozměry, co se vám líbí…">${esc(keep.zprava || zprava(s, o.zamer === "info" ? "info" : "podobna", o.tema))}</textarea></div>
+  <div class="kf-up" data-kup></div>
   ${s ? `<input type="hidden" name="stavba" value="${s.id}">` : ""}
   <p class="kf-gd">Odesláním souhlasíte se zpracováním údajů pro vyřízení poptávky.</p>
   <button type="submit" class="btn btn-red">Odeslat poptávku</button>
-  ${prepni}
   <p class="kf-tel">nebo zavolejte <a href="tel:+420777727328">777 727 328</a></p>
 </form>`;
     const f = el.querySelector("form"), ta = f.zprava;
-    el.dispatchEvent(new CustomEvent("kf-rezim", { detail: { dotaz: D, s }, bubbles: true }));
-    const prekresli = (no, fokus) => {
-      const k = {}; ["jmeno", "telefon", "email", "obec"].forEach(n => { if (f[n]) k[n] = f[n].value; });
-      const auto = [zprava(s, "podobna"), zprava(s, "info"), zprava(s, "dotaz"), ""];
-      if (!auto.includes(ta.value)) k.zprava = ta.value;
-      formular(el, { ...o, ...no }, k);
-      const t = el.querySelector(fokus); if (t) t.focus();
-    };
+    window.KRpriloha(f.querySelector("[data-kup]"));
+    el.dispatchEvent(new CustomEvent("kf-rezim", { detail: { s }, bubbles: true }));
     f.addEventListener("change", e => {
       if (e.target.name !== "zamer" || !s) return;
       const v = e.target.value;
-      if ((v === "dotaz") !== D) return prekresli({ dotaz: v === "dotaz", zamer: v }, `input[name=zamer][value=${v}]`);
       if (ta.value === zprava(s, v === "info" ? "podobna" : "info")) ta.value = zprava(s, v);
     });
-    const sw = f.querySelector("[data-kf-sw]");
-    if (sw) sw.addEventListener("click", () => prekresli({ dotaz: !D }, D ? "input[name=oblast]" : "input[name=tema]"));
     f.addEventListener("submit", e => {
       e.preventDefault();
-      const tel = (f.telefon.value.match(/\d/g) || []).length >= 9, mail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.value.trim());
-      const chyby = D ? [
-        [f.zprava, f.zprava.value.replace(zprava(s, "dotaz"), "").trim().length < 3 ? "Napište, prosím, co vás zajímá." : ""],
-        [f.email, mail || tel ? "" : "Vyplňte e-mail, nebo telefon, ať vám můžeme odpovědět."]
-      ] : [
+      const tel = (f.telefon.value.match(/\d/g) || []).length >= 9;
+      const chyby = [
         [f.jmeno, f.jmeno.value.trim().length < 2 ? "Napište, prosím, své jméno." : ""],
         [f.telefon, tel ? "" : "Napište telefon, ať se vám můžeme ozvat."]
       ];
       chyby.forEach(([i, t]) => { i.setAttribute("aria-invalid", String(!!t)); document.getElementById(i.getAttribute("aria-describedby")).textContent = t; });
       const prvni = chyby.find(c => c[1]); if (prvni) { prvni[0].focus(); return; }
       /* demo: bez sítě, jen poděkování */
-      const kam = D ? (mail ? "e-mail " + f.email.value.trim() : "telefon " + f.telefon.value.trim()) : "telefon " + f.telefon.value.trim();
-      el.innerHTML = `<div class="kf-dik" role="status" tabindex="-1"><h3>${D ? "Děkujeme za dotaz" : "Děkujeme, poptávku máme"}</h3><p>${D ? "Odpovíme vám" : "Ozveme se vám"} na ${esc(kam)}${D ? "." : " a domluvíme další postup."}</p><p>Nechcete čekat? Zavolejte <a href="tel:+420777727328">777 727 328</a>.</p></div>`;
+      el.innerHTML = `<div class="kf-dik" role="status" tabindex="-1"><h3>Děkujeme, poptávku máme</h3><p>Ukázka návrhu: poptávka se nikam neodeslala.</p><p>Nechcete čekat? Zavolejte <a href="tel:+420777727328">777 727 328</a>.</p></div>`;
       el.querySelector(".kf-dik").focus();
     });
     return f;
   }
   st.textContent += `
+a.kr-trasa.kr-trasa{color:inherit;text-decoration:none;font:inherit;background:none;border:0;padding:0}
+a.kr-trasa.kr-trasa:hover,a.kr-trasa.kr-trasa:focus-visible{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}`;
+  st.textContent += `
 .kf legend .kf-i,.kf-f label i{font-style:normal;font-weight:500;color:var(--muted)}
-.kf-ch.z3 label:last-child{grid-column:1/-1;min-height:48px}
-.kf-tags{display:flex;flex-wrap:wrap;gap:8px}
-.kf-tags label{position:relative;cursor:pointer}
-.kf-tags input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
-.kf-tags span{display:inline-flex;align-items:center;min-height:44px;padding:8px 14px;border:1px solid #c3cad0;border-radius:999px;background:#fff;font-size:15px;font-weight:600;color:var(--ink)}
-.kf-tags label:hover span{border-color:var(--ink)}
-.kf-tags input:checked+span{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink);background:#f1f3f4;font-weight:700}
-.kf-tags input:focus-visible+span{outline:3px solid var(--ink);outline-offset:2px}
-.kf-hint{margin:-6px 0 0;font-size:14px;color:var(--muted)}
-.kf-sw{justify-self:center;background:none;border:0;padding:6px 2px;font:700 16px/1.3 var(--f);color:var(--ink);text-decoration:underline;text-underline-offset:4px;cursor:pointer}`;
+.kup{display:grid;gap:6px;min-width:0}
+.kup-l{font-size:15px;font-weight:600}
+.kup-l i{font-style:normal;font-weight:500;color:var(--muted)}
+.kup-h{margin:0;font-size:14px;line-height:1.45;color:var(--muted)}
+.kup-in{position:absolute;opacity:0;width:1px;height:1px;margin:0;overflow:hidden}
+.kup-b{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border:1px solid #6b757c;border-radius:10px;background:#fff;font:700 16px/1 var(--f);color:var(--ink);cursor:pointer;justify-self:start}
+.kup-b:hover{border-color:var(--ink);background:#f1f3f4}
+.kup-in:focus-visible+.kup-b{outline:3px solid var(--ink);outline-offset:2px}
+.kup-ls{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.kup-ls:empty{display:none}
+.kup-ls li{display:flex;align-items:center;gap:10px;min-height:44px;padding:4px 4px 4px 12px;border-radius:10px;background:#f1f3f4;font-size:15px}
+.kup-n{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600;color:var(--ink)}
+.kup-s{flex:none;color:var(--muted);font-size:14px}
+.kup-x{flex:none;min-height:44px;padding:0 12px;border:0;border-radius:8px;background:none;font:700 15px/1 var(--f);color:var(--ink);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.kup-x:focus-visible{outline:3px solid var(--ink);outline-offset:1px}
+@media (max-width:820px){ .kup-b{width:100%} }
+.kf-ch label:last-child:nth-child(odd){grid-column:1/-1}`;
 
   let kp, opener;
   const fokusovatelne = r => [...r.querySelectorAll('a[href],button:not([disabled]),input:not([type=hidden]),textarea,[tabindex="-1"].kf-dik')].filter(x => x.getClientRects().length);
@@ -454,7 +471,7 @@ form.kf{display:grid;grid-template-columns:1fr!important;background:none!importa
       kp.querySelector(".kp-x").addEventListener("click", zavrit);
       kp.querySelector(".kp-scrim").addEventListener("click", zavrit);
       kp.addEventListener("kf-rezim", e => {
-        const [h, l, t] = NADPIS(e.detail.dotaz, e.detail.s);
+        const [h, l, t] = NADPIS(e.detail.s);
         kp.querySelector("#kpH").textContent = h; kp.querySelector(".kp-lead").textContent = l; kp.querySelector(".kp-top p").textContent = t;
       });
       kp.addEventListener("keydown", e => {
@@ -496,7 +513,7 @@ ${facts.length ? `<ul class="facts" aria-label="Systém a barva">${facts.map(([t
 
   document.addEventListener("click", e => {
     const b = e.target.closest("[data-poptat]"); if (!b) return;
-    e.preventDefault(); KRpoptat({ id: b.dataset.poptat, oblast: b.dataset.oblast || "", dotaz: "dotaz" in b.dataset, tema: b.dataset.tema || "" });
+    e.preventDefault(); KRpoptat({ id: b.dataset.poptat, oblast: b.dataset.oblast || "", tema: b.dataset.tema || "" });
   });
   /* na realizacích a detailu otevře hlavní „Nezávazná poptávka“ panel místo odchodu na úvod */
   const askO = () => ({ id: document.body.dataset.stavba || "", oblast: page === "realizace" ? "" : obl() });

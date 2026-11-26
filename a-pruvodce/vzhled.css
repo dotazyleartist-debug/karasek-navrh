@@ -121,3 +121,76 @@ main p a:not([class]):hover{color:var(--modra-h)}
   .rk .facts li{white-space:normal!important}
   .tabs{mask-image:linear-gradient(90deg,#000 82%,transparent);-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent)}
 }
+
+/* 10. Přesná modrá a barvy kategorií (klient 26. 11. 2026 14:48, WhatsApp: PDF „Subheading“ + video s nápady).
+   Modrá značky z PDF #0972ff (světlá #abcfff). Bílý text na #0972ff má jen 4,3:1, proto tlačítka o 8 % tmavší.
+   Tokeny (kontrast proti bílé):
+   --modra-logo #0972ff  dekor, velký text na tmavém (4,0:1 na #151b20)
+   --modra      #0869eb  tlačítka, odkazy, vybraný stav (bílý text 4,96:1)
+   --modra-h    #075bcc  najetí myší (6,2:1)
+   --modra-50   #ebf4ff  pozadí sekcí · --modra-100 #ddebff štítky · --modra-200 #abcfff (světlá z PDF) linky
+   --modra-tma  #03224d  patička (bílý text 15,7:1)
+   Barvy kategorií jako na dnešním webu a v logu: zimní zahrady červená, zasklení zelená, pergoly modrá,
+   stínění „banánová“ ze starého webu. Jen jako podtržítko a šipka, nikdy jako text na bílé ani nádech fotky. */
+:root{
+  --modra-logo:#0972ff; --modra:#0869eb; --modra-h:#075bcc;
+  --modra-50:#ebf4ff; --modra-100:#ddebff; --modra-200:#abcfff; --modra-tma:#03224d;
+  --line:#d6e4f5;
+  --kat-zahrada:#e85946; --kat-zaskleni:#3bbf4c; --kat-pergola:#0972ff; --kat-stineni:#ffa826;
+}
+.sys li{color:#03224d!important}
+
+/* fotky bez barevného nádechu i v dlaždicích „Co chcete u domu?“, jen ztmavení do černa kvůli čitelnosti textu */
+.pick::before{display:none!important}
+
+/* barva kategorie: dlaždice → --kc */
+.pick[data-a="zahrada"],.pc[style*="zahrada"],body[data-o="zahrada"]{--kc:var(--kat-zahrada)}
+.pick[data-a="zaskleni"],.pc[style*="zaskleni"],body[data-o="zaskleni"]{--kc:var(--kat-zaskleni)}
+.pick[data-a="pergola"],.pc[style*="pergola"],body[data-o="pergola"]{--kc:var(--kat-pergola)}
+.pick[data-a="stineni"],.pc[style*="stineni"],body[data-o="stineni"]{--kc:var(--kat-stineni)}
+
+/* „Co chcete u domu?“: stálé barevné podtržítko a šipka (ne až po najetí myší) */
+.pick b{text-decoration:underline;text-decoration-color:var(--kc,#fff);text-decoration-thickness:4px;text-underline-offset:8px;text-decoration-skip-ink:none}
+.pick b svg{color:var(--kc,#fff);filter:drop-shadow(0 1px 6px rgba(0,0,0,.45))}
+.pick:hover b{text-decoration-thickness:6px}
+.pick b svg{width:24px;height:24px}  /* šipka na ztmaveném spodku fotky: červená 4,9:1, modrá 4,0:1, zelená 7,2:1, žlutá 9:1 */
+/* chyba z videa klienta: při najetí na chvíli „ohraničená kostička“ (Safari/WebKit: zvětšení fotky v kartě
+   s overflow:hidden a zaoblením na okamžik ukáže hranaté rohy + 1px rámeček) → bez zvětšení fotky, bez rámečku,
+   vrstvy uvnitř mají vlastní zaoblení */
+.pick img,.pick::after{border-radius:inherit}
+.pick{will-change:transform;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.pick:hover img{transform:none!important}
+.pick:hover,.pick:focus-visible{box-shadow:0 14px 32px rgba(3,34,77,.20)!important}
+
+/* „Co pro vás postavíme“: černý nadpis s tlustým podtržítkem v barvě kategorie */
+.pc h3{text-decoration:underline;text-decoration-color:var(--kc);text-decoration-thickness:5px;text-underline-offset:9px;text-decoration-skip-ink:none}
+.pc .go .lnk{text-decoration-color:var(--kc);text-decoration-thickness:3px}
+
+/* stránka kategorie: panel nad fotkou dostane nahoře tlustou linku v barvě kategorie (návrh z videa, k odsouhlasení) */
+body[data-page="kategorie"] .choose .panel{border-top:6px solid var(--kc)}
+body[data-page="kategorie"] .pick .pt b{text-decoration:none}
+body[data-page="kategorie"] .pick .pt b svg{color:var(--kc)}
+
+/* hero: rotující slovo v barvě kategorie (zahrada červená, terasa zelená, pergola modrá, stínění žlutá) */
+.hero .rw{color:var(--k,#fff)}
+@media (max-width:820px){ .pick b svg{width:20px;height:20px} .pick b{text-underline-offset:6px;text-decoration-thickness:3px} }
+@media (prefers-reduced-motion:reduce){ .pick{will-change:auto} }
+
+/* 11. Po design-eye 26. 11. odpoledne */
+/* modré slovo v hero: #0972ff má na tmavém videu jen ~3,5:1 → světlejší modrá jen pro text v hero (5,4:1 na #20282e) + silnější stín */
+:root{--kat-pergola-txt:#4d97ff}
+.hero .rw{text-shadow:0 2px 16px rgba(0,0,0,.55)}
+/* klient: tlačítka na celém webu modrá – i dosud černá hlavní akce (O nás, stavba) */
+.btn-ink{background:var(--modra)!important;color:#fff!important}
+.btn-ink:hover{background:var(--modra-h)!important}
+/* mobil: dvouřádkový popisek dlaždice – místo podtržení obou řádků krátká linka pod popiskem */
+@media (max-width:820px){
+  .pick b{text-decoration:none}
+  .pick b::before{content:"";position:absolute;left:14px;bottom:7px;width:34px;height:3px;border-radius:2px;background:var(--kc,#fff)}
+}
+/* 6500+ realizací celkem (údaj klienta 26. 11. 15:11) + menší řádek 995 zveřejněných */
+.proof .pr-sub{display:block;font-size:13px;line-height:1.3;color:var(--muted);margin-top:1px}
+.cisla .pr-sub{display:block;margin-top:4px;font-size:15px;opacity:.8}
+/* „Ukázat 32 staveb“ v panelu úvodu: dosud černé, klient chce tlačítka modrá */
+.panel .btn.show{background:var(--modra)!important;color:#fff!important}
+.panel .btn.show:hover{background:var(--modra-h)!important}
