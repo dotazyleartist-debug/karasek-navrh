@@ -61,10 +61,10 @@
     const K = (window.KRkatalog || {})[oblast]; if (!el || !K) return;
     el.classList.add("kd");
     el.innerHTML = `<div class="wrap"><h2 class="kd-h" id="kd-h-${oblast}">Všechno, co u nás najdete</h2>
-<p class="kd-l">Přehled všech variant a doplňků. U každé se můžete podívat na hotové stavby nebo se rovnou zeptat.</p>
+<p class="kd-l">Přehled všech variant a doplňků. U každé se můžete podívat na hotové stavby nebo rovnou poslat poptávku.</p>
 <ul class="kd-g" aria-labelledby="kd-h-${oblast}">${K.map(p => {
       const q = p.f ? "realizace.html?" + new URLSearchParams(p.f) : "";
-      return `<li class="kd-c" id="k-${esc(p.k)}"><h3>${esc(p.n)}</h3><p>${esc(p.t)}</p><div class="kd-a"><a href="produkt.html?o=${oblast}&p=${esc(p.k)}">Detail typu<span class="sr"> – ${esc(p.n)}</span></a>${q ? `<a href="${q}">Hotové stavby<span class="sr"> – ${esc(p.n)}</span></a>` : ""}<button type="button" data-k="${esc(p.k)}">Zeptat se<span class="sr"> na ${esc(p.n)}</span></button></div></li>`;
+      return `<li class="kd-c" id="k-${esc(p.k)}"><h3>${esc(p.n)}</h3><p>${esc(p.t)}</p><div class="kd-a"><a href="produkt.html?o=${oblast}&p=${esc(p.k)}">Detail typu<span class="sr"> – ${esc(p.n)}</span></a>${q ? `<a href="${q}">Hotové stavby<span class="sr"> – ${esc(p.n)}</span></a>` : ""}<button type="button" data-k="${esc(p.k)}">Poptat<span class="sr"> ${esc(p.n)}</span></button></div></li>`;
     }).join("")}</ul>
 <p class="kd-src">Zdroj popisů: <a href="https://karasek.cz/produkty/" target="_blank" rel="noopener">karasek.cz/produkty</a></p></div>`;
     el.querySelectorAll(".kd-a button").forEach(b => b.addEventListener("click", () => {
@@ -90,7 +90,7 @@
     const O = (window.KRobsah || {})[oblast]; if (!el || !O) return;
     el.classList.add("kd");
     el.innerHTML = `<div class="wrap"><h2 class="kd-h">Časté otázky</h2><div class="kf">${O.faq.map(f => `<details><summary>${esc(f.q)}</summary><div class="kf-a"><p>${esc(f.a)}</p><span class="kf-z">Zdroj: ${zdroje(f.zdroj).map(u => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(host(u))}</a>`).join(", ")}</span></div></details>`).join("")}</div>
-<p class="kf-end">Nenašli jste odpověď? <button type="button">Zeptejte se nás</button></p></div>`;
+<p class="kf-end">Nenašli jste odpověď? <button type="button">Napište nám poptávku</button></p></div>`;
     el.querySelector(".kf-end button").addEventListener("click", () => poptat({ tema: "Něco jiného", oblast }));
     const ld = document.createElement("script"); ld.type = "application/ld+json";
     ld.textContent = JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage",

@@ -1,4 +1,4 @@
-/* Data staveb pro směr A (úvod i stránka výsledků). Zdroj: ../assets/prehled-realizaci.json (31 staveb).
+/* Data staveb pro směr A (úvod i stránka výsledků). Zdroj: ../assets/prehled-realizaci.json (32 staveb).
    Systém, barva a lokalita jsou vytažené jen z názvů a textů staveb, nic doplněného.
    Výtah = doslovné věty z textu stavby („…“ = vynechaná část). */
 window.KR = (() => {

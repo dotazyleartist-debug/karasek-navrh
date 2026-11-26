@@ -497,7 +497,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
   .people{gap:12px}
 }
 </style>
-<link rel="stylesheet" href="vzhled.css?v=20261126e">
+<link rel="stylesheet" href="vzhled.css?v=20261126f">
 </head>
 <body data-page="uvod">
 <a class="skip" href="#obsah">Přeskočit na obsah</a>
@@ -568,7 +568,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
   <div class="wrap">
     <div class="head">
       <h2>Podívejte se na hotové stavby</h2>
-      <p>Vyberte, co vás zajímá. Ukážeme skutečné realizace a u každé se můžete zeptat na podobnou.</p>
+      <p>Vyberte, co vás zajímá. Ukážeme skutečné realizace a u každé můžete poslat poptávku na podobnou.</p>
     </div>
     <div class="chips" role="group" aria-label="Filtr realizací">
       <button type="button" class="chip" data-a="vse" aria-pressed="true">Vše</button>
@@ -745,32 +745,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
         <span>Otevřeno Po–Pá 8–16</span>
       </div>
     </div>
-    <form id="form" novalidate>
-      <div class="ctx" id="ctx" hidden>
-        <img id="ctxImg" src="" alt="" width="72" height="54">
-        <div><b id="ctxName"></b><a id="ctxBack" href="stavba.html">← Zpět na stavbu</a></div>
-      </div>
-      <fieldset>
-        <legend>Co vás zajímá</legend>
-        <div class="areas">
-          <label><input type="radio" name="oblast" value="zahrada"><span style="--c:var(--zahrada)"><i class="dot" style="--c:var(--zahrada)"></i>Zimní zahrada</span></label>
-          <label><input type="radio" name="oblast" value="zaskleni"><span style="--c:var(--zaskleni)"><i class="dot" style="--c:var(--zaskleni)"></i>Zasklení terasy</span></label>
-          <label><input type="radio" name="oblast" value="pergola"><span style="--c:var(--pergola)"><i class="dot" style="--c:var(--pergola)"></i>Pergola</span></label>
-          <label><input type="radio" name="oblast" value="stineni"><span style="--c:var(--stineni)"><i class="dot" style="--c:var(--stineni)"></i>Stínění</span></label>
-          <label><input type="radio" name="oblast" value="nevim"><span>Ještě nevím</span></label>
-        </div>
-      </fieldset>
-      <div class="f"><label for="jm">Jméno</label><input id="jm" name="jmeno" type="text" autocomplete="name"></div>
-      <div class="f"><label for="obec">PSČ nebo obec</label><input id="obec" name="obec" type="text" autocomplete="postal-code"></div>
-      <div class="f full"><label for="kon">Telefon nebo e-mail</label><input id="kon" name="kontakt" type="text" autocomplete="tel"></div>
-      <div class="f full"><label for="zp">Zpráva</label><textarea id="zp" name="zprava" placeholder="Např. rozměry terasy, co se vám líbí"></textarea></div>
-      <div class="f full" data-kup></div>
-      <div class="send">
-        <button type="submit" class="btn btn-red">Odeslat poptávku</button>
-        <small>Odesláním souhlasíte se zpracováním údajů pro vyřízení poptávky.</small>
-      </div>
-      <p class="done" id="done" role="status">Ukázka návrhu: poptávka se nikam neodeslala.</p>
-    </form>
+    <div class="kfw" id="form"></div>
   </div>
 </section>
 </main>
@@ -919,11 +894,12 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
 
   // --- poptávka ---
   function ask(a, msg) {
-    if (a) { const r = $(`input[name=oblast][value=${a}]`); if (r) r.checked = true; }
-    if (msg) $("#zp").value = msg;
+    const f = $("#form form");
+    if (f && a) { const r = f.querySelector(`input[name=oblast][value=${a}]`); if (r) r.checked = true; }
+    if (f && msg) f.zprava.value = msg;
     // na formulář (ne na začátek sekce): tlačítko odeslání zůstane ve viewportu i na notebooku
     $("#form").scrollIntoView();
-    setTimeout(() => $("#jm").focus({ preventScroll: true }), reduce ? 0 : 500);
+    setTimeout(() => { const j = $("#form input[name=jmeno]"); if (j) j.focus({ preventScroll: true }); }, reduce ? 0 : 500);
   }
   $$("[data-ask]").forEach(b => b.addEventListener("click", () => ask(b.dataset.ask || picked())));
   grid.addEventListener("click", e => {
@@ -933,8 +909,8 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
     if (typeof window.KRpoptat === "function") { window.KRpoptat({ id: r[0], oblast: r[3][0] }); return; }
     ask(r[3][0], "Líbí se mi realizace: " + r[1]);
   });
-  window.KRpriloha($("#form [data-kup]"));
-  $("#form").addEventListener("submit", e => { e.preventDefault(); $("#done").classList.add("on"); });
+  // jeden formulář na celém webu: sdílený z web.js (pole, příloha, demo hláška)
+  window.KRpoptat.vlozit($("#form"), {});
 
   // --- poptávka ze sdíleného panelu web.js, bez něj odkaz #poptavka ---
   document.addEventListener("click", e => {
@@ -986,14 +962,12 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
     const s = KR.stavby.find(x => x.id === q.get("stavba"));
     const a = KR.label.typ[q.get("oblast")] ? q.get("oblast") : "";
     // doskok až po načtení obrázků (jinak se formulář posune), bez plynulého posuvu
-    if (s) {
-      $("#ctx").hidden = false; $("#ctxImg").src = "../assets/foto/" + s.id + ".jpg"; $("#ctxName").textContent = s.n; $("#ctxBack").href = "stavba.html?id=" + s.id;
-    }
+    if (s) window.KRpoptat.vlozit($("#form"), { id: s.id, oblast: a });
     const go = () => {
-      ask(a, s ? "Líbí se mi realizace: " + s.n : "");
+      ask(a, "");
       document.documentElement.style.scrollBehavior = "auto";
       $("#form").scrollIntoView({ block: "start" });
-      $("#jm").focus({ preventScroll: true });
+      const j = $("#form input[name=jmeno]"); if (j) j.focus({ preventScroll: true });
       document.documentElement.style.scrollBehavior = "";
     };
     if (s && "IntersectionObserver" in window && $(".mbar")) {

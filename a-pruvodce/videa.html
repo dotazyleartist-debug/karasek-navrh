@@ -60,8 +60,7 @@ p{margin:0}
 .media{position:relative;border-radius:var(--r-card);overflow:hidden;aspect-ratio:16/10;background:#14191d;box-shadow:0 0 0 1px var(--line)}
 .media img,.media iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
 .media.v img{object-fit:contain}
-.media::after{content:"";position:absolute;inset:0;background:var(--k);mix-blend-mode:color;opacity:.18;pointer-events:none}
-.media:has(iframe)::after{display:none}
+/* fotky jen ztmavené, bez barevného nádechu (klient 26. 11. 2026); barva kategorie jen jako linka v .meta a tečka ve filtru */
 .play{position:absolute;z-index:2;left:16px;bottom:16px;display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--ink);border:0;border-radius:999px;padding:10px 18px 10px 12px;font:700 15px/1 var(--f);cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)}
 .play i{width:30px;height:30px;border-radius:50%;background:var(--ink);display:grid;place-items:center}
 .play svg{width:12px;height:12px}
@@ -116,7 +115,7 @@ p{margin:0}
   .cta .btn{width:100%}
 }
 </style>
-<link rel="stylesheet" href="vzhled.css?v=20261126e">
+<link rel="stylesheet" href="vzhled.css?v=20261126f">
 </head>
 <body data-page="videa" data-oblast="">
 <a class="skip" href="#obsah">Přeskočit na obsah</a>
@@ -137,16 +136,16 @@ p{margin:0}
     </div>
     <ul class="fl" id="fl" aria-label="Filtr podle oblasti">
       <li><button type="button" data-o="" aria-pressed="true">Vše</button></li>
-      <li><button type="button" data-o="zahrada" aria-pressed="false" style="--k:var(--zahrada)"><span class="sw" aria-hidden="true"></span>Zimní zahrady</button></li>
-      <li><button type="button" data-o="zaskleni" aria-pressed="false" style="--k:var(--zaskleni)"><span class="sw" aria-hidden="true"></span>Zasklení teras</button></li>
-      <li><button type="button" data-o="pergola" aria-pressed="false" style="--k:var(--pergola)"><span class="sw" aria-hidden="true"></span>Pergoly</button></li>
-      <li><button type="button" data-o="stineni" aria-pressed="false" style="--k:var(--stineni)"><span class="sw" aria-hidden="true"></span>Stínění</button></li>
+      <li><button type="button" data-o="zahrada" aria-pressed="false" style="--k:var(--kat-zahrada)"><span class="sw" aria-hidden="true"></span>Zimní zahrady</button></li>
+      <li><button type="button" data-o="zaskleni" aria-pressed="false" style="--k:var(--kat-zaskleni)"><span class="sw" aria-hidden="true"></span>Zasklení teras</button></li>
+      <li><button type="button" data-o="pergola" aria-pressed="false" style="--k:var(--kat-pergola)"><span class="sw" aria-hidden="true"></span>Pergoly</button></li>
+      <li><button type="button" data-o="stineni" aria-pressed="false" style="--k:var(--kat-stineni)"><span class="sw" aria-hidden="true"></span>Stínění</button></li>
     </ul>
   </div>
   <p class="fcount" id="fcount" role="status" aria-live="polite"></p>
 
   <div class="vg" id="vg">
-    <article class="vc" data-o="zaskleni" style="--k:var(--zaskleni)">
+    <article class="vc" data-o="zaskleni" style="--k:var(--kat-zaskleni)">
       <div class="media" data-yt="wmvKgEBCEmQ">
         <img src="../assets/foto/24141.jpg" alt="Bezrámový systém Patio Living Move 3.0" loading="lazy" width="1400" height="1050">
         <button type="button" class="play"><i><svg aria-hidden="true"><use href="#i-play"/></svg></i>Pustit video</button>
@@ -156,7 +155,7 @@ p{margin:0}
       <p>Bezrámový systém v nové generaci 3.0 má vylepšené podvozky s dvojitými kolečky a umožní širší a těžší panely.</p>
       <a class="lnk" href="kategorie.html?oblast=zaskleni">Zasklení teras: varianty a realizace</a>
     </article>
-    <article class="vc" data-o="zahrada" style="--k:var(--zahrada)">
+    <article class="vc" data-o="zahrada" style="--k:var(--kat-zahrada)">
       <div class="media" data-yt="CDzwiIPHD5s">
         <img src="../assets/video/video-therm-zimni-zahrada.jpg" alt="Rostislav Karásek v temperované zimní zahradě" loading="lazy" width="1280" height="460">
         <button type="button" class="play"><i><svg aria-hidden="true"><use href="#i-play"/></svg></i>Pustit video</button>
@@ -166,7 +165,7 @@ p{margin:0}
       <p>Rostislav Karásek ukazuje temperovanou zimní zahradu s izolačním dvojsklem a konstrukcí s přerušeným tepelným mostem.</p>
       <a class="lnk" href="kategorie.html?oblast=zahrada">Zimní zahrady: varianty a realizace</a>
     </article>
-    <article class="vc" data-o="pergola" style="--k:var(--pergola)">
+    <article class="vc" data-o="pergola" style="--k:var(--kat-pergola)">
       <div class="media" data-yt="xfAfjtb2okg">
         <img src="../assets/foto/23329.jpg" alt="Hliníková pergola se skrytým žlabem a screen roletami" loading="lazy" width="1400" height="1050">
         <button type="button" class="play"><i><svg aria-hidden="true"><use href="#i-play"/></svg></i>Pustit video</button>
@@ -176,7 +175,7 @@ p{margin:0}
       <p>Hliníková pergola, u které je kování i kotvení ukryté, aby působila čistě a elegantně.</p>
       <a class="lnk" href="kategorie.html?oblast=pergola">Pergoly: varianty a realizace</a>
     </article>
-    <article class="vc" data-o="stineni" style="--k:var(--stineni)">
+    <article class="vc" data-o="stineni" style="--k:var(--kat-stineni)">
       <div class="media" data-yt="R574CH3Njp0">
         <img src="../assets/foto/21454.jpg" alt="Stínění v zimní zahradě" loading="lazy" width="1400" height="1050">
         <button type="button" class="play"><i><svg aria-hidden="true"><use href="#i-play"/></svg></i>Pustit video</button>
@@ -186,7 +185,7 @@ p{margin:0}
       <p>Markýza ARESBOX z naší nabídky stínění.</p>
       <a class="lnk" href="kategorie.html?oblast=stineni">Stínění: varianty a realizace</a>
     </article>
-    <article class="vc" data-o="zaskleni" style="--k:var(--zaskleni)">
+    <article class="vc" data-o="zaskleni" style="--k:var(--kat-zaskleni)">
       <div class="media" data-yt="aOCThW3DFrc">
         <img src="../assets/foto/24151.jpg" alt="Rámové zasklení Combi v antracitu v dřevěné pergole" loading="lazy" width="1400" height="1050">
         <button type="button" class="play"><i><svg aria-hidden="true"><use href="#i-play"/></svg></i>Pustit video</button>
@@ -196,7 +195,7 @@ p{margin:0}
       <p>Rámové posuvné zasklení Combi v antracitu, které promění dřevěnou pergolu v obytný prostor.</p>
       <a class="lnk" href="kategorie.html?oblast=zaskleni">Zasklení teras: varianty a realizace</a>
     </article>
-    <article class="vc" data-o="zahrada" style="--k:var(--zahrada)">
+    <article class="vc" data-o="zahrada" style="--k:var(--kat-zahrada)">
       <div class="media v" data-yt="puPVwrDFp3w">
         <img src="../assets/video/video-recenze-zakaznice.jpg" alt="Zákaznice vypráví o své zimní zahradě" loading="lazy" width="404" height="720">
         <button type="button" class="play"><i><svg aria-hidden="true"><use href="#i-play"/></svg></i>Pustit video</button>

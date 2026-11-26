@@ -439,7 +439,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
   .var .go .btn{flex:1}
 }
 </style>
-<link rel="stylesheet" href="vzhled.css?v=20261126e">
+<link rel="stylesheet" href="vzhled.css?v=20261126f">
 </head>
 <body data-page="kategorie" data-o="zahrada" data-oblast="zahrada">
 <a class="skip" href="#obsah">Přeskočit na obsah</a>
@@ -481,7 +481,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
     <div class="acts">
       <a href="#video" id="toVideo"><i class="pl" aria-hidden="true"><svg><use href="#i-play"/></svg></i><b>Pustit video</b></a>
       <a href="tel:+420777727328"><svg aria-hidden="true"><use href="#i-tel"/></svg>Raději zavolat: <b>777 727 328</b></a>
-      <a href="#poptavka" class="ask" data-krp-dotaz="Co vybrat">Nevíte, co vybrat? <b>Zeptejte se</b></a>
+      <a href="#poptavka" class="ask" data-krp-dotaz="Co vybrat">Nevíte, co vybrat? <b>Nezávazná poptávka</b></a>
     </div>
   </div>
   <ul class="proof" aria-label="Hodnocení a fakta">
@@ -497,7 +497,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
   <div class="wrap">
     <div class="head">
       <h2 id="nH"></h2>
-      <p>Každá varianta je ze skutečné stavby. Podívejte se na hotové realizace, nebo se rovnou zeptejte na tu svou.</p>
+      <p>Každá varianta je ze skutečné stavby. Podívejte se na hotové realizace, nebo rovnou pošlete poptávku na tu svou.</p>
     </div>
     <div class="vars" id="vars"></div>
   </div>
@@ -537,7 +537,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
   <div class="wrap">
     <div class="head">
       <h2 id="rH"></h2>
-      <p>Vyberte systém. U každé stavby se můžete zeptat na podobnou.</p>
+      <p>Vyberte systém. U každé stavby můžete poslat poptávku na podobnou.</p>
     </div>
     <div class="chips" id="chips" role="group" aria-label="Filtr realizací podle systému"></div>
     <div class="grid" id="grid" aria-live="polite"></div>
@@ -634,29 +634,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
         <span>Otevřeno Po–Pá 8–16</span>
       </div>
     </div>
-    <form id="form" novalidate>
-      <fieldset>
-        <legend>Co vás zajímá</legend>
-        <div class="areas">
-          <label><input type="radio" name="oblast" value="zahrada"><span style="--k:var(--zahrada)"><i class="dot" style="--c:var(--zahrada)"></i>Zimní zahrada</span></label>
-          <label><input type="radio" name="oblast" value="zaskleni"><span style="--k:var(--zaskleni)"><i class="dot" style="--c:var(--zaskleni)"></i>Zasklení terasy</span></label>
-          <label><input type="radio" name="oblast" value="pergola"><span style="--k:var(--pergola)"><i class="dot" style="--c:var(--pergola)"></i>Pergola</span></label>
-          <label><input type="radio" name="oblast" value="stineni"><span style="--k:var(--stineni)"><i class="dot" style="--c:var(--stineni)"></i>Stínění</span></label>
-          <label><input type="radio" name="oblast" value="nevim"><span>Ještě nevím</span></label>
-        </div>
-      </fieldset>
-      <div class="f full"><label for="var">Varianta</label><select id="var" name="varianta"></select></div>
-      <div class="f"><label for="jm">Jméno</label><input id="jm" name="jmeno" type="text" autocomplete="name"></div>
-      <div class="f"><label for="obec">PSČ nebo obec</label><input id="obec" name="obec" type="text" autocomplete="postal-code"></div>
-      <div class="f full"><label for="kon">Telefon nebo e-mail</label><input id="kon" name="kontakt" type="text" autocomplete="tel"></div>
-      <div class="f full"><label for="zp">Zpráva</label><textarea id="zp" name="zprava" placeholder="Např. rozměry terasy, co se vám líbí"></textarea></div>
-      <div class="f full" data-kup></div>
-      <div class="send">
-        <button type="submit" class="btn btn-red">Odeslat poptávku</button>
-        <small>Odesláním souhlasíte se zpracováním údajů pro vyřízení poptávky.</small>
-      </div>
-      <p class="done" id="done" role="status">Ukázka návrhu: poptávka se nikam neodeslala.</p>
-    </form>
+    <div class="kfw" id="form"></div>
   </div>
 </section>
 </main>
@@ -866,24 +844,22 @@ const CITACE = {
   // další oblasti
   $("#others").innerHTML = KEYS.filter(k => k !== o).map(k => `<a class="oc" href="kategorie.html?oblast=${k}" style="--k:var(--${k})"><img src="../assets/foto/${OBL[k].foto}.jpg" alt="" loading="lazy"><div><h3>${OBL[k].nazev}${sip}</h3><p>${OBL[k].kratce}</p></div></a>`).join("");
 
-  // poptávka s předvyplněnou oblastí a variantou
-  const selV = $("#var");
-  const fillVar = a => {
-    const list = OBL[a] ? OBL[a].var : [];
-    selV.innerHTML = `<option value="">Ještě nevím</option>` + list.map(v => `<option value="${v.k}">${v.n}</option>`).join("");
-  };
-  const setO = a => { const r = $(`input[name=oblast][value=${a}]`); if (r) r.checked = true; fillVar(a); };
-  setO(o);
-  $$("input[name=oblast]").forEach(r => r.addEventListener("change", () => fillVar(r.value)));
+  // jeden formulář na celém webu: sdílený z web.js (pole, příloha, demo hláška)
+  window.KRpoptat.vlozit($("#form"), { oblast: o });
   $("#pLead").textContent = `Napište, jakou ${O.jedn} chcete. Ozveme se a domluvíme zaměření.`;
+  const varN = (a, vk) => { const v = (OBL[a] ? OBL[a].var : []).find(x => x.k === vk); return v ? v.n : ""; };
   function ask(a, vk, msg) {
-    setO(a || o);
-    if (vk) selV.value = vk;
-    if (msg) $("#zp").value = msg;
+    const f = $("#form form");
+    if (f) {
+      const r = f.querySelector(`input[name=oblast][value=${a || o}]`); if (r) r.checked = true;
+      const vn = vk ? varN(a || o, vk) : "";
+      if (vn) f.zprava.value = `Dobrý den, zajímá mě varianta: ${vn}. `;
+      if (msg) f.zprava.value = msg;
+    }
     document.documentElement.style.scrollBehavior = "auto";
     (mobile ? $("#form") : $("#poptavka")).scrollIntoView({ block: "start" });
     document.documentElement.style.scrollBehavior = "";
-    $("#jm").focus({ preventScroll: true });
+    const j = $("#form input[name=jmeno]"); if (j) j.focus({ preventScroll: true });
   }
   document.addEventListener("click", e => {
     const b = e.target.closest("[data-ask]"); if (b) { ask(b.dataset.ask, b.dataset.var); return; }
@@ -894,8 +870,6 @@ const CITACE = {
       const s = KR.stavby.find(x => x.id === l.dataset.like); ask(o, "", "Líbí se mi realizace: " + s.n);
     }
   });
-  window.KRpriloha($("#form [data-kup]"));
-  $("#form").addEventListener("submit", e => { e.preventDefault(); $("#done").classList.add("on"); });
 
   // --- poptávka ze sdíleného panelu web.js, bez něj odkaz #poptavka ---
   document.addEventListener("click", e => {

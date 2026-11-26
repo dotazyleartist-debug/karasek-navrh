@@ -84,7 +84,7 @@ p{margin:0}
   .cta{padding:40px 0 48px}.cta h2{font-size:26px}.cta .btn{width:100%}
 }
 </style>
-<link rel="stylesheet" href="vzhled.css?v=20261126e">
+<link rel="stylesheet" href="vzhled.css?v=20261126f">
 </head>
 <body data-page="radce">
 <a class="skip" href="#temata">Přeskočit na články</a>
@@ -130,9 +130,9 @@ p{margin:0}
 <div class="tg"><a class="hl" href="${h.u}" target="_blank" rel="noopener"><span>Hlavní článek · ${dt(h.d)}</span><b>${esc(h.t)}</b><i>Číst na karasek.cz<span class="sr"> (otevře se v novém okně)</span></i></a>
 <div>${r.length ? `<ul class="ls">${r.slice(0, lim).map(x => `<li><a href="${x.u}" target="_blank" rel="noopener"><span>${esc(x.t)}</span><span>${dt(x.d)}</span></a></li>`).join("")}</ul>` : ""}
 ${r.length > lim ? `<button type="button" class="more" data-m="${t.id}">Další články (${r.length - lim})</button>` : ""}
-<p class="ask">Máte otázku k tématu? <button type="button" data-a="${esc(t.n)}">Zeptejte se</button></p></div></div></section>`;
+<p class="ask">Chcete k tématu poptávku? <button type="button" data-a="${esc(t.n)}">Nezávazná poptávka</button></p></div></div></section>`;
     }).join("");
-    $("#temata").innerHTML = html || `<p class="empty">Nic jsme nenašli. Zkuste jiné slovo, nebo se <button type="button" class="more" data-a="Něco jiného">zeptejte nás</button>.</p>`;
+    $("#temata").innerHTML = html || `<p class="empty">Nic jsme nenašli. Zkuste jiné slovo, nebo se <button type="button" class="more" data-a="Něco jiného">pošlete poptávku</button>.</p>`;
     $("#cnt").textContent = n === 1 ? "1 článek" : n >= 2 && n <= 4 ? n + " články" : n + " článků";
   };
   $("#tabs").addEventListener("click", e => {
