@@ -146,7 +146,7 @@ section.sec{padding:88px 0}
   body{font-size:16px}
   html{scroll-padding-top:72px}
   .crumbs{font-size:14px;padding:14px 0 12px}
-  .crumbs [aria-current],.crumbs>span[aria-hidden]:nth-last-child(2){display:none}
+  /* poslední drobeček na mobilu zkrácený (ellipsis), ne skrytý: BreadcrumbList = viditelné drobečky (tester-kritik 28. 11.) */
   .det{grid-template-columns:minmax(0,1fr);gap:0;padding-bottom:48px}
   .meta{margin-bottom:6px}
   .det h1{font-size:26px;line-height:1.18}
@@ -227,7 +227,7 @@ section.sec{padding:88px 0}
         <div id="askF"></div>
       </div>
       <p class="ask-sh"><a class="kr-trasa" href="https://www.google.com/maps/dir/?api=1&destination=Kar%C3%A1sek%20s.r.o.%2C%20Nemanick%C3%A1%20437%2F5%2C%20%C4%8Cesk%C3%A9%20Bud%C4%9Bjovice" target="_blank" rel="noopener" aria-label="Trasa do showroomu v Mapách Google">Showroom Nemanická 5, České Budějovice</a> · Po–Pá 8–16</p>
-      <p class="proof"><b>Google</b> 4,9 <svg aria-hidden="true"><use href="#i-star"/></svg> ze 110 recenzí <span aria-hidden="true">·</span> <b>Firmy.cz</b> 98,9 %</p>
+      <p class="proof"><b>Google</b> 4,9 <svg aria-hidden="true"><use href="#i-star"/></svg> ze 110 recenzí <span aria-hidden="true">·</span> <b>Firmy.cz</b> 98,9 % <span class="proof-d">(k&nbsp;11.&nbsp;11.&nbsp;2026)</span></p>
     </aside>
   </div>
 </div>
@@ -280,7 +280,7 @@ const STAV = (() => {
 document.body.dataset.oblast = STAV.s ? STAV.s.typ[0] : "zaskleni";
 document.body.dataset.stavba = STAV.s ? STAV.s.id : "";
 </script>
-<script src="web.js?v=20261128b"></script>
+<script src="web.js?v=20261128e"></script>
 <script>
 (() => {
   const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];

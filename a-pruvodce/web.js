@@ -157,7 +157,7 @@ body:has(.hd-menu.open) .bn{display:none!important}
     <a href="${P.showroom}"${ca(page === "showroom")}>Showroom</a>
     <a href="${P.kontakt}"${ca(page === "kontakt")}>Kontakt</a>
   </nav>
-  <a class="hd-tel" href="tel:+420777727328" aria-label="Zavolat +420 777 727 328">${TEL}<span>+420 777 727 328</span></a>
+  <a class="hd-tel" href="tel:+420777727328" aria-label="Zavolat +420 777 727 328">${TEL}<span>+420&nbsp;777&nbsp;727&nbsp;328</span></a>
   <a class="btn btn-red" href="${ask}" data-hd-ask>Nezávazná poptávka</a>
   <div class="hd-m">
     <a href="tel:+420777727328" aria-label="Zavolat +420 777 727 328">${TEL}</a>
@@ -185,7 +185,7 @@ body:has(.hd-menu.open) .bn{display:none!important}
   </ul>
   <div class="hm-c">
     <a class="btn btn-red" href="${ask}" data-hd-ask>Nezávazná poptávka</a>
-    <a class="btn btn-line" href="tel:+420777727328">${TEL.replace("<svg", '<svg width="20" height="20"')}+420 777 727 328</a>
+    <a class="btn btn-line" href="tel:+420777727328">${TEL.replace("<svg", '<svg width="20" height="20"')}+420&nbsp;777&nbsp;727&nbsp;328</a>
     <p><a class="kr-trasa" href="https://www.google.com/maps/dir/?api=1&destination=Kar%C3%A1sek%20s.r.o.%2C%20Nemanick%C3%A1%20437%2F5%2C%20%C4%8Cesk%C3%A9%20Bud%C4%9Bjovice" target="_blank" rel="noopener" aria-label="Trasa do showroomu v Mapách Google">Showroom Nemanická 5, České Budějovice</a> · Po–Pá 8–16</p>
   </div>
 </div>`;
@@ -228,7 +228,7 @@ body:has(.hd-menu.open) .bn{display:none!important}
     ft.className = "ft";
     const li = (h, n, ex = "") => `<li><a href="${h}"${ex}>${n}</a></li>`;
     ft.innerHTML = `<div class="wrap"><nav class="cols" aria-label="Mapa webu">
-  <div><img src="../assets/logo-bila.svg?v=20261126" alt="Karásek" width="112" height="56" loading="lazy" decoding="async"><p>Karásek s.r.o.<br><a class="kr-trasa" href="https://www.google.com/maps/dir/?api=1&destination=Kar%C3%A1sek%20s.r.o.%2C%20Nemanick%C3%A1%20437%2F5%2C%20%C4%8Cesk%C3%A9%20Bud%C4%9Bjovice" target="_blank" rel="noopener" aria-label="Trasa do showroomu v Mapách Google">Nemanická 5, České Budějovice</a><br>Showroom Po–Pá 8–16<br><a href="tel:+420777727328">+420 777 727 328</a><br>IČO 25164589</p></div>
+  <div><img src="../assets/logo-bila.svg?v=20261126" alt="Karásek" width="112" height="56" loading="lazy" decoding="async"><p>Karásek s.r.o.<br><a class="kr-trasa" href="https://www.google.com/maps/dir/?api=1&destination=Kar%C3%A1sek%20s.r.o.%2C%20Nemanick%C3%A1%20437%2F5%2C%20%C4%8Cesk%C3%A9%20Bud%C4%9Bjovice" target="_blank" rel="noopener" aria-label="Trasa do showroomu v Mapách Google">Nemanická 5, České Budějovice</a><br>Showroom Po–Pá 8–16<br><a href="tel:+420777727328">+420&nbsp;777&nbsp;727&nbsp;328</a><br>IČO 25164589</p></div>
   <div class="fs"><h3>Služby</h3><ul>${SL.map(([k, n]) => li(`kategorie.html?oblast=${k}`, n)).join("")}${li("sluzby.html", "Všechny služby", ' class="all"')}</ul>
     <h3>Kde stavíme</h3><ul>${REG.map(([k, n]) => li(`region.html?r=${k}`, n)).join("")}</ul></div>
   <div><h3>Realizace</h3><ul>${li("realizace.html", "Hotové stavby")}${li(P.recenze, "Recenze")}${li(P.videa, "Videa")}</ul>
@@ -415,7 +415,7 @@ form.kf{display:grid;grid-template-columns:1fr!important;background:none!importa
   ${s ? `<input type="hidden" name="stavba" value="${s.id}">` : ""}
   <p class="kf-gd">Odesláním souhlasíte se zpracováním údajů pro vyřízení poptávky. <a href="ochrana-osobnich-udaju.html">Jak s údaji nakládáme</a></p>
   <button type="submit" class="btn btn-red">Odeslat poptávku</button>
-  <p class="kf-tel">nebo zavolejte <a href="tel:+420777727328">777 727 328</a></p>
+  <p class="kf-tel">nebo zavolejte <a href="tel:+420777727328">777&nbsp;727&nbsp;328</a></p>
 </form>`;
     const f = el.querySelector("form"), ta = f.zprava;
     window.KRpriloha(f.querySelector("[data-kup]"));
@@ -576,7 +576,8 @@ ${facts.length ? `<ul class="facts" aria-label="Systém a barva">${facts.map(([t
   st.textContent += `
 .crumbs{flex-wrap:nowrap!important;white-space:nowrap;min-width:0;max-width:100%;overflow:hidden}
 .crumbs>*{flex:none}
-.crumbs>[aria-current]{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.crumbs>[aria-current]{display:block!important;flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.crumbs>span[aria-hidden]{display:inline!important}
 .crumbs a{white-space:nowrap}
 @media (max-width:820px){ .crumbs{gap:8px!important} }`;
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", window.KRdrobky); else window.KRdrobky();
@@ -598,6 +599,16 @@ ${pop ? `<a class="bn-red" href="#poptavka">` : `<button type="button" class="bn
     const bsl = bn.querySelector(".bn-sl"), mbb = document.querySelector(".hd-mb");
     if (mbb) bsl.addEventListener("click", () => mbb.click());
     if (!pop) bn.querySelector(".bn-red").addEventListener("click", () => KRpoptat(askO()));
+    /* tester-kritik 28. 11.: smooth scroll na #poptavka trval přes 800 ms → skok okamžitě a fokus na první pole formuláře */
+    else bn.querySelector(".bn-red").addEventListener("click", e => {
+      const sec = document.getElementById("poptavka"); if (!sec) return;
+      e.preventDefault();
+      const de = document.documentElement, sb = de.style.scrollBehavior;
+      de.style.scrollBehavior = "auto"; sec.scrollIntoView({ block: "start", behavior: "instant" }); de.style.scrollBehavior = sb;
+      history.replaceState(null, "", "#poptavka");
+      const f = [...sec.querySelectorAll("input, select, textarea")].find(x => x.type !== "hidden" && x.offsetParent);
+      if (f) f.focus({ preventScroll: true });
+    });
     /* formulář se může vykreslit i později (stavba, kategorie), proto se hledá při každém posunu (jednou za snímek) */
     let tik = 0;
     const hlidej = () => { tik = 0;

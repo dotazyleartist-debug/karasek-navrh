@@ -52,7 +52,7 @@ p{margin:0}
 .ph-img figcaption{padding:12px 18px;font-size:14px;color:var(--muted);background:#fff}
 .ph-img figcaption a{color:var(--ink);font-weight:700;text-underline-offset:3px}
 /* typ bez vlastní fotky (design-eye 28. 11.): místo cizí stavby panel s parametry, ve stejném rámu jako fotka */
-.ph-pan{background:var(--soft);border-radius:var(--r-card);border-top:6px solid var(--kc,var(--modra,#0869eb));padding:30px 34px 32px;align-self:center;display:flex;flex-direction:column;gap:20px}
+.ph-pan{background:var(--soft);border-radius:var(--r-card);border-top:6px solid var(--kc,var(--modra,#0869eb));padding:30px 34px 32px;align-self:start;display:flex;flex-direction:column;gap:20px}
 .ph-pan .pp-k{font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .ph-pan dl{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 28px}
 .ph-pan dt{font-size:14px;font-weight:700;color:var(--muted)}
@@ -291,7 +291,7 @@ h3.dal{font-size:22px;margin-top:44px}
 <script src="katalog.js"></script>
 <script src="obsah-sluzeb.js"></script>
 <script src="katalogy-2026.js"></script>
-<script src="web.js?v=20261128b"></script>
+<script src="web.js?v=20261128e"></script>
 <script>
 (() => {
   const $ = s => document.querySelector(s);
@@ -582,7 +582,7 @@ ${t.f ? `<figure class="tm-f"><img src="../assets/foto/${t.f[0]}.jpg" alt="${esc
   const RV = { zahrada: ["tet", "paj"], zaskleni: ["los", "pol"], pergola: ["pol", "van"], stineni: ["van", "wei"] }[o] || ["van", "wei"];
   const GM = "https://www.google.com/maps/search/?api=1&amp;query=Kar%C3%A1sek+s.r.o.+Nemanick%C3%A1+5+%C4%8Cesk%C3%A9+Bud%C4%9Bjovice";
   const rvHtml = `<section class="sec" aria-labelledby="hRv" data-blok="recenze"><div class="wrap rv"><div><h2 id="hRv">Co říkají zákazníci</h2>
-<div class="rv-n"><b>4,9</b><span>Google, ze 110 recenzí<br>Firmy.cz 98,9 % z 38 hodnocení</span></div>
+<div class="rv-n"><b>4,9</b><span>Google, ze 110 recenzí<br>Firmy.cz 98,9 % z 38 hodnocení<br>k&nbsp;11.&nbsp;11.&nbsp;2026</span></div>
 <p class="sub">Hodnocení k 11. 11. 2026. Doslovné citace z recenzí na Googlu zveřejněných na karasek.cz. <a href="recenze.html">Všechny recenze</a> · <a href="${GM}" target="_blank" rel="noopener">Recenze na Googlu</a></p></div>
 ${RV.map(k => `<blockquote class="q"><p>„${esc(REC[k][0])}“</p><cite><b>${esc(REC[k][1])}</b> · recenze na Googlu</cite></blockquote>`).join("")}</div></section>`;
 

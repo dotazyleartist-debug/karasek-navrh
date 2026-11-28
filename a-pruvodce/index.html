@@ -76,7 +76,7 @@ p{margin:0}
 .hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 /* fotky realizací pod rotujícím slovem, když video neběží (mobil bez autoplay, video se nenačetlo); ztmavení jako u videa, bez barevného nádechu */
 .hero .pf{position:absolute;inset:0}
-.hero .pf img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;filter:brightness(.8);transition:opacity .9s ease}
+.hero .pf img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;filter:brightness(.8);transition:opacity .4s ease}
 .hero .pf img.on{opacity:1}
 .hero .shade{position:absolute;inset:0;background:
   linear-gradient(90deg,rgba(10,14,17,.72) 0%,rgba(10,14,17,.42) 48%,rgba(10,14,17,.08) 78%),
@@ -557,8 +557,8 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
     <a class="btn" id="heroAsk" href="tel:+420777727328"><svg aria-hidden="true"><use href="#i-tel"/></svg>Raději zavolat: <b>777 727 328</b></a>
   </div>
   <ul class="proof" aria-label="Hodnocení a fakta">
-    <li><svg class="pi" aria-hidden="true"><use href="#p-recenze"/></svg><span><b>4,9</b><span>Google, ze 110 recenzí</span></span></li>
-    <li><svg class="pi" aria-hidden="true"><use href="#p-hodnoceni"/></svg><span><b>98,9 %</b><span>Firmy.cz, z 38 hodnocení</span></span></li>
+    <li><svg class="pi" aria-hidden="true"><use href="#p-recenze"/></svg><span><b>4,9</b><span>Google, ze 110 recenzí<br>k&nbsp;11.&nbsp;11.&nbsp;2026</span></span></li>
+    <li><svg class="pi" aria-hidden="true"><use href="#p-hodnoceni"/></svg><span><b>98,9 %</b><span>Firmy.cz, z 38 hodnocení<br>k&nbsp;11.&nbsp;11.&nbsp;2026</span></span></li>
     <li><svg class="pi" aria-hidden="true"><use href="#p-realizace"/></svg><span><b>6500+</b><span>realizací celkem</span><span class="pr-sub">995 zveřejněných realizací</span></span></li>
     <li><svg class="pi" aria-hidden="true"><use href="#p-showroom"/></svg><span><b>Showroom</b><span>České Budějovice</span></span></li>
   </ul>
@@ -674,8 +674,8 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
       <p>Citace jsou doslova z recenzí.</p>
     </div>
     <div class="sum">
-      <div class="sum-i"><b>4,9</b><span><span class="stars" role="img" aria-label="Hodnocení 4,9 z 5"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></span>Google, ze 110 recenzí</span></div>
-      <div class="sum-i"><b>98,9 %</b><span>Firmy.cz, z 38 hodnocení</span></div>
+      <div class="sum-i"><b>4,9</b><span><span class="stars" role="img" aria-label="Hodnocení 4,9 z 5"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></span>Google, ze 110 recenzí<br>k&nbsp;11.&nbsp;11.&nbsp;2026</span></div>
+      <div class="sum-i"><b>98,9 %</b><span>Firmy.cz, z 38 hodnocení<br>k&nbsp;11.&nbsp;11.&nbsp;2026</span></div>
       <a class="sum-a" href="https://www.google.com/maps/search/?api=1&amp;query=Kar%C3%A1sek+s.r.o.+Nemanick%C3%A1+5+%C4%8Cesk%C3%A9+Bud%C4%9Bjovice" target="_blank" rel="noopener">Všechny recenze na Google</a>
     </div>
     <div class="rv">
@@ -753,7 +753,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
 <div class="lbbg" id="lbbg" hidden></div>
 
 <footer id="kontakt"></footer>
-<script src="web.js?v=20261128b"></script>
+<script src="web.js?v=20261128e"></script>
 
 <div class="mbar">
   <a class="call" href="tel:+420777727328" aria-label="Zavolat +420 777 727 328"><svg aria-hidden="true"><use href="#i-tel"/></svg></a>
@@ -773,7 +773,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
   poster.src = pst; v.poster = pst;
   // TOP-CR U2 (28. 11. 2026): mobil video nestahuje sám (2,3 MB) – plakát + „Přehrát video“; slova se točí podle hodin, po spuštění podle videa
   let vidOn = false;
-  const startVid = () => { if (!vidOn) { vidOn = true; v.preload = "auto"; v.src = mobile ? "../assets/video/hero-mobil.mp4" : "../assets/video/hero-pc.mp4"; } return v.play().catch(() => {}); };
+  const startVid = () => { if (!vidOn) { vidOn = true; v.preload = "auto"; v.src = mobile ? "../assets/video/hero-mobil.mp4?v=20261128e" : "../assets/video/hero-pc.mp4?v=20261128e"; } return v.play().catch(() => {}); };
   const setPause = stop => {
     pause.setAttribute("aria-pressed", String(stop));
     $("#pauseTx").textContent = stop ? "Přehrát video" : "Pozastavit video";

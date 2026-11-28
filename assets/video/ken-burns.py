@@ -15,8 +15,11 @@ POHYB = [(1.00, 1.07, .50, .52, .50, .48), (1.07, 1.00, .52, .48, .50, .50), (1.
 MOB_X = [.40, .45, .50, .40]
 mode = sys.argv[1] if len(sys.argv) > 1 else "pc"
 W, H = (1920, 1080) if mode == "pc" else (720, 1280)
-FPS, SEG, FADE = 30, 5.0, 1.0
-STEP = SEG - FADE                    # záběr začíná každé 4 s
+# 28. 11. 2026 (design-eye kolo 2): prolnutí 1 s působilo jako dvojexpozice → 0,4 s, střed prolnutí v 4i − 0,5 s,
+# kdy JS v index.html mění slovo (i = floor((t + 0,5) / 4))
+FPS, STEP, FADE = 30, 4.0, 0.4
+SEG = STEP + FADE                    # záběr začíná každé 4 s
+OFS = FADE + 0.3                     # záběr i je celý vidět od 4i − 0,3 s
 DUR = STEP * len(FOTO)               # 16 s, kruhová smyčka
 N = int(round(DUR * FPS))
 imgs = [cv2.imread(os.path.join(here, "..", "foto", f + ".jpg")).astype(np.float32) for f in FOTO]
@@ -50,10 +53,10 @@ ff = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fm
 for n in range(N):
     t = n / FPS
     acc = None
-    # záběr i má lokální čas tau = (t - STEP*i + FADE) mod DUR; prvních FADE s se prolíná nad předchozím
+    # záběr i má lokální čas tau = (t - STEP*i + OFS) mod DUR; prvních FADE s se prolíná nad předchozím
     layers = []
     for i in range(len(FOTO)):
-        tau = (t - STEP * i + FADE) % DUR
+        tau = (t - STEP * i + OFS) % DUR
         if tau < SEG: layers.append((tau, i))
     layers.sort(key=lambda x: -x[0])          # starší záběr dospod
     for tau, i in layers:
