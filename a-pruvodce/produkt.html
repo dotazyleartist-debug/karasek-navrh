@@ -104,7 +104,39 @@ p{margin:0}
 .nf .tl a:hover{box-shadow:0 0 0 1px var(--ink)}
 .nf .acts{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px}
 
-@media (prefers-reduced-motion:reduce){.btn{transition:none}}
+/* krátká odpověď pod H1 (blok WP „Krátká odpověď“: co, pro koho, cena, jak dlouho) */
+.ko{margin:24px 0 0;max-width:600px}
+.ko dl{margin:0}
+.ko dl>div{display:grid;grid-template-columns:132px minmax(0,1fr);gap:4px 20px;padding:12px 0;border-top:1px solid var(--line)}
+.ko dl>div:last-child{border-bottom:1px solid var(--line)}
+.ko dt{font-size:14px;font-weight:700;color:var(--muted);padding-top:2px}
+.ko dd{margin:0;font-size:16px;line-height:1.5}
+.ko dd b{font-weight:700}
+.par-blok+.par-blok{margin-top:40px}
+.par-blok>h3{font-size:22px}
+/* otázky k typu */
+.faq-g{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:24px 56px;align-items:start}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-child{border-top:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;font-weight:700;font-size:18px;line-height:1.35}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:0 0 11px;height:11px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translate(-3px,-3px);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(225deg) translate(-3px,-3px)}
+.faq .fa{padding:0 0 20px;max-width:680px}
+.faq .fa p{font-size:16px;line-height:1.55;color:var(--muted)}
+.faq .fz{display:block;margin-top:8px;font-size:14px;color:var(--muted)}
+.faq .fz a{text-underline-offset:3px}
+.cta .kon{margin-top:16px;font-size:15px;color:#dfe5e9}
+.cta .kon a{color:#fff;font-weight:700;text-underline-offset:3px}
+.cta .btn-tel svg{width:18px;height:18px}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.faq summary::after{transition:none}}
+@media (max-width:1100px){.faq-g{grid-template-columns:1fr}}
+@media (max-width:820px){
+  .ko dl>div{grid-template-columns:1fr;gap:2px;padding:10px 0}
+  .ko dd{font-size:15px}
+  .faq summary{font-size:16px;padding:15px 0}
+  .faq .fa p{font-size:15px}
+}
 @media (max-width:1100px){
   .ph-hero{grid-template-columns:1fr;gap:28px}
   .rgrid,.sib{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -120,6 +152,7 @@ p{margin:0}
   .ph-hero .acts{margin-top:20px}
   .ph-hero .acts .btn{width:100%}
   .ph-img{order:-1}
+  .ph-hero.pod .ph-img{order:0}
   .sec{padding:40px 0}
   .sec h2,.cta h2{font-size:28px}
   .rgrid,.sib,.par,.nf .tl{grid-template-columns:1fr}
@@ -131,6 +164,7 @@ p{margin:0}
 }
 </style>
 <link rel="stylesheet" href="vzhled.css?v=20261126g">
+<script src="seo.js?v=20261128b" defer></script>
 </head>
 <body data-page="produkt" data-oblast="zahrada">
 <a class="skip" href="#obsah">Přeskočit na obsah</a>
@@ -148,7 +182,6 @@ p{margin:0}
   const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const Q = new URLSearchParams(location.search), o = Q.get("o") || "", slug = Q.get("p") || "";
   const NAZ = { zahrada: "Zimní zahrady", zaskleni: "Zasklení teras", pergola: "Pergoly", stineni: "Stínění" };
-  const FOTO = { zahrada: "25190", zaskleni: "29532", pergola: "18873", stineni: "21454" };
   const K = window.KRkatalog || {}, main = $("#obsah");
   const list = K[o] || [], idx = list.findIndex(p => p.k === slug), p = list[idx];
 
@@ -163,30 +196,208 @@ p{margin:0}
     return;
   }
 
+  /* ---------- obsah typů (dávka 3a, 28. 11. 2026) ----------
+     Zdroj: 05-realizace/2026-11-28-dostavba/MAPA-WEBU.md kap. 2.3 (H1, důkazy) a 3.2 (fakta, faktory ceny), katalogy-2026.js,
+     obsah-sluzeb.js (FAQ služeb) a starý web (katalog.js). Nic doplněného; co chybí, je v OTAZKY-KLIENT-davka3a.md.
+     h = H1 · co / pro = krátká odpověď · cena = faktory (návrh z parametrů katalogu, O-CEN-1) · m = řádek „Jak dlouho“ (montáž 1–3 dny
+     uvádí FAQ starého webu jen u zimních zahrad, zasklení a pergol) · d = id realizací (důkazy) · pod = jen podobné stavby, ne tento typ ·
+     par = parametry ze starého webu u typů bez katalogu 2026 · faq = "služba.index" (obsah-sluzeb.js) nebo { q, a, z }. */
+  const KAT = "Katalog Karásek 2026: ", W = p.url;
+  const TYP = {
+    "zahrada/sezonni": { h: "Sezonní zimní zahrady",
+      co: "Hliníková zimní zahrada se skrytým žlabem, vyložení až 550 cm, střecha ze skla Connex 3.3.2 nebo polykarbonátu Lexan 16 mm.",
+      pro: "Pro terasu, kterou chcete využívat od jara do podzimu, bez vytápění. K moderním stavbám i klasickým rodinným domům.",
+      cena: ["rozměry a sněhová oblast (krokve 105, 130 nebo 150 mm)", "sklo, nebo polykarbonát na střechu", "rámové, nebo bezrámové boční zasklení", "barva mimo standard a doplňky (LED, stínění)"],
+      m: 1, d: ["29570", "29555", "25190", "23293", "23300"],
+      faq: ["zahrada.2", "zahrada.4", "zahrada.3", "zahrada.1", "zahrada.5"] },
+    "zahrada/celorocni": { h: "Celoroční zimní zahrady",
+      co: "Zimní zahrada z lepeného dřeva BSH se střechou z izolačního dvojskla s argonem (U = 1,1) a posuvnými stěnami Patio Living Therm.",
+      pro: "Pro ty, kdo chtějí plnohodnotnou místnost, která slouží po celý rok.",
+      cena: ["rozměry", "protisluneční sklo Stopsol", "markýzy či rolety", "integrované LED osvětlení"],
+      m: 1, d: ["17372"],
+      faq: ["zahrada.2", { q: "Nerosí se celoroční zimní zahrada?", a: "Boční stěny tvoří systém Patio Living Therm, který má přerušený tepelný most, a konstrukce se nerosí. Střecha je z bezpečnostního izolačního dvojskla 44.2 / 16 / ESG 6 mm plněného argonem.", z: KAT + "Dřevěná celoroční zimní zahrada" },
+        { q: "Proč lepené dřevo BSH?", a: "Hranoly z lepeného dřeva BSH drží tvar, nepraskají a mají vysokou nosnost i při dlouhodobém zatížení. Díly mají ochranný nátěr proti vlhkosti a UV záření.", z: KAT + "Dřevěná celoroční zimní zahrada" },
+        "zahrada.1", "zahrada.5"] },
+    "zahrada/led": { h: "LED osvětlení zimní zahrady a pergoly",
+      co: "LED pásky v integrované liště v krokvích a nově i osvětlení předního žlabu. Kabely jsou vždy skryté v konstrukci.",
+      pro: "Jako doplněk k zimní zahradě nebo pergole pro světlo nad stolem či posezením.",
+      cena: ["délka osvětlení a počet okruhů", "stmívání", "osvětlení předního žlabu"],
+      d: ["29555", "29570"],
+      par: [["Umístění", "integrovaná lišta v krokvích"], ["Přední žlab", "osvětlení předního žlabu"], ["Kabely", "vždy skryté v konstrukci"], ["Ovládání", "světlo lze stmívat"]],
+      faq: [{ q: "Kam se LED osvětlení montuje?", a: "LED pásky jsou v integrované liště v krokvích, takže osvětlí místo nad stolem či posezením. Novinkou je osvětlení předního žlabu.", z: W },
+        { q: "Budou kabely vidět?", a: "Ne. Kabely jsou vždy skryté v konstrukci.", z: W },
+        { q: "Dá se světlo ztlumit?", a: "Ano, světlo lze stmívat.", z: W }] },
+
+    "zaskleni/ramove": { h: "Rámové zasklení teras a pergol",
+      co: "Hliníkový posuvný systém Plus (výška do 220 cm) nebo zesílený Combi (do 300 cm), sestavy od 1 do 5 dílů.",
+      pro: "Pro pergolu nebo terasu, kterou chcete uzavřít před deštěm, větrem a chladem. Rámový systém je těsnější a levnější než bezrámový.",
+      cena: ["šířka a výška otvoru", "počet dílů", "Plus, nebo Combi", "výplň a barva"],
+      m: 1, d: ["24199", "24151", "23236", "17508", "17845", "25483"],
+      faq: ["zaskleni.1", "zaskleni.0", "zaskleni.2", "zaskleni.3", "zaskleni.4"] },
+    "zaskleni/bezramove": { h: "Bezrámové zasklení Patio Living Move",
+      co: "Posuvné zasklení z kaleného skla bez svislých rámů. Move 3.0 má křídla až 1 500 × 3 000 mm a kolejnici 20 mm, kterou lze zapustit do podlahy.",
+      pro: "Pro ty, kdo chtějí nerušený výhled do zahrady. Hodí se na všechny typy pergol a teras.",
+      cena: ["počet křídel a kolejnic", "výška", "motor a LED", "zapuštění kolejnice do podlahy"],
+      m: 1, d: ["29532", "24141", "24173", "18034", "23300", "17435"],
+      faq: ["zaskleni.1", { q: "Jaký je rozdíl mezi Move a Move 3.0?", a: "Patio Living Move má sklo 8 nebo 10 mm, panel do šířky 1 100 mm a hmotnosti 70 kg a 3–6 kolejnic. Move 3.0 má sklo 10 mm, panel až 1 500 mm a 120 kg, 2–6 kolejnic a volitelně motor a LED.", z: KAT + "Patio Living Move, Patio Living Move 3.0" },
+        "zaskleni.3", "zaskleni.2"] },
+    "zaskleni/izolacni": { h: "Izolační zasklení Patio Living Therm",
+      co: "Rámový posuvný systém s izolačním dvojsklem 24 mm a přerušeným tepelným mostem: sklo Ug = 1,1, celý systém Uw = 1,5.",
+      pro: "Pro temperované prostory, které mají sloužit i v zimě, například celoroční zimní zahradu.",
+      cena: ["rozměr a počet panelů", "sklo"],
+      m: 1, d: ["17372"],
+      faq: ["zaskleni.4", "zahrada.2", "zaskleni.3"] },
+    "zaskleni/lamelove": { h: "Posuvné lamelové stěny Patio Living Tilt",
+      co: "Boční posuvné panely s hliníkovými lamelami nebo screenovou látkou do otvoru širokého 1 000–7 000 mm a vysokého 550–2 700 mm.",
+      pro: "K lamelové pergole Panorama 2.0 a ke carportu. Chrání před větrem a sluncem a přidají soukromí.",
+      cena: ["plocha otvoru", "typ lamely (pevná, zkosená, otočná, nebo látka)", "barva"],
+      m: 1, d: ["18873"], pod: "Stavbu s lamelovými stěnami Tilt zatím v realizacích nemáme. Ukazujeme lamelovou pergolu, ke které se systém dodává.",
+      faq: [{ q: "K čemu se lamelové stěny hodí?", a: "Jsou to boční posuvné panely k lamelové pergole Panorama 2.0 a ke carportům. Chrání před větrem, sluncem a částečně i deštěm a přidají pergole soukromí.", z: KAT + "Patio Living Tilt" },
+        { q: "Jaké výplně panely mají?", a: "Lamela může být pevná, zkosená nebo otočná, místo lamel jde i screenová látka. Rámy jsou v barvě RAL.", z: KAT + "Patio Living Tilt" },
+        "pergola.4"] },
+    "zaskleni/steny": { h: "Dělící stěny a příčky",
+      co: "Interiérové posuvné stěny Plus (výška do 2 200 mm), Combi (do 3 000 mm) a pevné Fix. Kolejnici 17 mm lze zapustit do podlahy.",
+      pro: "K oddělení místností v bytech, domech i komerčních objektech bez stavebních úprav.",
+      cena: ["výška", "počet křídel", "výplň (sklo, polykarbonát, LTD)", "zamykání"],
+      d: ["24151", "17845", "23236"], pod: "Interiérové dělící stěny zatím v realizacích nemáme. Ukazujeme stejné rámové systémy Combi a Plus na terasách.",
+      faq: [{ q: "Potřebuji kvůli příčce stavební úpravy?", a: "Ne. Mobilní příčky oddělí místnosti v bytech, domech i komerčních objektech bez stavebních úprav.", z: W },
+        { q: "Bude v průchodu práh?", a: "Kolejnici 17 mm lze zapustit do podlahy, takže průchod je bez prahu.", z: KAT + "Dělící stěny" },
+        { q: "Jak dlouho stěny vydrží?", a: "Katalog uvádí životnost minimálně 20 let (předpokládaná až 50 let). Odolnost testovalo Centrum stavebního inženýrství.", z: KAT + "Dělící stěny" },
+        { q: "Čím lze stěny vyplnit?", a: "Sklem, polykarbonátem nebo LTD deskou.", z: KAT + "Dělící stěny" }] },
+    "zaskleni/podlahy": { h: "Podlahy ThermoWood a WPC",
+      co: "Terasové podlahy k hliníkovým konstrukcím a zasklení teras či pergol: tepelně upravené dřevo ThermoWood, nebo dřevoplastové WPC.",
+      pro: "K zasklené terase, pergole nebo zimní zahradě.",
+      d: [], pod: "Podlahy zatím v realizacích zvlášť označené nemáme. Ukazujeme zasklené terasy ze stejné služby." },
+
+    "pergola/sklo": { h: "Pergoly se skleněnou střechou",
+      co: "Hliníková pergola se skrytým žlabem a střechou z lepeného bezpečnostního skla Connex 3.3.2. Bez typizovaných rozměrů.",
+      pro: "Pro terasu s čistým výhledem na oblohu. Skleněná střecha je těžší, statiku je potřeba připravit.",
+      cena: ["rozměry", "sněhová oblast", "boční zasklení", "stínění"],
+      m: 1, d: ["17692"],
+      faq: ["pergola.2", "pergola.3", "pergola.0", "pergola.4", "pergola.1"] },
+    "pergola/polykarbonat": { h: "Pergoly s polykarbonátovou střechou",
+      co: "Hliníková pergola se střechou z polykarbonátu LEXAN 16 mm v čirém, mléčném nebo bronzovém provedení.",
+      pro: "Pro lehčí zastřešení terasy. Jde i klasická pergola s přesahem střechy ke staršímu domu.",
+      cena: ["rozměry", "typ polykarbonátu (čirý, mléčný, bronzový)"],
+      m: 1, d: ["23329", "17454"],
+      faq: ["zahrada.4", "pergola.3", "pergola.2", "pergola.1"] },
+    "pergola/bioklima": { h: "Lamelové bioklimatické pergoly",
+      co: "Lamelová pergola Panorama 2.0: lamely natáčené motorem až o 170°, modul až 645 × 470 cm, sněhová zátěž až 250 kg/m².",
+      pro: "Pro terasu, kde chcete regulovat slunce i větrání a zavřenou střechou se chránit před deštěm.",
+      cena: ["počet modulů a rozměr", "boční uzavření (zasklení, rolety ZIP, lamelové stěny)", "senzory a LED"],
+      m: 1, d: ["18873"],
+      faq: ["pergola.5", { q: "Jak se pergola ovládá?", a: "Dálkovým ovladačem nebo mobilní aplikací. Volitelně jde doplnit větrný senzor a dešťové čidlo.", z: KAT + "Panorama 2.0" },
+        { q: "Unese lamelová střecha sníh?", a: "Katalog Panorama 2.0 uvádí sněhové zatížení až 250 kg/m². Zavřené lamely uzavírají střechu zcela nepropustně.", z: KAT + "Panorama 2.0" },
+        "pergola.4", "pergola.1"] },
+    "pergola/carporty": { h: "Carporty: hliníková parkovací stání",
+      co: "Parkovací stání pro jedno i více aut ze systému pergol se skrytým žlabem.",
+      pro: "Pro auto pod střechou u domu. Na střechu lze osadit fotovoltaické panely.",
+      cena: ["počet stání", "střecha", "fotovoltaické panely"],
+      m: 1, d: ["23329", "17692"], pod: "Carport zatím v realizacích nemáme. Ukazujeme pergoly se skrytým žlabem, ze kterých systém carportu vychází.",
+      par: [["Konstrukce", "systém pergol se skrytým žlabem"], ["Počet stání", "pro jedno i více aut"], ["Fotovoltaika", "lze osadit fotovoltaické panely"], ["Statika", "výpočet nosnosti je součástí"]],
+      faq: [{ q: "Můžu na carport dát fotovoltaiku?", a: "Ano, carport lze osadit fotovoltaickými panely. Výpočet nosnosti je součástí zakázky.", z: W },
+        { q: "Jde carport postavit i s lamelovou střechou?", a: "Lamelová pergola Panorama 2.0 má variantu s pevnou střechou z kompozitního materiálu, například pro parkovací stání.", z: KAT + "Panorama 2.0" },
+        { q: "Jak carport uzavřít z boku?", a: "Ke carportům se dodávají boční posuvné lamelové panely Patio Living Tilt.", z: KAT + "Patio Living Tilt" },
+        "pergola.1"] },
+    "pergola/vytahovaci": { h: "Pergoly s vytahovací střechou",
+      co: "Pergola s motorem posuvnými panely střechy, které umožňují postupné odvětrání prostoru.",
+      pro: "Pro terasu, kde chcete střechu podle počasí částečně otevřít.",
+      cena: ["rozměr", "krytina (lepené sklo, izolační dvojsklo, nebo polykarbonát)"],
+      m: 1, d: ["17692", "23329"], pod: "Pergolu s vytahovací střechou zatím v realizacích nemáme. Ukazujeme pergoly se skleněnou a polykarbonátovou střechou.",
+      par: [["Pohyb střechy", "posuvné panely s motorem"], ["Krytina", "lepené sklo, izolační dvojsklo nebo polykarbonát"]],
+      faq: [{ q: "Jak se střecha otevírá?", a: "Panely střechy posouvá motor, takže prostor jde odvětrávat postupně.", z: W },
+        { q: "Z čeho může být střecha?", a: "Z lepeného skla, izolačního dvojskla nebo polykarbonátu.", z: W },
+        "pergola.1"] },
+    "pergola/latkova": { h: "Pergoly s látkovou střechou",
+      co: "Hliníková pergola se zastíněním z markýzové látky, kterou jde úplně odsunout. Například pergola ZEN nebo Veranda Box.",
+      pro: "Pro terasy, kde nepotřebujete celoroční zastřešení.",
+      cena: ["rozměr", "látka", "motor"],
+      m: 1, d: ["17692", "21454"], pod: "Pergolu s látkovou střechou zatím v realizacích nemáme. Ukazujeme stavby s látkovým stíněním pod střechou.",
+      faq: ["pergola.2", { q: "Jak velká může být pergola ZEN?", a: "Pergola ZEN má rozměr maximálně 500 × 500 cm a dodává se i s motorem.", z: W }, "pergola.1"] },
+
+    "stineni/markyzy": { h: "Markýzy na terasu",
+      co: "Klasické, kazetové a výklopné markýzy vyráběné na zakázku, na kliku nebo s motorem.",
+      pro: "Pro zastínění velké plochy terasy. Realizace pouze v Jižních Čechách.",
+      cena: ["typ markýzy (klasická, kazetová, výklopná)", "šířka a výsuv", "motor", "látka"],
+      d: ["21454", "23293"], pod: "Markýzu na terasu zatím v realizacích nemáme. Ukazujeme jiné stínění, které jsme montovali.",
+      faq: ["stineni.2", "stineni.0", "stineni.3", "stineni.4"] },
+    "stineni/markyzy-zz": { h: "Markýzy pro zimní zahrady a pergoly",
+      co: "Střešní markýzy Ancona, Capri a Portofino nad sklo i pod něj, s motorem Somfy iO.",
+      pro: "Pro zimní zahrady a prosklené pergoly, které se v létě přehřívají.",
+      cena: ["typ markýzy", "šířka a výsuv", "automatika"],
+      d: ["23293", "21454"], pod: "Střešní markýzu zatím v realizacích nemáme. Ukazujeme zimní zahrady se stíněním pod střechou.",
+      faq: ["stineni.1", { q: "Jak velkou plochu markýza zastíní?", a: "Ancona až 600 × 450 cm, Capri šířka až 700 cm (ve dvou modulech 1 200 cm) a výsuv až 600 cm, Portofino 600 nebo 1 200 × 500 cm.", z: KAT + "Ancona, Capri, Portofino" },
+        { q: "Jak se markýza ovládá?", a: "Motorem Somfy iO s dálkovým ovládáním. Za příplatek jde doplnit automatiku na počasí a aplikaci Tahoma.", z: KAT + "Ancona, Capri, Portofino" },
+        "stineni.3"] },
+    "stineni/velux": { h: "Stínění střešních oken Velux",
+      co: "Vnitřní i venkovní stínění střešních oken Velux: žaluzie, rolety, plissé, sítě proti hmyzu a další.",
+      pro: "Pro podkrovní místnosti se střešními okny Velux.",
+      d: [], pod: "Stínění oken Velux zatím v realizacích nemáme. Ukazujeme stavby se stíněním ze stejné služby.",
+      par: [["Sortiment", "žaluzie, rolety, plissé, sítě proti hmyzu"], ["Umístění", "vnitřní i venkovní stínění"]] },
+    "stineni/site": { h: "Sítě proti hmyzu",
+      co: "Rolovací sítě, sítě s panty a plissé sítě do oken i dveří, v barvách podle vzorníku RAL.",
+      pro: "Do oken a dveří. Plissé se hodí tam, kde je málo místa.",
+      d: [], pod: "Sítě proti hmyzu zatím v realizacích nemáme. Ukazujeme stavby se stíněním ze stejné služby.",
+      par: [["Typy", "rolovací, s panty, plissé"], ["Použití", "okna i dveře"], ["Barvy", "podle vzorníku RAL"], ["Demontáž", "snadná"]],
+      faq: [{ q: "Jaké sítě proti hmyzu dodáváte?", a: "Rolovací, s panty a plissé, do oken i dveří. Všechny jsou snadno demontovatelné.", z: W },
+        { q: "Co když je u dveří málo místa?", a: "Tam se hodí plissé síť.", z: W },
+        { q: "Jde síť sladit s barvou oken?", a: "Ano, sítě jsou v barvách podle vzorníku RAL.", z: W }] },
+    "stineni/screen": { h: "Screenové rolety ZIP",
+      co: "Svislé kazetové markýzy se ZIP systémem, který drží látku napnutou i ve větru. Chrání před sluncem, UV zářením i hmyzem.",
+      pro: "Na fasádu, do ostění i na bok pergoly, včetně lamelové pergoly.",
+      cena: ["plocha", "model rolety", "motor", "látka"],
+      d: ["23329"],
+      faq: ["stineni.0", { q: "Vydrží screenová roleta vítr?", a: "ZIP systém drží látku napnutou a zajistí ji proti vytržení i za silného větru. Verze k lamelové pergole má odolnost proti větru třídy V6 podle ČSN EN 13561.", z: [W, KAT + "Screen Zip Lamelovka"] },
+        "stineni.5", "stineni.3"] },
+    "stineni/zaluzie": { h: "Venkovní žaluzie a rolety",
+      co: "Venkovní žaluzie a rolety na kliku, provázek nebo s motorem. Doplnit lze automatické řízení podle větru.",
+      pro: "Proti ostrému slunci i pro soukromí. Realizace pouze v Jižních Čechách.",
+      d: ["25483", "17392", "17332"], pod: "U těchto staveb jsme montovali rolety, jejich typ ale v popisu realizace uvedený není.",
+      faq: ["stineni.0", "stineni.3", "stineni.5"] },
+    "stineni/vnitrni": { h: "Vnitřní stínění",
+      co: "Hliníkové a dřevěné žaluzie, rolety, duo rolety, plissé a japonské stěny.",
+      pro: "Do domu, bytu, pergoly i zimní zahrady. Realizace pouze v Jižních Čechách.",
+      d: ["21506"], pod: "Ukazujeme zasklenou terasu, kde jsme jako vnitřní stínění montovali hliníkové žaluzie.",
+      par: [["Sortiment", "hliníkové a dřevěné žaluzie, rolety, duo rolety, plissé, japonské stěny"], ["Rolety", "látkové, s řetízkem nebo motorem, i kazetové"], ["Plissé", "mezi krokve, ovládání tyčkou, vedené na lankách"]],
+      faq: [{ q: "Jak se vnitřní rolety ovládají?", a: "Ručně řetízkem, nebo motorem. Dodáváme i kazetové rolety.", z: KAT + "Stínící technika" },
+        { q: "Kam se hodí plissé?", a: "Plissé žaluzie se instalují mezi krokve zimní zahrady a ovládají se tyčkou. Do otevřených pergol se nehodí kvůli vlhkosti.", z: [KAT + "Stínící technika", "https://karasek.cz/produkty/stinici-technika/markyzy-pro-zimni-zahrady-a-pergoly/"] },
+        "stineni.1"] },
+    "stineni/baldachyn": { h: "Baldachýnové zastínění",
+      co: "Podvěsný baldachýn s markýzovou látkou TEXgard pod střechu pergoly nebo zimní zahrady, modul až 6 000 × 6 000 mm.",
+      pro: "Pro pergoly a zimní zahrady se skleněnou nebo polykarbonátovou střechou. Lze ho namontovat i na stávající dřevěnou pergolu.",
+      cena: ["rozměr a počet modulů", "vyspádování", "barva konstrukce"],
+      d: ["21454", "23293", "17692"],
+      faq: [{ q: "Jak se baldachýn ovládá?", a: "Mechanicky: tažnou šňůrou a kladkovým převodem, v požadované poloze ho drží integrovaná fixace.", z: KAT + "Baldachýn" },
+        { q: "Ochrání baldachýn i před deštěm?", a: "Varianta s vyspádováním chrání i před mírným letním deštěm. Látka odpuzuje vodu a nečistoty a odolává plísním.", z: KAT + "Baldachýn" },
+        { q: "Jak dlouho látka vydrží?", a: "Akrylová látka baldachýnu má životnost obvykle přes 15 let.", z: KAT + "Stínící technika" },
+        "stineni.5", "stineni.1"] }
+  };
+  const key = o + "/" + p.k, T = TYP[key] || { h: p.n, co: p.t, d: [] };
+  const H1 = T.h;
+
   document.body.dataset.oblast = o;
-  document.title = `${p.n} | ${NAZ[o]} | Karásek s.r.o.`;
+  document.title = `${H1} | ${NAZ[o]} | Karásek s.r.o.`;
   $("#mDesc").content = p.t.slice(0, 150).replace(/\s+\S*$/, "") + "… Karásek s.r.o., České Budějovice.";
 
-  /* stavby tohoto typu; když filtr nic nedá, stavby z celé služby (a řekneme to) */
-  let f = p.f, S = f ? KR.filter(f) : [], zalozni = false;
-  if (!S.length) { f = { typ: o }; S = KR.filter(f); zalozni = true; }
-  /* filtr podle systému bere i jiné typy: když existují stavby s názvem typu, ukážeme jen ty */
-  const KW = { bioklima: /bioklim|lamelov/i }[p.k];
-  if (KW && S.some(s => KW.test(s.n))) S = S.filter(s => KW.test(s.n));
-  const hero = S[idx % S.length] || S[0];
+  /* stavby: důkazy z mapy (pořadí = nejlepší první); filtr pro výpis realizací z katalog.js, jinak celá služba */
+  const byId = id => KR.stavby.find(s => s.id === id);
+  let S = (T.d || []).map(byId).filter(Boolean), pod = !!T.pod;
+  if (!S.length) S = KR.filter({ typ: o }).slice(0, 3);
+  const f = p.f && KR.filter(p.f).length ? p.f : { typ: o };
   const qs = "realizace.html?" + new URLSearchParams(f);
+  const hero = S[0];
 
-  /* parametry jen ze zdrojů (obsah-sluzeb.js srovnání, STRUKTURA-KARASEK-CZ.md) */
+  /* parametry: katalog 2026, jinak starý web (obsah-sluzeb.js srovnání, popis typu) */
   const SR = ((window.KRobsah || {})[o] || {}).srovnani;
   const rows = ix => SR ? ix.map(i => SR.radky[i]).filter(Boolean).map(r => ({ h: r[0], d: r.slice(1).map((c, j) => [SR.sloupce[j + 1], c]).filter(x => x[1]) })) : [];
-  const EXTRA = {
-    "zahrada/sezonni": [{ h: "Konstrukce zimní zahrady", d: [["Stojiny", "110 × 110 mm"], ["Krokve", "105, 130 nebo 150 mm"], ["Maximální hloubka", "600 cm"], ["Sklon střechy", "4–12°"], ["Rozteč krokví", "přibližně 750 mm (Connex 3.3.2), 900 mm (PCD 16 mm)"], ["Barvy konstrukce", "RAL 7016, 8017, 9006, bílá"]] }],
-    "zaskleni/lamelove": [{ h: "Patio Living Tilt", d: [["Hmotnost panelu", "až 50 kg"], ["Výška", "až 2700 mm"], ["Šířka panelu", "500–1250 mm"], ["Počet panelů", "2–4"], ["Výplně", "lamely, screen, ESG 6 mm"], ["Standardní barvy", "RAL 9006, 9007, 9010, 7016, 8014, DB702, DB703"]] }]
-  };
-  const ROW = { "zahrada/celorocni": [2], "zaskleni/ramove": [0], "zaskleni/bezramove": [1], "zaskleni/izolacni": [2],
-    "pergola/sklo": [0], "pergola/polykarbonat": [1], "pergola/bioklima": [2], "pergola/latkova": [3], "stineni/markyzy": [0], "stineni/zaluzie": [2, 3] };
-  const key = o + "/" + p.k;
-  const par = (EXTRA[key] || []).concat(rows(ROW[key] || []));
+  const ROW = { "pergola/sklo": [0], "pergola/polykarbonat": [1], "pergola/latkova": [3], "stineni/markyzy": [0], "stineni/zaluzie": [2, 3] };
+  const KAT26 = (window.KRkatalog2026 || {})[key];
+  const web = (T.par ? [{ h: H1, d: T.par }] : []).concat(rows(ROW[key] || []));
+  const grid = g => `<div class="par">${g.map(s => `<section><h3>${esc(s.h || s.n)}</h3><dl>${(s.d || s.par).map(([a, b]) => `<div><dt>${esc(a)}</dt><dd>${esc(b)}</dd></div>`).join("")}</dl>${s.vyhody && s.vyhody.length ? `<ul class="vyh">${s.vyhody.map(v => `<li>${esc(v)}</li>`).join("")}</ul>` : ""}</section>`).join("")}</div>`;
+  const zdroj = (u, t) => `<a href="${esc(u)}" target="_blank" rel="noopener">${t}</a>`;
+  const parHtml = KAT26
+    ? `<p class="sub">${esc(KAT26.uvod)}</p>${grid(KAT26.systemy)}<p class="src">Podle katalogu Karásek 2026 (${esc(KAT26.zdroj.join(", "))}). Rozměry a provedení upřesníme při zaměření.</p>`
+    : web.length ? `${grid(web)}<p class="src">Údaje z popisu na ${zdroj(p.url, "karasek.cz")}. U konkrétní stavby se rozměry a provedení řídí zaměřením.</p>` : "";
 
   /* video jen tam, kde k typu patří (ID z BRIEF.md) */
   const VID = { "zahrada/celorocni": ["CDzwiIPHD5s", "Patio Living Therm: celoroční zimní zahrada", "../assets/video/video-therm-zimni-zahrada.jpg", "Rostislav Karásek ve video prohlídce temperované zimní zahrady Patio Living Therm."],
@@ -195,43 +406,49 @@ p{margin:0}
     "zaskleni/ramove": ["aOCThW3DFrc", "Combi v antracitu", null, "Video k rámovému zasklení Combi v antracitu."],
     "pergola/sklo": ["xfAfjtb2okg", "Pergola se skrytým žlabem", null, "Video k pergole se skrytým žlabem."],
     "stineni/markyzy": ["R574CH3Njp0", "Markýza ARESBOX", null, "Video k markýze ARESBOX."] };
-  const V = VID[key], vPoster = V ? (V[2] || (S[1] || S[0]).id && `../assets/foto/${(S[1] || S[0]).id}.jpg`) : "";
+  const V = VID[key], vPoster = V ? (V[2] || `../assets/foto/${(S[1] || S[0]).id}.jpg`) : "";
 
-  /* sekce z katalogů Karásek 2026 (katalogy-2026.js), jen pro typy, které katalog má */
-  const KAT = (window.KRkatalog2026 || {})[key];
-  const katHtml = KAT ? `<section class="sec" aria-labelledby="hSys"><div class="wrap"><h2 id="hSys">Systémy a parametry</h2><p class="sub">${esc(KAT.uvod)}</p>
-<div class="par">${KAT.systemy.map(s => `<section><h3>${esc(s.n)}</h3><dl>${s.par.map(([a, b]) => `<div><dt>${esc(a)}</dt><dd>${esc(b)}</dd></div>`).join("")}</dl>${s.vyhody && s.vyhody.length ? `<ul class="vyh">${s.vyhody.map(v => `<li>${esc(v)}</li>`).join("")}</ul>` : ""}</section>`).join("")}</div>
-<p class="src">Podle katalogu Karásek 2026 (${esc(KAT.zdroj.join(", "))}). Rozměry a provedení upřesníme při zaměření.</p></div></section>` : "";
+  /* otázky k typu */
+  const OB = window.KRobsah || {};
+  const FQ = (T.faq || []).map(x => typeof x === "string" ? (([s, i]) => (OB[s] && OB[s].faq || [])[+i])(x.split(".")) : x).filter(Boolean).map(x => ({ q: x.q, a: x.a, z: x.z || x.zdroj }));
+  const host = u => u.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "").replace(/^karasek\.cz/, "karasek.cz");
+  const zdroje = z => [].concat(z || []).map(u => /^https?:/.test(u) ? zdroj(u, esc(host(u).length > 40 ? "karasek.cz" : host(u))) : esc(u)).join(", ");
+
+  /* krátká odpověď */
+  const ko = [["Co to je", esc(T.co)], T.pro && ["Pro koho", esc(T.pro)],
+    ["Co ovlivní cenu", (T.cena && T.cena.length ? esc(T.cena.join(", ").replace(/^./, c => c.toUpperCase())) + ". " : "") + "<b>Cenu spočítáme po zaměření zdarma.</b>"],
+    T.m && ["Jak dlouho", "Montáž trvá obvykle 1–3 dny. Termín výroby domluvíme po zaměření."]].filter(Boolean);
 
   const sib = list.filter(x => x.k !== p.k);
-  const mini = S.slice(0, 3);
-  const zdroj = (u, t) => `<a href="${esc(u)}" target="_blank" rel="noopener">${t}</a>`;
+  const nS = KR.filter(f).length;
+  const PH = `<svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>`;
 
   main.innerHTML = `<div class="wrap">
-<nav class="crumbs" aria-label="Drobečková navigace"><a href="index.html">Úvod</a><span aria-hidden="true">/</span><a href="kategorie.html?oblast=${o}">${NAZ[o]}</a><span aria-hidden="true">/</span><span aria-current="page">${esc(p.n)}</span></nav>
-<div class="ph-hero"><div><h1>${esc(p.n)}</h1><p class="lead">${esc(p.t)}</p>
-<div class="acts"><button type="button" class="btn btn-dark" id="ask1">Poptat tento typ<span class="sr">: ${esc(p.n)}</span></button><a class="lnk" href="${qs}">Podívat se na hotové stavby</a></div></div>
-<figure class="ph-img" style="margin:0"><img src="../assets/foto/${hero.id}.jpg" alt="${esc(hero.n)}" width="944" height="708"><figcaption>Z realizace: ${esc(hero.n)}</figcaption></figure></div></div>
-${par.length ? `<section class="sec" aria-labelledby="hPar"><div class="wrap"><h2 id="hPar">Parametry</h2>
-<div class="par">${par.map(g => `<section><h3>${esc(g.h)}</h3><dl>${g.d.map(([a, b]) => `<div><dt>${esc(a)}</dt><dd>${esc(b)}</dd></div>`).join("")}</dl></section>`).join("")}</div>
-<p class="src">Údaje z popisu na ${zdroj(p.url, "karasek.cz")}. U konkrétní stavby se rozměry a provedení řídí zaměřením.</p></div></section>` : ""}
-${katHtml}
-${V ? `<section class="sec" aria-labelledby="hVid"><div class="wrap"><h2 id="hVid">Video</h2><div class="vwrap"><div class="vid" id="vid"><img src="${vPoster}" alt="${esc(V[3])}" loading="lazy"><button type="button" class="btn play"><svg aria-hidden="true" viewBox="0 0 12 12"><path fill="currentColor" d="M2 1l9 5-9 5z"/></svg>Pustit video</button></div><div><h3>${esc(V[1])}</h3><p>${esc(V[3])} Video se načte z YouTube až po kliknutí.</p></div></div></div></section>` : ""}
-<section class="sec" aria-labelledby="hSt"><div class="wrap"><h2 id="hSt">Hotové stavby tohoto typu</h2>
-${zalozni ? `<p class="sub">K tomuto typu zatím nemáme zvlášť označené stavby. Ukazujeme stavby ze služby ${NAZ[o]}.</p>` : ""}
-<div class="rgrid">${mini.map(s => KRkarta(s, { f })).join("")}</div>
-<p class="after"><a class="lnk" href="${qs}">Všechny hotové stavby tohoto typu</a></p></div></section>
-<section class="sec" aria-labelledby="hSib"><div class="wrap"><h2 id="hSib">Další typy v této službě</h2>
-<ul class="sib">${sib.map(x => `<li><a href="produkt.html?o=${o}&amp;p=${x.k}"><b>${esc(x.n)}</b><span>${NAZ[o]}</span></a></li>`).join("")}</ul>
+<nav class="crumbs" aria-label="Drobečková navigace" data-blok="drobecky"><a href="index.html">Úvod</a><span aria-hidden="true">/</span><a href="kategorie.html?oblast=${o}">${NAZ[o]}</a><span aria-hidden="true">/</span><span aria-current="page">${esc(H1)}</span></nav>
+<div class="ph-hero${pod ? " pod" : ""}" data-blok="hero-stranky"><div><h1>${esc(H1)}</h1>
+<section class="ko" data-blok="kratka-odpoved" aria-labelledby="hKo"><h2 id="hKo" class="sr">Krátká odpověď</h2><dl>${ko.map(([a, b]) => `<div><dt>${a}</dt><dd>${b}</dd></div>`).join("")}</dl></section>
+<div class="acts"><button type="button" class="btn btn-dark" id="ask1">Poptat tento typ<span class="sr">: ${esc(H1)}</span></button><a class="lnk" href="#hSt">${pod ? "Podobné stavby" : "Hotové stavby"}</a></div></div>
+${hero ? `<figure class="ph-img" style="margin:0"><img src="../assets/foto/${hero.id}.jpg" alt="${esc(hero.n)}" width="944" height="708" fetchpriority="high" decoding="async"><figcaption>${pod ? "Podobná stavba" : "Z realizace"}: ${esc(hero.n)}</figcaption></figure>` : ""}</div></div>
+${parHtml ? `<section class="sec" aria-labelledby="hPar" data-blok="parametry"><div class="wrap"><h2 id="hPar">Parametry</h2>${parHtml}</div></section>` : ""}
+${V ? `<section class="sec" aria-labelledby="hVid" data-blok="video"><div class="wrap"><h2 id="hVid">Video</h2><div class="vwrap"><div class="vid" id="vid" data-yt="${V[0]}"><img src="${vPoster}" alt="${esc(V[3])}" loading="lazy" width="944" height="531"><button type="button" class="btn play"><svg aria-hidden="true" viewBox="0 0 12 12"><path fill="currentColor" d="M2 1l9 5-9 5z"/></svg>Pustit video</button></div><div><h3>${esc(V[1])}</h3><p>${esc(V[3])} Video se načte z YouTube až po kliknutí.</p></div></div></div></section>` : ""}
+<section class="sec" aria-labelledby="hSt" data-blok="vypis-realizaci"><div class="wrap"><h2 id="hSt">${pod ? "Podobné stavby" : "Hotové stavby tohoto typu"}</h2>
+${pod ? `<p class="sub">${esc(T.pod)}</p>` : ""}
+<div class="rgrid">${S.slice(0, 6).map(s => KRkarta(s, { f })).join("")}</div>
+<p class="after"><a class="lnk" href="${qs}">${f.system || f.typ !== o ? "Všechny stavby tohoto systému" : `Všechny stavby: ${NAZ[o]}`} (${nS})</a></p></div></section>
+${FQ.length ? `<section class="sec faq" aria-labelledby="hFaq" data-blok="otazky-faq"><div class="wrap faq-g"><div><h2 id="hFaq">Otázky k typu</h2><p class="sub">Odpovědi vycházejí z katalogů Karásek 2026 a z karasek.cz. Na cokoli dalšího se zeptejte v poptávce nebo po telefonu.</p></div>
+<div>${FQ.map(x => `<details><summary>${esc(x.q)}</summary><div class="fa"><p>${esc(x.a)}</p><span class="fz">Zdroj: ${zdroje(x.z)}</span></div></details>`).join("")}</div></div></section>` : ""}
+<section class="sec" aria-labelledby="hSib" data-blok="varianty-typy-sluzby"><div class="wrap"><h2 id="hSib">Další typy v této službě</h2>
+<ul class="sib">${sib.map(x => `<li><a href="produkt.html?o=${o}&amp;p=${x.k}"><b>${esc((TYP[o + "/" + x.k] || x).h || x.n)}</b><span>${NAZ[o]}</span></a></li>`).join("")}</ul>
 <p class="after"><a class="lnk" href="kategorie.html?oblast=${o}">Celá služba: ${NAZ[o]}</a></p></div></section>
-<section class="cta" aria-labelledby="hCta"><div class="wrap in"><div><h2 id="hCta">${esc(p.n)}: poradíme a zaměříme</h2><p>Napište, co plánujete. Ozveme se vám a domluvíme další postup.</p></div>
-<div class="btns"><button type="button" class="btn btn-red" id="ask2">Nezávazná poptávka<span class="sr">: ${esc(p.n)}</span></button>${zdroj(p.url, "Popis na karasek.cz").replace("<a ", '<a class="btn btn-line" ')}</div></div></section>`;
+<section class="cta" aria-labelledby="hCta" data-blok="cta-lista"><div class="wrap in"><div><h2 id="hCta">${esc(H1.split(":")[0])}: poradíme a zaměříme</h2><p>Napište, co plánujete, přiložte fotku nebo nákres. Ozveme se vám a domluvíme zaměření.</p>
+<p class="kon">Vzorky si můžete prohlédnout v <a href="showroom.html">showroomu v Nemanické 5, České Budějovice</a> (Po–Pá 8–16).</p></div>
+<div class="btns"><button type="button" class="btn btn-red" id="ask2">Nezávazná poptávka<span class="sr">: ${esc(H1)}</span></button><a class="btn btn-line btn-tel" href="tel:+420777727328">${PH}777 727 328</a></div></div></section>`;
 
-  /* poptávka předvyplněná typem */
+  /* poptávka předvyplněná službou a typem */
   const ask = () => {
     KRpoptat({ oblast: o });
     const ta = document.querySelector(".kp textarea[name=zprava]");
-    if (ta && !ta.value.trim()) ta.value = `Dobrý den, mám zájem o: ${p.n}. `;
+    if (ta && !ta.value.trim()) ta.value = `Dobrý den, mám zájem o: ${H1}. `;
   };
   $("#ask1").addEventListener("click", ask); $("#ask2").addEventListener("click", ask);
 
