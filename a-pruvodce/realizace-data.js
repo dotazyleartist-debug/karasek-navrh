@@ -164,5 +164,13 @@ window.KR = (() => {
   const srcset = id => `../assets/foto/${id}-t.jpg 480w, ../assets/foto/${id}-k.jpg 600w, ../assets/foto/${id}-m.jpg 720w, ../assets/foto/${id}.jpg 1400w`;
   /* do HTML karet z KRkarta (web.js) doplní srcset a sizes; sizes podle šířky sloupce na dané stránce */
   const sadaFotek = (html, sizes) => html.replace(/<img src="\.\.\/assets\/foto\/(\d{5})\.jpg"/g, (x, id) => `${x} srcset="${srcset(id)}" sizes="${sizes}"`);
-  return { typy, systemy, barvy, lokality, stavby, KEYS, srcset, sadaFotek, match, filter, countWith, fromURL, toQuery, label, stavbyLabel, stavbyNom };
+  /* H1 stavby (design-eye 28. 11.): technické údaje z konce názvu (barva, RAL, PCD, sklo, systém) do řádku pod H1.
+     Text se nemění, jen dělí: [H1, technický řádek]. H1 zůstane aspoň 20 znaků. Používá stavba.html i seo.js. */
+  const TECH = /\d|RAL|PCD|ESG|alinox|antracit|hnědá|světlá|LED|Combi|Plus|Move|kalené/i;
+  const nazev = s => {
+    const t = s.n.split(/(, | – )/); let k = t.length;
+    while (k > 2 && TECH.test(t[k - 1]) && t.slice(0, k - 2).join("").length >= 20) k -= 2;
+    return [t.slice(0, k).join(""), t.slice(k + 1).join("")];
+  };
+  return { nazev, typy, systemy, barvy, lokality, stavby, KEYS, srcset, sadaFotek, match, filter, countWith, fromURL, toQuery, label, stavbyLabel, stavbyNom };
 })();

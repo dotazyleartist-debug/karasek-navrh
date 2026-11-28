@@ -7,7 +7,7 @@
 <title>Zimní zahrady, zasklení a pergoly v regionu | Karásek s.r.o.</title>
 <meta name="description" id="mDesc" content="Zimní zahrady, zasklení teras, pergoly a stínění od Karásek s.r.o., showroom v Českých Budějovicích.">
 <meta name="kr:cilova-url" content="https://karasek.cz/region/&lt;kraj&gt;/">
-<script src="seo.js?v=20261128b" defer></script>
+<script src="seo.js?v=20261128d" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;subset=latin-ext&amp;display=swap" rel="stylesheet">
@@ -135,15 +135,15 @@ body .rhero h1{font-size:54px;line-height:1.06;letter-spacing:-.03em}
 
 <footer id="kontakt"></footer>
 
-<script src="realizace-data.js?v=20261128c"></script>
+<script src="realizace-data.js?v=20261128d"></script>
 <script src="web.js?v=20261128b"></script>
 <script>
 (() => {
   /* Region podle ?r=. Realizace jen ty, které mají v realizace-data.js doloženou lokalitu (pole lok). Nic nedomýšlet. */
   const R = {
     "jizni-cechy": { n: "Jižní Čechy", v: "v Jižních Čechách", lok: "jih", foto: "18034" },
-    "plzensko": { n: "Plzeňsko", v: "na Plzeňsku", lok: "", foto: "" },
-    "vysocina": { n: "Vysočina", v: "na Vysočině", lok: "", foto: "" }
+    "plzensko": { n: "Plzeňsko", v: "na Plzeňsku", lok: "", foto: "17448" },
+    "vysocina": { n: "Vysočina", v: "na Vysočině", lok: "", foto: "24164" }
   };
   const SL = [["zahrada", "Zimní zahrady", "25190"], ["zaskleni", "Zasklení teras", "29532"], ["pergola", "Pergoly", "18873"], ["stineni", "Stínění", "21454"]];
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -155,7 +155,8 @@ body .rhero h1{font-size:54px;line-height:1.06;letter-spacing:-.03em}
     return;
   }
   const S = r.lok ? KR.filter({ lokalita: r.lok }) : [];
-  const hero = S[0] || KR.stavby.find(s => s.id === "29570");
+  /* ukázka bez lokality: pro každý region jiná stavba (design-eye 28. 11.: žlutá 29570 se opakovala na 4 stránkách) */
+  const hero = S[0] || KR.stavby.find(s => s.id === r.foto) || KR.stavby[0];
   const jine = KR.stavby.filter(s => !S.includes(s) && s !== hero).slice(0, 3);
   const karta = s => `<a class="fk" href="stavba.html?id=${s.id}"><img decoding="async" src="../assets/foto/${s.id}.jpg" alt="${esc(s.n)}" loading="lazy" width="944" height="708"><span class="ft-t"><span>${s.typ.map(t => KR.label.typ[t]).join(" + ")}${s.lok ? " · " + esc(KR.label.lokalita[s.lok]) : ""}</span><b>${esc(s.n)}</b></span></a>`;
   $("#rBody").innerHTML = `<section class="rhero" aria-labelledby="h1">

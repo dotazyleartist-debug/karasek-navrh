@@ -43,13 +43,23 @@ p{margin:0}
 /* hero */
 .crumbs{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;font-size:15px;color:var(--muted);padding:24px 0 20px}
 .crumbs a{font-weight:600;color:var(--ink);text-underline-offset:4px}
-.ph-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;align-items:center;padding-bottom:64px}
+.ph-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:48px;align-items:center;padding-bottom:64px}
 .ph-hero h1{font-size:60px;line-height:1.05;letter-spacing:-.03em}
 .ph-hero .lead{margin-top:20px;font-size:19px;line-height:1.55;color:var(--muted);max-width:560px}
 .ph-hero .acts{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin-top:28px}
 .ph-img{border-radius:var(--r-card);overflow:hidden;background:var(--soft);box-shadow:var(--shadow)}
 .ph-img img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
 .ph-img figcaption{padding:12px 18px;font-size:14px;color:var(--muted);background:#fff}
+.ph-img figcaption a{color:var(--ink);font-weight:700;text-underline-offset:3px}
+/* typ bez vlastní fotky (design-eye 28. 11.): místo cizí stavby panel s parametry, ve stejném rámu jako fotka */
+.ph-pan{background:var(--soft);border-radius:var(--r-card);border-top:6px solid var(--kc,var(--modra,#0869eb));padding:30px 34px 32px;align-self:center;display:flex;flex-direction:column;gap:20px}
+.ph-pan .pp-k{font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.ph-pan dl{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 28px}
+.ph-pan dt{font-size:14px;font-weight:700;color:var(--muted)}
+.ph-pan dd{margin:4px 0 0;font-size:21px;font-weight:700;line-height:1.3;letter-spacing:-.01em}
+.ph-pan .pp-n{padding-top:18px;border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
+.ph-pan .pp-a{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
+.ph-pan .pp-a a{font-weight:700;text-underline-offset:4px}
 
 /* sekce */
 .sec{padding:64px 0;border-top:1px solid var(--line)}
@@ -153,6 +163,10 @@ p{margin:0}
   .ph-hero .acts .btn{width:100%}
   .ph-img{order:-1}
   .ph-hero.pod .ph-img{order:0}
+  .ph-hero .ph-img.vl{order:-1}
+  .ph-pan{padding:22px 20px 24px;gap:16px}
+  .ph-pan dl{grid-template-columns:1fr;gap:12px}
+  .ph-pan dd{font-size:18px}
   .sec{padding:40px 0}
   .sec h2,.cta h2{font-size:28px}
   .rgrid,.sib,.par,.nf .tl{grid-template-columns:1fr}
@@ -171,6 +185,8 @@ p{margin:0}
 .pd li+li{border-left:1px solid var(--line)}
 .pd b{font-size:24px;line-height:1.2;letter-spacing:-.01em}
 .pd span{font-size:15px;line-height:1.35;color:var(--muted)}
+
+.pd li:first-child b{font-size:56px;line-height:1;font-weight:800;letter-spacing:-.03em} /* Google 4,9 aspoň 48 px (laťka, design-eye 28. 11.) */
 .pd a{color:var(--ink);font-weight:600;text-underline-offset:3px}
 .gl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:28px}
 .gl.n3{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -239,6 +255,7 @@ h3.dal{font-size:22px;margin-top:44px}
   .pd{margin-bottom:36px;padding-top:16px}
   .pd li{padding:2px 14px}
   .pd b{font-size:21px}
+  .pd li:first-child b{font-size:48px}
   .pd span{font-size:14px}
   .gl,.gl.n3{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:20px}
   .gl button:first-child{grid-column:1/-1;grid-row:auto;aspect-ratio:4/3}
@@ -263,14 +280,14 @@ h3.dal{font-size:22px;margin-top:44px}
 }
 </style>
 <link rel="stylesheet" href="vzhled.css?v=20261128b">
-<script src="seo.js?v=20261128b" defer></script>
+<script src="seo.js?v=20261128d" defer></script>
 </head>
 <body data-page="produkt" data-oblast="zahrada">
 <a class="skip" href="#obsah">Přeskočit na obsah</a>
 <header id="hd"></header>
 <main id="obsah"></main>
 <footer id="kontakt"></footer>
-<script src="realizace-data.js?v=20261128c"></script>
+<script src="realizace-data.js?v=20261128d"></script>
 <script src="katalog.js"></script>
 <script src="obsah-sluzeb.js"></script>
 <script src="katalogy-2026.js"></script>
@@ -358,6 +375,7 @@ h3.dal{font-size:22px;margin-top:44px}
       co: "Interiérové posuvné stěny Plus (výška do 2 200 mm), Combi (do 3 000 mm) a pevné Fix. Kolejnici 17 mm lze zapustit do podlahy.",
       pro: "K oddělení místností v bytech, domech i komerčních objektech bez stavebních úprav.",
       cena: ["výška", "počet křídel", "výplň (sklo, polykarbonát, LTD)", "zamykání"],
+      hf: ["steny-karasek-cz", "Posuvné dělící stěny v interiéru, fotka z karasek.cz", 1280, 960],
       d: ["24151", "17845", "23236"], pod: "Interiérové dělící stěny zatím v realizacích nemáme. Ukazujeme stejné rámové systémy Combi a Plus na terasách.",
       faq: [{ q: "Potřebuji kvůli příčce stavební úpravy?", a: "Ne. Mobilní příčky oddělí místnosti v bytech, domech i komerčních objektech bez stavebních úprav.", z: W },
         { q: "Bude v průchodu práh?", a: "Kolejnici 17 mm lze zapustit do podlahy, takže průchod je bez prahu.", z: KAT + "Dělící stěny" },
@@ -384,7 +402,7 @@ h3.dal{font-size:22px;margin-top:44px}
       co: "Lamelová pergola Panorama 2.0: lamely natáčené motorem až o 170°, modul až 645 × 470 cm, sněhová zátěž až 250 kg/m².",
       pro: "Pro terasu, kde chcete regulovat slunce i větrání a zavřenou střechou se chránit před deštěm.",
       cena: ["počet modulů a rozměr", "boční uzavření (zasklení, rolety ZIP, lamelové stěny)", "senzory a LED"],
-      m: 1, d: ["18873"],
+      m: 1, d: ["18873"], hf: ["18873-g3", "Z realizace: Zasklená bioklimatická pergola – RAL 7016, pohled zespodu na lamely"],
       faq: ["pergola.5", { q: "Jak se pergola ovládá?", a: "Dálkovým ovladačem nebo mobilní aplikací. Volitelně jde doplnit větrný senzor a dešťové čidlo.", z: KAT + "Panorama 2.0" },
         { q: "Unese lamelová střecha sníh?", a: "Katalog Panorama 2.0 uvádí sněhové zatížení až 250 kg/m². Zavřené lamely uzavírají střechu zcela nepropustně.", z: KAT + "Panorama 2.0" },
         "pergola.4", "pergola.1"] },
@@ -419,6 +437,7 @@ h3.dal{font-size:22px;margin-top:44px}
       pro: "Pro zastínění velké plochy terasy. Realizace pouze v Jižních Čechách.",
       cena: ["typ markýzy (klasická, kazetová, výklopná)", "šířka a výsuv", "motor", "látka"],
       d: ["21454", "23293"], pod: "Markýzu na terasu zatím v realizacích nemáme. Ukazujeme jiné stínění, které jsme montovali.",
+      hf: ["markyza-aresbox", "Markýza ARESBOX na rodinném domě, záběr z našeho videa", 980, 530, "#hVid"],
       faq: ["stineni.2", "stineni.0", "stineni.3", "stineni.4"] },
     "stineni/markyzy-zz": { h: "Markýzy pro zimní zahrady a pergoly",
       co: "Střešní markýzy Ancona, Capri a Portofino nad sklo i pod něj, s motorem Somfy iO.",
@@ -451,12 +470,12 @@ h3.dal{font-size:22px;margin-top:44px}
     "stineni/zaluzie": { h: "Venkovní žaluzie a rolety",
       co: "Venkovní žaluzie a rolety na kliku, provázek nebo s motorem. Doplnit lze automatické řízení podle větru.",
       pro: "Proti ostrému slunci i pro soukromí. Realizace pouze v Jižních Čechách.",
-      d: ["25483", "17392", "17332"], pod: "U těchto staveb jsme montovali rolety, jejich typ ale v popisu realizace uvedený není.",
+      hc: "Stavba s roletami", d: ["25483", "17392", "17332"], pod: "U těchto staveb jsme montovali rolety, jejich typ ale v popisu realizace uvedený není.",
       faq: ["stineni.0", "stineni.3", "stineni.5"] },
     "stineni/vnitrni": { h: "Vnitřní stínění",
       co: "Hliníkové a dřevěné žaluzie, rolety, duo rolety, plissé a japonské stěny.",
       pro: "Do domu, bytu, pergoly i zimní zahrady. Realizace pouze v Jižních Čechách.",
-      d: ["21506"], pod: "Ukazujeme zasklenou terasu, kde jsme jako vnitřní stínění montovali hliníkové žaluzie.",
+      hc: "Stavba s hliníkovými žaluziemi", d: ["21506"], pod: "Ukazujeme zasklenou terasu, kde jsme jako vnitřní stínění montovali hliníkové žaluzie.",
       par: [["Sortiment", "hliníkové a dřevěné žaluzie, rolety, duo rolety, plissé, japonské stěny"], ["Rolety", "látkové, s řetízkem nebo motorem, i kazetové"], ["Plissé", "mezi krokve, ovládání tyčkou, vedené na lankách"]],
       faq: [{ q: "Jak se vnitřní rolety ovládají?", a: "Ručně řetízkem, nebo motorem. Dodáváme i kazetové rolety.", z: KAT + "Stínící technika" },
         { q: "Kam se hodí plissé?", a: "Plissé žaluzie se instalují mezi krokve zimní zahrady a ovládají se tyčkou. Do otevřených pergol se nehodí kvůli vlhkosti.", z: [KAT + "Stínící technika", "https://karasek.cz/produkty/stinici-technika/markyzy-pro-zimni-zahrady-a-pergoly/"] },
@@ -504,7 +523,7 @@ h3.dal{font-size:22px;margin-top:44px}
     "zaskleni/bezramove": ["wmvKgEBCEmQ", "Patio Living Move 3.0", "../assets/video/video-move-showroom.jpg", "Video k bezrámovému zasklení Patio Living Move 3.0."],
     "zaskleni/ramove": ["aOCThW3DFrc", "Combi v antracitu", null, "Video k rámovému zasklení Combi v antracitu."],
     "pergola/sklo": ["xfAfjtb2okg", "Pergola se skrytým žlabem", null, "Video k pergole se skrytým žlabem."],
-    "stineni/markyzy": ["R574CH3Njp0", "Markýza ARESBOX", null, "Video k markýze ARESBOX."] };
+    "stineni/markyzy": ["R574CH3Njp0", "Markýza ARESBOX", "../assets/foto/markyza-aresbox.jpg", "Video k markýze ARESBOX."] };
   const V = VID[key], vPoster = V ? (V[2] || `../assets/foto/${(S[1] || S[0]).id}.jpg`) : "";
 
   /* ---------- TOP-CR balík A (28. 11. 2026, 05-realizace/2026-11-28-dostavba/TOP-CR.md) ---------- */
@@ -532,6 +551,23 @@ ${t.f ? `<figure class="tm-f"><img src="../assets/foto/${t.f[0]}.jpg" alt="${esc
 <table class="cmp"><thead><tr><td></td>${C.sloupce.map(([k, n]) => `<th scope="col"${k === p.k ? ' class="cur"' : ""}>${k === p.k ? esc(n) : `<a href="produkt.html?o=${o}&amp;p=${k}">${esc(n)}</a>`}</th>`).join("")}</tr></thead>
 <tbody>${C.radky.map(r => `<tr><th scope="row">${esc(r[0])}</th>${r.slice(1).map((c, j) => `<td${C.sloupce[j][0] === p.k ? ' class="cur"' : ""}>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table>
 <p class="src">Podle katalogů Karásek 2026 (${esc(C.zdroj.join(", "))}). Rozměry a provedení upřesníme při zaměření.</p></div></section>` : "";
+
+  /* hero (design-eye 28. 11.): fotka jen když ukazuje daný výrobek. T.hf = vlastní fotka [soubor, popisek, š, v, odkaz],
+     T.hc = popisek u stavby, kde výrobek opravdu je; jinak u typů bez realizace (pod) panel s parametry místo cizí stavby */
+  const panPar = (T.par || (KAT26 && KAT26.systemy[0].par) || (web[0] && web[0].d) || []).slice(0, 4);
+  const nO = KR.filter({ typ: o }).length;
+  let heroHtml = "";
+  if (T.hf) {
+    const [hf, cap, w = 1400, h = 1050, odk] = T.hf;
+    heroHtml = `<figure class="ph-img vl" style="margin:0"><img src="../assets/foto/${hf}.jpg" alt="${esc(cap.replace(/^Z realizace: /, ""))}" width="${w}" height="${h}"${w / h > 1.5 ? ` style="aspect-ratio:${w}/${h}"` : ""} fetchpriority="high" decoding="async"><figcaption>${esc(cap)}${odk ? ` · <a href="${odk}">Pustit video</a>` : ""}</figcaption></figure>`;
+  } else if (hero && (!pod || T.hc)) {
+    heroHtml = `<figure class="ph-img vl" style="margin:0"><img src="../assets/foto/${hero.id}.jpg" alt="${esc(hero.n)}" width="944" height="708" fetchpriority="high" decoding="async"><figcaption>${T.hc || "Z realizace"}: ${esc(hero.n)}</figcaption></figure>`;
+  } else if (panPar.length) {
+    heroHtml = `<aside class="ph-pan" style="--kc:var(--kat-${o})" aria-label="${esc(H1)} v kostce"><p class="pp-k">V kostce</p>
+<dl>${panPar.map(([a, b]) => `<div><dt>${esc(a)}</dt><dd>${esc(b)}</dd></div>`).join("")}</dl>
+<p class="pp-n">Vlastní fotku tohoto typu zatím nemáme, proto tu neukazujeme cizí stavbu. Rozměry a provedení upřesníme při zaměření zdarma.</p>
+<div class="pp-a"><a href="realizace.html?typ=${o}">${NAZ[o]} v realizacích (${nO})</a><a href="showroom.html">Showroom Nemanická 5</a></div></aside>`;
+  }
 
   /* další stavby služby, když typ má méně než 3 vlastní (B1: bioklima → další pergoly) */
   const dal = !pod && S.length < 3 ? KR.filter({ typ: o }).filter(x => !S.includes(x)).slice(0, 3) : [];
@@ -570,17 +606,16 @@ ${RV.map(k => `<blockquote class="q"><p>„${esc(REC[k][0])}“</p><cite><b>${es
 <div class="ph-hero${pod ? " pod" : ""}" data-blok="hero-stranky"><div><h1>${esc(H1)}</h1>
 <section class="ko" data-blok="kratka-odpoved" aria-labelledby="hKo"><h2 id="hKo" class="sr">Krátká odpověď</h2><dl>${ko.map(([a, b]) => `<div><dt>${a}</dt><dd>${b}</dd></div>`).join("")}</dl></section>
 <div class="acts"><button type="button" class="btn btn-dark" id="ask1">Poptat tento typ<span class="sr">: ${esc(H1)}</span></button><a class="lnk" href="#hSt">${pod ? "Podobné stavby" : "Hotové stavby"}</a></div></div>
-${hero ? `<figure class="ph-img" style="margin:0"><img src="../assets/foto/${hero.id}.jpg" alt="${esc(hero.n)}" width="944" height="708" fetchpriority="high" decoding="async"><figcaption>${pod ? "Podobná stavba" : "Z realizace"}: ${esc(hero.n)}</figcaption></figure>` : ""}</div>
+${heroHtml}</div>
 ${pdHtml}</div>
 ${galHtml}
 ${parHtml ? `<section class="sec" aria-labelledby="hPar" data-blok="parametry"><div class="wrap"><h2 id="hPar">Parametry</h2>${parHtml}</div></section>` : ""}
 ${temHtml}
 ${cmpHtml}
 ${V ? `<section class="sec" aria-labelledby="hVid" data-blok="video"><div class="wrap"><h2 id="hVid">Video</h2><div class="vwrap"><div class="vid" id="vid" data-yt="${V[0]}"><img src="${vPoster}" alt="${esc(V[3])}" loading="lazy" width="944" height="531"><button type="button" class="btn play"><svg aria-hidden="true" viewBox="0 0 12 12"><path fill="currentColor" d="M2 1l9 5-9 5z"/></svg>Pustit video</button></div><div><h3>${esc(V[1])}</h3><p>${esc(V[3])} Video se načte z YouTube až po kliknutí.</p></div></div></div></section>` : ""}
-<section class="sec" aria-labelledby="hSt" data-blok="vypis-realizaci"><div class="wrap"><h2 id="hSt">${pod ? "Podobné stavby" : "Hotové stavby tohoto typu"}</h2>
+<section class="sec" aria-labelledby="hSt" data-blok="vypis-realizaci"><div class="wrap"><h2 id="hSt">${pod ? "Podobné stavby" : dal.length ? `Hotové stavby tohoto typu a další ${NAZ[o].toLowerCase()}` : "Hotové stavby tohoto typu"}</h2>
 ${pod ? `<p class="sub">${esc(T.pod)}</p>` : ""}
-<div class="rgrid">${S.slice(0, 6).map(s => KRkarta(s, { f })).join("")}</div>
-${dal.length ? `<h3 class="dal">Další ${NAZ[o].toLowerCase()}</h3><div class="rgrid">${dal.map(s => KRkarta(s, { f: { typ: o } })).join("")}</div>` : ""}
+<div class="rgrid">${S.slice(0, 6).map(s => KRkarta(s, { f })).join("")}${dal.slice(0, 3 - Math.min(S.length, 3)).map(s => KRkarta(s, { f: { typ: o } })).join("")}</div>
 <p class="after"><a class="lnk" href="${qs}">${f.system || f.typ !== o ? "Všechny stavby tohoto systému" : `Všechny stavby: ${NAZ[o]}`} (${nS})</a></p></div></section>
 ${rvHtml}
 ${FQ.length ? `<section class="sec faq" aria-labelledby="hFaq" data-blok="otazky-faq"><div class="wrap faq-g"><div><h2 id="hFaq">Otázky k typu</h2><p class="sub">Odpovědi vycházejí z katalogů Karásek 2026 a z karasek.cz. Na cokoli dalšího se zeptejte v poptávce nebo po telefonu.</p></div>

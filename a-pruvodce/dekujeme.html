@@ -7,7 +7,7 @@
 <title>Děkujeme za poptávku | Karásek</title>
 <meta name="description" content="Poptávku máme. Co bude dál, kontakt a showroom Karásek s.r.o. v Českých Budějovicích.">
 <meta name="kr:cilova-url" content="https://karasek.cz/poptavka/dekujeme/">
-<script src="seo.js?v=20261128b" defer></script>
+<script src="seo.js?v=20261128d" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;subset=latin-ext&amp;display=swap" rel="stylesheet">
@@ -133,7 +133,7 @@ body .dk h1{font-size:58px;line-height:1.05;letter-spacing:-.03em}
       <div class="tel"><a class="btn btn-red" href="tel:+420777727328">Nechcete čekat? Zavolejte 777 727 328</a><a class="lnk" href="realizace.html">Prohlédnout realizace</a></div>
       <p class="demo">Ukázka návrhu: z prototypu se poptávka nikam neodesílá.</p>
     </div>
-    <figure><a class="fk" href="stavba.html?id=29570"><img decoding="async" src="../assets/foto/29570.jpg" alt="Sezonní zimní zahrada napojená na původní pergolu, antracit" width="944" height="708" fetchpriority="high"><span class="ft-t"><span>Z realizace</span><b>Sezonní zimní zahrada, napojená na původní pergolu</b></span></a></figure>
+    <figure><a class="fk" href="stavba.html?id=24158"><img decoding="async" src="../assets/foto/24158.jpg" alt="Posuvné zasklení dřevěné pergoly, Combi antracit" width="944" height="708" fetchpriority="high"><span class="ft-t"><span>Z realizace</span><b>Posuvné zasklení dřevěné pergoly – Combi Antracit</b></span></a></figure>
   </section>
 </div>
 
@@ -172,15 +172,15 @@ body .dk h1{font-size:58px;line-height:1.05;letter-spacing:-.03em}
 
 <footer id="kontakt"></footer>
 
-<script src="realizace-data.js?v=20261128c"></script>
+<script src="realizace-data.js?v=20261128d"></script>
 <script src="web.js?v=20261128b"></script>
 <script>
 (() => {
   /* 3 realizace: podle oblasti z formuláře (?oblast=), jinak nejnovější */
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const o = new URLSearchParams(location.search).get("oblast") || "";
-  let S = (KR.typy.some(t => t[0] === o) ? KR.filter({ typ: o }) : []).filter(s => s.id !== "29570");
-  if (S.length < 3) S = S.concat(KR.stavby.filter(s => !S.includes(s) && s.id !== "29570"));
+  let S = (KR.typy.some(t => t[0] === o) ? KR.filter({ typ: o }) : []).filter(s => s.id !== "24158");
+  if (S.length < 3) S = S.concat(KR.stavby.filter(s => !S.includes(s) && s.id !== "24158"));
   document.getElementById("dReal").innerHTML = S.slice(0, 3).map(s => `<a class="fk" href="stavba.html?id=${s.id}"><img decoding="async" src="../assets/foto/${s.id}.jpg" alt="${esc(s.n)}" loading="lazy" width="944" height="708"><span class="ft-t"><span>${s.typ.map(t => KR.label.typ[t]).join(" + ")} · ${KRkdy(s.d)}</span><b>${esc(s.n)}</b></span></a>`).join("");
 })();
 </script>

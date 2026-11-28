@@ -89,7 +89,7 @@
       const s = stavba(q.get("id") || (!href && document.body.dataset.stavba));
       if (!s) return { klic: "stavba", nf: true };
       const typy = s.typ.map(t => KR.label.typ[t]).join(" + "), lok = s.lok ? ", " + KR.label.lokalita[s.lok] : "";
-      return { klic: "stavba", s, url: s.odkaz, h1: s.n, title: fit(s.n, 60 - 20) + " – realizace Karásek",
+      return { klic: "stavba", s, url: s.odkaz, h1: KR.nazev ? KR.nazev(s)[0] : s.n, title: fit(s.n, 60 - 20) + " – realizace Karásek",
         desc: fitD(`${s.n}. ${typy}${lok}: fotky, systém, barva a parametry hotové stavby. Podobnou vám spočítáme po zaměření zdarma.`) };
     }
     if (p === "realizace") {
