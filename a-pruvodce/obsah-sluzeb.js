@@ -68,6 +68,11 @@ window.KRobsah = (() => {
         { q: "Rámové, nebo bezrámové zasklení?",
           a: "Obecně nelze říct, který je lepší. Rámový systém je těsnější pro zimní období a levnější, bezrámový je tu pro nerušený výhled. Všechny naše systémy jsou atestované a velmi odolné větru. Konkrétní typ doporučíme podle vaší poptávky.",
           zdroj: ZAS },
+        { q: "Co vydrží bezpečnostní sklo?",
+          a: "Bezrámové zasklení Patio Living Move nese kalené bezpečnostní sklo ESG o tloušťce 8–12 mm. Jak sklo ESG obstojí v zátěžové zkoušce, ukazuje náš test ve videu.",
+          zdroj: [ZAS, S.bezramove],
+          /* starý web, FAQ „Co vydrží bezpečnostní sklo?“ → youtu.be/gwNmQ11dTjM; název z YouTube (kanál Karásek s.r.o.), 28. 11. 2026 */
+          video: { yt: "gwNmQ11dTjM", nazev: "Test skla ESG: vydrží sklo přejetí autem?" } },
         { q: "Potřebuji na zasklení pergoly stavební povolení?",
           a: "Ve většině případů není pro zasklení stávající pergoly stavební povolení potřeba. Doporučujeme ale individuální konzultaci.",
           zdroj: B.cenaZas },

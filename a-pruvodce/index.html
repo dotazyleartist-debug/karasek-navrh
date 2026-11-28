@@ -515,7 +515,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
 <main id="obsah">
 <div class="hero">
   <picture><source media="(max-width: 820px)" srcset="../assets/video/hero-mobil-poster.jpg" width="720" height="1280"><img width="1920" height="1080" decoding="async" fetchpriority="high" class="poster" id="poster" src="../assets/video/hero-pc-poster.jpg" alt=""></picture>
-  <video id="hv" autoplay muted loop playsinline preload="metadata" poster="../assets/video/hero-pc-poster.jpg" aria-hidden="true"></video>
+  <video id="hv" muted loop playsinline preload="none" aria-hidden="true"></video>
   <div class="shade"></div>
   <div class="wrap hero-in">
     <h1><span class="sr">Zimní zahrady, zasklení teras, pergoly a stínění od roku 1995</span><span class="rot" aria-hidden="true"><span class="rw" id="rw" style="--k:var(--kat-zahrada)">Zimní zahrada<span class="pq">,</span></span></span><span class="rs" id="rs" aria-hidden="true">kterou využijete celý rok<span class="pq">.</span></span></h1>
@@ -536,7 +536,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
     <h2 id="q">Co chcete u domu?</h2>
     <div class="picks">
       <a class="pick" data-a="zahrada" href="kategorie.html?oblast=zahrada"><img width="1400" height="1054" decoding="async" src="../assets/foto/25190.jpg" alt=""><b>Zimní zahrada<svg aria-hidden="true"><use href="#i-sip"/></svg></b></a>
-      <a class="pick" data-a="zaskleni" href="kategorie.html?oblast=zaskleni"><img width="1400" height="1050" decoding="async" src="../assets/foto/17845.jpg" alt=""><b>Zasklení terasy<svg aria-hidden="true"><use href="#i-sip"/></svg></b></a>
+      <a class="pick" data-a="zaskleni" href="kategorie.html?oblast=zaskleni"><img width="480" height="360" decoding="async" src="../assets/foto/17845-t.jpg" alt=""><b>Zasklení terasy<svg aria-hidden="true"><use href="#i-sip"/></svg></b></a>
       <a class="pick" data-a="pergola" href="kategorie.html?oblast=pergola"><img width="1400" height="1050" decoding="async" src="../assets/foto/17692.jpg" alt=""><b>Pergola<svg aria-hidden="true"><use href="#i-sip"/></svg></b></a>
       <a class="pick" data-a="stineni" href="kategorie.html?oblast=stineni"><img width="1400" height="1050" decoding="async" src="../assets/foto/21454.jpg" alt=""><b>Stínění<svg aria-hidden="true"><use href="#i-sip"/></svg></b></a>
     </div>
@@ -766,35 +766,43 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
   const v = $("#hv"), poster = $("#poster"), prog = $("#prog"), pause = $("#pause");
   const pst = mobile ? "../assets/video/hero-mobil-poster.jpg" : "../assets/video/hero-pc-poster.jpg";
   poster.src = pst; v.poster = pst;
-  if (reduce) { v.removeAttribute("autoplay"); }
-  else {
-    v.src = mobile ? "../assets/video/hero-mobil.mp4" : "../assets/video/hero-pc.mp4";
-    v.play().catch(() => {});
+  // TOP-CR U2 (28. 11. 2026): mobil video nestahuje sám (2,3 MB) – plakát + „Přehrát video“; slova se točí podle hodin, po spuštění podle videa
+  let vidOn = false;
+  const startVid = () => { if (!vidOn) { vidOn = true; v.preload = "auto"; v.src = mobile ? "../assets/video/hero-mobil.mp4" : "../assets/video/hero-pc.mp4"; } return v.play().catch(() => {}); };
+  const setPause = stop => {
+    pause.setAttribute("aria-pressed", String(stop));
+    $("#pauseTx").textContent = stop ? "Přehrát video" : "Pozastavit video";
+    $("#pauseIco").setAttribute("d", stop ? "M2 1l11 6-11 6z" : "M2 1h3.5v12H2zM8.5 1H12v12H8.5z");
+  };
+  if (mobile || reduce) setPause(true);
+  if (!reduce) {
+    if (!mobile) startVid();
+    const T0 = performance.now(), LOOP = 16; // 4 slova × 4 s = délka smyčky videa
+    const now = () => vidOn && v.duration ? v.currentTime : ((performance.now() - T0) / 1000) % LOOP;
     // 26. 11. 2026 (klient): v hero jen 4 produkty, slovo v barvě kategorie; druhý řádek u stínění je návrh k odsouhlasení
     const ROT = [["17372", "Zimní zahrada,", "zahrada", "kterou využijete celý rok."], ["24199", "Zasklená terasa,", "zaskleni", "kterou využijete celý rok."], ["18873", "Pergola,", "pergola-txt", "kterou využijete celý rok."], ["23329", "Stínění,", "stineni", "které využijete celé léto."]];
     const rw = $("#rw"), rs = $("#rs"), nv = $("#nv");
     let cur = 0;
     const swap = i => {
       cur = i; const [id, w, k, r2] = ROT[i], st = KR.stavby.find(x => x.id === id);
-      rw.classList.add("out"); nv.classList.add("out"); rs.classList.add("out");
+      const nvOn = vidOn; // bez videa (mobil) zůstává „Na videu“ u stavby z plakátu
+      rw.classList.add("out"); if (nvOn) nv.classList.add("out"); rs.classList.add("out");
       setTimeout(() => {
         // text jen z konstanty ROT, koncová interpunkce do .pq (bez mezery před čárkou)
         rw.innerHTML = w.replace(/([,.])$/, '<span class="pq">$1</span>'); rw.style.setProperty("--k", `var(--kat-${k})`);
         rs.innerHTML = r2.replace(/([,.])$/, '<span class="pq">$1</span>'); rs.classList.remove("out");
-        $("#nvName").textContent = st.n; $("#nvDot").style.setProperty("--c", `var(--${k})`); nv.href = "stavba.html?id=" + id;
+        if (nvOn) { $("#nvName").textContent = st.n; $("#nvDot").style.setProperty("--c", `var(--${k})`); nv.href = "stavba.html?id=" + id; }
         rw.classList.remove("out"); rw.classList.add("pre"); nv.classList.remove("out");
         requestAnimationFrame(() => requestAnimationFrame(() => rw.classList.remove("pre")));
       }, 450);
     };
-    const tick = () => { if (v.duration) { const i = Math.floor(((v.currentTime + 0.5) % (ROT.length * 4)) / 4) % ROT.length; if (i !== cur) swap(i); } if (v.duration) prog.style.transform = `scaleX(${(v.currentTime / v.duration).toFixed(4)})`; requestAnimationFrame(tick); };
+    const tick = () => { const t = now(), d = vidOn && v.duration ? v.duration : LOOP; if (!vidOn || v.duration) { const i = Math.floor(((t + 0.5) % (ROT.length * 4)) / 4) % ROT.length; if (i !== cur) swap(i); prog.style.transform = `scaleX(${(t / d).toFixed(4)})`; } requestAnimationFrame(tick); };
     requestAnimationFrame(tick);
   }
   pause.addEventListener("click", () => {
-    const stop = !v.paused;
-    if (stop) v.pause(); else v.play().catch(() => {});
-    pause.setAttribute("aria-pressed", String(stop));
-    $("#pauseTx").textContent = stop ? "Přehrát video" : "Pozastavit video";
-    $("#pauseIco").setAttribute("d", stop ? "M2 1l11 6-11 6z" : "M2 1h3.5v12H2zM8.5 1H12v12H8.5z");
+    const stop = vidOn && !v.paused;
+    if (stop) v.pause(); else startVid();
+    setPause(stop);
   });
 
   // --- data realizací: sdílená se stránkou výsledků (realizace-data.js) ---

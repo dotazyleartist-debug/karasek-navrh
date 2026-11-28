@@ -8,6 +8,10 @@
 <meta name="description" id="mDesc" content="Hliníkové sezonní a dřevěné celoroční zimní zahrady na míru, se skrytým žlabem a statikou podle sněhové oblasti. Cenu spočítáme po zaměření zdarma.">
 <meta name="kr:cilova-url" content="https://karasek.cz/produkty/zimni-zahrady/">
 <script src="seo.js?v=20261128b" defer></script>
+<script>/* TOP-CR Z1 (28. 11. 2026): hero foto oblasti stahovat hned (preload + fetchpriority); id musí sedět s OBL[*].foto níže */
+(() => { const F = { zahrada: "17372", zaskleni: "24199", pergola: "17454", stineni: "21454" }, k = new URLSearchParams(location.search).get("oblast");
+  const l = document.createElement("link"); l.rel = "preload"; l.as = "image"; l.fetchPriority = "high"; l.setAttribute("fetchpriority", "high");
+  l.href = `../assets/foto/${F[k] || F.zahrada}.jpg`; document.head.appendChild(l); })();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;subset=latin-ext&amp;display=swap" rel="stylesheet">
@@ -234,6 +238,11 @@ section{padding:112px 0}
 .vid{position:relative;border-radius:var(--r-card);overflow:hidden;aspect-ratio:9/16;background:#222}
 .vid img,.vid iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
 .vid .play{left:50%;transform:translateX(-50%);bottom:22px;white-space:nowrap}
+.kf-v{margin:14px 0 12px;max-width:480px}
+.kf-v .vb{position:relative;aspect-ratio:16/9;border-radius:var(--r-card);overflow:hidden;background:#222}
+.kf-v img,.kf-v iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+.kf-v figcaption{margin-top:8px;font-size:14px;color:var(--muted)}
+.kf-v .play{top:14px;bottom:auto;left:14px} /* nahoře: dole má náhled YouTube vlastní titulek */
 .score{display:flex;gap:16px;margin-bottom:28px;flex-wrap:wrap}
 .score div{background:#fff;border-radius:var(--r-card);padding:20px 26px;box-shadow:0 0 0 1px var(--line);flex:1;min-width:220px}
 .score b{display:flex;align-items:center;gap:8px;font-size:40px;font-weight:700;letter-spacing:-.03em;line-height:1}
@@ -466,7 +475,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
 
 <main id="obsah">
 <div class="khero">
-  <img decoding="async" id="kImg" src="" alt="">
+  <img decoding="async" fetchpriority="high" id="kImg" alt="">
   <div class="shade"></div>
   <div class="wrap kh-in">
     <nav class="crumbs" aria-label="Drobečková navigace"><a href="index.html">Úvod</a><span aria-hidden="true">/</span><span>Služby</span><span aria-hidden="true">/</span><span aria-current="page" id="kCrumb"></span></nav>
@@ -874,6 +883,15 @@ const CITACE = {
   }
   if (typeof window.KRsrovnani === "function" && zkus(window.KRsrovnani, $("#srovnaniObsah"))) $("#srovnani").hidden = false;
   if (typeof window.KRfaq === "function" && zkus(window.KRfaq, $("#faqObsah"))) $("#faq").hidden = false;
+  // TOP-CR S1: video u otázky (obsah-sluzeb.js f.video) – náhled, iframe až na klik; bez <p>, ať se text tlačítka nedostane do odpovědi FAQPage
+  ((window.KRobsah || {})[o] || { faq: [] }).faq.forEach((f, i) => {
+    const d = $$("#faqObsah details")[i]; if (!f.video || !d) return;
+    const a = d.querySelector(".kf-a") || d, fig = document.createElement("figure");
+    fig.className = "kf-v"; fig.dataset.yt = f.video.yt; fig.dataset.ytNazev = f.video.nazev;
+    fig.innerHTML = `<div class="vb"><img loading="lazy" decoding="async" width="480" height="360" src="https://i.ytimg.com/vi/${f.video.yt}/hqdefault.jpg" alt="${f.video.nazev}, náhled videa"><button type="button" class="play"><i><svg aria-hidden="true"><use href="#i-play"/></svg></i>Pustit test skla</button></div><figcaption>${f.video.nazev} (YouTube, Karásek s.r.o.)</figcaption>`;
+    a.querySelector("p").after(fig);
+    fig.querySelector(".play").addEventListener("click", () => playIn(fig.querySelector(".vb"), f.video.yt, f.video.nazev));
+  });
   // odkaz z menu na #k-<slug>: posun na kartu pod lepicí hlavičku a krátké zvýraznění
   const naKartu = () => {
     if (!/^#k-/.test(location.hash)) return;
