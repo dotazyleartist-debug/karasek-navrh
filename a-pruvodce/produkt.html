@@ -262,7 +262,7 @@ h3.dal{font-size:22px;margin-top:44px}
   h3.dal{font-size:20px;margin-top:32px}
 }
 </style>
-<link rel="stylesheet" href="vzhled.css?v=20261126g">
+<link rel="stylesheet" href="vzhled.css?v=20261128b">
 <script src="seo.js?v=20261128b" defer></script>
 </head>
 <body data-page="produkt" data-oblast="zahrada">
@@ -270,11 +270,11 @@ h3.dal{font-size:22px;margin-top:44px}
 <header id="hd"></header>
 <main id="obsah"></main>
 <footer id="kontakt"></footer>
-<script src="realizace-data.js"></script>
+<script src="realizace-data.js?v=20261128c"></script>
 <script src="katalog.js"></script>
 <script src="obsah-sluzeb.js"></script>
 <script src="katalogy-2026.js"></script>
-<script src="web.js?v=20261128a"></script>
+<script src="web.js?v=20261128b"></script>
 <script>
 (() => {
   const $ = s => document.querySelector(s);
@@ -508,8 +508,9 @@ h3.dal{font-size:22px;margin-top:44px}
   const V = VID[key], vPoster = V ? (V[2] || `../assets/foto/${(S[1] || S[0]).id}.jpg`) : "";
 
   /* ---------- TOP-CR balík A (28. 11. 2026, 05-realizace/2026-11-28-dostavba/TOP-CR.md) ---------- */
-  /* pruh důkazů: stejná čísla jako úvod (Google, Firmy.cz ze ZADANI; 6500+ = údaj klienta, potvrzení O-FIR-7) */
-  const pdHtml = `<ul class="pd" aria-label="Hodnocení a fakta" data-blok="dukazy"><li><b>4,9</b><span>Google, ze 110 recenzí</span></li><li><b>98,9 %</b><span>Firmy.cz, z 38 hodnocení</span></li><li><b>6500+</b><span>realizací celkem</span></li><li><b>Showroom</b><span><a href="showroom.html">Nemanická 5, České Budějovice</a></span></li></ul>`;
+  /* pruh důkazů: Google 4,9/110 (snímek profilu od Marka 11. 11. 2026) a Firmy.cz 98,9 %/38 (firmy.cz/detail/185900, 11. 11. 2026)
+     podle 02-navrhy/2026-11-17-redesign-d1/ZADANI.md ř. 12–13; 6500+ = údaj klienta, potvrzení O-FIR-7 */
+  const pdHtml = `<ul class="pd" aria-label="Hodnocení a fakta" data-blok="dukazy"><li><b>4,9</b><span>Google, ze 110 recenzí<br>k&nbsp;11.&nbsp;11.&nbsp;2026</span></li><li><b>98,9 %</b><span>Firmy.cz, z 38 hodnocení<br>k&nbsp;11.&nbsp;11.&nbsp;2026</span></li><li><b>6500+</b><span>realizací celkem</span></li><li><b>Showroom</b><span><a href="showroom.html">Nemanická 5, České Budějovice</a></span></li></ul>`;
 
   /* fotky ze stavby: galerie hlavní stavby typu (assets/foto/<id>-gN.jpg + náhled -gN-t.jpg); 18873 a 17372 staženy
      z veřejných referencí karasek.cz 28. 11. 2026, ostatní ze stavba.html */
@@ -546,7 +547,7 @@ ${t.f ? `<figure class="tm-f"><img src="../assets/foto/${t.f[0]}.jpg" alt="${esc
   const GM = "https://www.google.com/maps/search/?api=1&amp;query=Kar%C3%A1sek+s.r.o.+Nemanick%C3%A1+5+%C4%8Cesk%C3%A9+Bud%C4%9Bjovice";
   const rvHtml = `<section class="sec" aria-labelledby="hRv" data-blok="recenze"><div class="wrap rv"><div><h2 id="hRv">Co říkají zákazníci</h2>
 <div class="rv-n"><b>4,9</b><span>Google, ze 110 recenzí<br>Firmy.cz 98,9 % z 38 hodnocení</span></div>
-<p class="sub">Doslovné citace z recenzí na Googlu. <a href="recenze.html">Všechny recenze</a> · <a href="${GM}" target="_blank" rel="noopener">Recenze na Googlu</a></p></div>
+<p class="sub">Hodnocení k 11. 11. 2026. Doslovné citace z recenzí na Googlu zveřejněných na karasek.cz. <a href="recenze.html">Všechny recenze</a> · <a href="${GM}" target="_blank" rel="noopener">Recenze na Googlu</a></p></div>
 ${RV.map(k => `<blockquote class="q"><p>„${esc(REC[k][0])}“</p><cite><b>${esc(REC[k][1])}</b> · recenze na Googlu</cite></blockquote>`).join("")}</div></section>`;
 
   /* otázky k typu */

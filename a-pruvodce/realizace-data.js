@@ -160,8 +160,8 @@ window.KR = (() => {
   };
   const stavbyLabel = n => n === 1 ? "stavbu" : n >= 2 && n <= 4 ? "stavby" : "staveb";
   const stavbyNom = n => n === 1 ? "stavba" : n >= 2 && n <= 4 ? "stavby" : "staveb";
-  /* srcset karty (TOP-CR R2): -k.jpg = 600 px široká zmenšenina hlavní fotky (1400 px), bez úprav barev */
-  const srcset = id => `../assets/foto/${id}-k.jpg 600w, ../assets/foto/${id}.jpg 1400w`;
+  /* srcset karty (TOP-CR R2 + final): zmenšeniny hlavní fotky (1400 px) bez úprav barev: -t 480, -k 600, -m 720 px šířky */
+  const srcset = id => `../assets/foto/${id}-t.jpg 480w, ../assets/foto/${id}-k.jpg 600w, ../assets/foto/${id}-m.jpg 720w, ../assets/foto/${id}.jpg 1400w`;
   /* do HTML karet z KRkarta (web.js) doplní srcset a sizes; sizes podle šířky sloupce na dané stránce */
   const sadaFotek = (html, sizes) => html.replace(/<img src="\.\.\/assets\/foto\/(\d{5})\.jpg"/g, (x, id) => `${x} srcset="${srcset(id)}" sizes="${sizes}"`);
   return { typy, systemy, barvy, lokality, stavby, KEYS, srcset, sadaFotek, match, filter, countWith, fromURL, toQuery, label, stavbyLabel, stavbyNom };
