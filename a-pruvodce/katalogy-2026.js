@@ -230,18 +230,42 @@ window.KRkatalog2026 = {
   "pergola/bioklima": {
     uvod: "Panorama 2.0 je lamelová pergola s elektricky natáčecími lamelami, které po zavření nepropustí vodu. Přední profil je nosný a skrývá žlab, voda odtéká svodem uvnitř stojin. K pergole lze doplnit svislé dekorativní lamely Patio Living Pillar.",
     zdroj: ["PANORAMA 2.0", "PATIO LIVING PILLAR"],
+    /* podtémata s vlastním H2 (TOP-CR B3): řádky Lamely, Sněhové zatížení, Ovládání, Boční uzavření a Doplňky přesunuté z par.
+       f = foto ze stavby 18873 (assets/foto), odkazy = typy webu, které na téma navazují. Strany = PDF katalogu. */
+    temata: [{
+      h: "Ovládání lamel a senzory",
+      p: "Lamely se natáčejí elektricky až o 170°. Natočením regulujete slunce i větrání, po zavření lamely nepropustí vodu. Na stavbě v galerii lamely pohánějí motory Somfy a senzory samy rozpoznají déšť či silný vítr.",
+      par: [["Natáčení lamel", "elektricky, až 170°"],
+        ["Ovládání", "dálkový ovladač nebo mobilní aplikace"],
+        ["Automatika", "volitelný větrný senzor a dešťové čidlo, které lamely samy uzavřou či otevřou"],
+        ["Osvětlení", "úsporné LED osvětlení"]],
+      f: ["18873-g3", "Lamely pergoly zespodu, natočené do otevřené polohy"]
+    }, {
+      h: "Odvod vody a sníh",
+      p: "Přední profil je nosný a skrývá žlab. Voda z lamel odtéká svodem uvnitř stojin.",
+      par: [["Zavřená střecha", "lamely uzavřou střechu zcela nepropustně"],
+        ["Odvod vody", "žlab v předním profilu, svod uvnitř stojin"],
+        ["Sněhové zatížení", "až 250 kg/m²"],
+        ["Dimenze", "přizpůsobí se sněhové oblasti, zatížení a krytině"]],
+      f: ["18873-g4", "Pergola zvenku: lamelová střecha a nosný přední profil"]
+    }, {
+      h: "Boční uzavření a doplňky",
+      p: "Boky pergoly lze uzavřít navazujícími systémy: sklem, svislými roletami ZIP nebo posuvnými lamelovými stěnami. Na této stavbě je rámové zasklení Combi.",
+      par: [["Zasklení", "skleněné výplně rámové i bezrámové"],
+        ["Rolety ZIP", "svislé motorické rolety; Screen Zip Lamelovka má šířku pole až 6 m a výšku až 3,5 m"],
+        ["Lamelové stěny", "boční posuvné panely Patio Living Tilt k pergole Panorama 2.0"],
+        ["Stínění střechy", "markýzy a rolety na střechu a boční stěny"],
+        ["Dekorativní lamely", "svislé lamely Patio Living Pillar s LED podsvícením"]],
+      f: ["18873-g5", "Pohled zevnitř na zasklené boky pergoly"],
+      odkazy: [["zaskleni", "ramove", "Rámové zasklení"], ["zaskleni", "bezramove", "Bezrámové zasklení"], ["stineni", "screen", "Screenové rolety ZIP"], ["zaskleni", "lamelove", "Lamelové stěny Tilt"]]
+    }],
     systemy: [{
       n: "PANORAMA 2.0 – lamelová pergola",
       par: [
         ["Provedení", "samostatně stojící nebo kotvená ke stěně; více modulů lze propojit; varianta s pevnou střechou z kompozitního materiálu nebo kombinace pevné části a pohyblivých lamel"],
         ["Šířka jednoho modulu", "až 645 cm"],
         ["Délka lamel / vyložení", "až 470 cm"],
-        ["Lamely", "elektrické natáčení až 170°, zcela nepropustné uzavření"],
-        ["Sněhové zatížení", "až 250 kg/m²"],
-        ["Barvy", "konstrukce i lamely v libovolném odstínu RAL, mohou mít odlišnou barvu"],
-        ["Boční uzavření", "rolety ZIP, skleněné výplně rámové i bezrámové"],
-        ["Ovládání", "dálkový ovladač nebo mobilní aplikace; volitelný větrný senzor a dešťové čidlo"],
-        ["Doplňky", "úsporné LED osvětlení, markýzy a rolety na střechu a boční stěny"]
+        ["Barvy", "konstrukce i lamely v libovolném odstínu RAL, mohou mít odlišnou barvu"]
       ],
       vyhody: [
         "Regulace slunce a větrání natáčením lamel.",
@@ -397,4 +421,22 @@ window.KRkatalog2026 = {
       ]
     }]
   }
+};
+
+/* Sezonní, nebo celoroční? (TOP-CR C3): tabulka na obou typech zimních zahrad. Jen údaje z katalogů
+   „Sezónní zimní zahrada na míru“ (str. 1–2) a „Dřevěná celoroční zimní zahrada“ (str. 1), nic doplněného.
+   Rozměrové limity celoroční zahrady katalog neuvádí (otázka O-ODP-3). */
+window.KRkatalog2026["zahrada/sezonni"].srovnani = window.KRkatalog2026["zahrada/celorocni"].srovnani = {
+  h: "Sezonní, nebo celoroční?",
+  p: "Obě zimní zahrady stavíme na míru. Liší se tím, jak dlouho v roce v nich chcete pobývat, a podle toho konstrukcí, střechou i bočními stěnami.",
+  sloupce: [["sezonni", "Sezonní zimní zahrada"], ["celorocni", "Celoroční zimní zahrada"]],
+  radky: [
+    ["Využití", "od časného jara do pozdního podzimu", "po celý rok, i v mrazivých měsících"],
+    ["Konstrukce", "hliník, přední profil slouží jako nosník i žlab", "pohledové lepené dřevo BSH s CNC opracováním"],
+    ["Střecha", "bezpečnostní sklo Connex 3.3.2, nebo polykarbonát Lexan 16 mm", "bezpečnostní izolační dvojsklo 44.2 / 16 / ESG 6 mm s argonem, U = 1,1"],
+    ["Boční stěny", "rámové posuvné systémy (ekonomická varianta), nebo bezrámové (nejčistší výhled)", "posuvné Patio Living Therm s izolačním dvojsklem a přerušeným tepelným mostem, konstrukce se nerosí"],
+    ["Rozměry", "šířka neomezená, vyložení až 550 cm", "návrh na míru podle zaměření"],
+    ["Doplňky", "LED osvětlení, markýzy a rolety na střechu nebo stěny", "markýzy či rolety na střechu i boky, LED osvětlení, protisluneční sklo Stopsol"]
+  ],
+  zdroj: ["Sezónní zimní zahrada na míru", "Dřevěná celoroční zimní zahrada"]
 };
