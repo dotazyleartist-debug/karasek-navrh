@@ -125,7 +125,17 @@ window.KR = (() => {
      "Rámové zasklení terasy systémem Combi s bezpečnostním kaleným sklem ESG 5 mm. … Zasklení jsme později doplnili o vnitřní stínění v provedení roletek bez kazety.",
      "https://karasek.cz/reference/combi-ral-7016-zaskleni-terasy-rolety/"]
   ];
-  const stavby = R.map(([id, n, d, typ, sys, barva, lok, vytah, odkaz]) => ({ id, n, d, typ, sys, barva, lok, vytah, odkaz }));
+  /* rozměr jen tam, kde ho text stavby uvádí doslovně (TOP-CR T2); ostatní stavby rozměr nemají, nic se nedopočítává.
+     id: [[popisek řádku v Parametrech, hodnota z textu], …] */
+  const ROZMER = {
+    "29570": [["Rozměr", "šířka cca 4 m, hloubka 3,5 m"], ["Podchozí výška", "2100 mm"]],
+    "29555": [["Rozměr", "6037 × 2898 mm"], ["Podchozí výška", "2306 mm"]],
+    "23300": [["Rozměr", "délka 7,2 m, hloubka 1,5 m"]],
+    "29532": [["Šířka čelní stěny", "561 cm, bez středového sloupku"]],
+    "17508": [["Šířka bočního otvoru", "420 cm"]],
+    "21506": [["Výška zasklení", "téměř 280 cm"]]
+  };
+  const stavby = R.map(([id, n, d, typ, sys, barva, lok, vytah, odkaz]) => ({ id, n, d, typ, sys, barva, lok, vytah, odkaz, rozmer: ROZMER[id] || [] }));
   const KEYS = ["typ", "system", "barva", "lokalita"];
   // filtr: f = {typ, system, barva, lokalita}, prázdná hodnota = vše
   const match = (s, f) =>
@@ -150,5 +160,9 @@ window.KR = (() => {
   };
   const stavbyLabel = n => n === 1 ? "stavbu" : n >= 2 && n <= 4 ? "stavby" : "staveb";
   const stavbyNom = n => n === 1 ? "stavba" : n >= 2 && n <= 4 ? "stavby" : "staveb";
-  return { typy, systemy, barvy, lokality, stavby, KEYS, match, filter, countWith, fromURL, toQuery, label, stavbyLabel, stavbyNom };
+  /* srcset karty (TOP-CR R2): -k.jpg = 600 px široká zmenšenina hlavní fotky (1400 px), bez úprav barev */
+  const srcset = id => `../assets/foto/${id}-k.jpg 600w, ../assets/foto/${id}.jpg 1400w`;
+  /* do HTML karet z KRkarta (web.js) doplní srcset a sizes; sizes podle šířky sloupce na dané stránce */
+  const sadaFotek = (html, sizes) => html.replace(/<img src="\.\.\/assets\/foto\/(\d{5})\.jpg"/g, (x, id) => `${x} srcset="${srcset(id)}" sizes="${sizes}"`);
+  return { typy, systemy, barvy, lokality, stavby, KEYS, srcset, sadaFotek, match, filter, countWith, fromURL, toQuery, label, stavbyLabel, stavbyNom };
 })();
