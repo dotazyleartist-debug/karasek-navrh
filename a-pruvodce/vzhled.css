@@ -213,3 +213,6 @@ body .kd .kd-a button{color:var(--modra)}
 .gal .main:focus-visible::after{outline:3px solid var(--ink);outline-offset:3px}
 /* mobil: spodní lišta „Poptávka“ nezakryje konec formuláře ani patičky */
 @media (max-width:820px){body:has(.mbar){padding-bottom:84px}#poptavka{padding-bottom:96px}}
+
+/* dávka 3b: obrázky s width/height se škálují podle šířky, poměr stran drží atributy */
+:where(img[height]){height:auto}

@@ -4,8 +4,10 @@
 <meta name="robots" content="noindex, nofollow">
 <meta charset="utf-8"><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Recenze zákazníků | Karásek s.r.o.</title>
-<meta name="description" content="Google 4,9 ze 110 recenzí, Firmy.cz 98,9 % z 38 hodnocení. Citace zákazníků doslova a video recenze. Karásek s.r.o., showroom České Budějovice.">
+<title>Recenze zákazníků z Googlu a Seznamu | Karásek</title>
+<meta name="description" content="Hodnocení zákazníků z Googlu a Firmy.cz se zdrojem a datem. Přečtěte si, jak u nás proběhla poptávka, zaměření i montáž.">
+<meta name="kr:cilova-url" content="https://karasek.cz/recenze/">
+<script src="seo.js?v=20261128b" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;subset=latin-ext&amp;display=swap" rel="stylesheet">
@@ -146,7 +148,7 @@ section.sec{padding:88px 0}
   .cta .btn{width:100%}
 }
 </style>
-<link rel="stylesheet" href="vzhled.css?v=20261126g">
+<link rel="stylesheet" href="vzhled.css?v=20261128b">
 </head>
 <body data-page="recenze" data-oblast="">
 <a class="skip" href="#obsah">Přeskočit na obsah</a>
@@ -184,7 +186,7 @@ section.sec{padding:88px 0}
     </div>
     <div>
       <div class="vid" data-yt="puPVwrDFp3w">
-        <img src="../assets/video/video-recenze-zakaznice.jpg" alt="Zákaznice vypráví o své zimní zahradě" width="404" height="720">
+        <img decoding="async" src="../assets/video/video-recenze-zakaznice.jpg" alt="Zákaznice vypráví o své zimní zahradě" width="404" height="720">
         <button type="button" class="play"><i><svg aria-hidden="true"><use href="#i-play"/></svg></i>Pustit video recenzi</button>
       </div>
       <p class="vcap">Video recenze zákaznice</p>
@@ -232,7 +234,7 @@ section.sec{padding:88px 0}
 <footer id="kontakt"></footer>
 
 <script src="realizace-data.js"></script>
-<script src="web.js?v=20261128a"></script>
+<script src="web.js?v=20261128b"></script>
 <script>
 (() => {
   const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -241,7 +243,7 @@ section.sec{padding:88px 0}
   /* výběr čtyř realizací z každé oblasti jako důkaz (bez vazby na citace) */
   const IDS = ["29555", "24141", "23329", "21454"];
   document.getElementById("proof").innerHTML = IDS.map(id => KR.stavby.find(s => s.id === id)).filter(Boolean).map(s =>
-    `<a class="pr" href="stavba.html?id=${s.id}"><img src="../assets/foto/${s.id}.jpg" alt="${esc(s.n)}" width="1400" height="1050"><span class="tx"><small>${esc(s.typ.map(k => KR.label.typ[k]).join(" + "))} · ${KRkdy(s.d)}</small><h3>${esc(s.n)}</h3></span></a>`).join("");
+    `<a class="pr" href="stavba.html?id=${s.id}"><img decoding="async" src="../assets/foto/${s.id}.jpg" alt="${esc(s.n)}" width="1400" height="1050"><span class="tx"><small>${esc(s.typ.map(k => KR.label.typ[k]).join(" + "))} · ${KRkdy(s.d)}</small><h3>${esc(s.n)}</h3></span></a>`).join("");
   /* YouTube až po kliknutí */
   document.querySelectorAll("[data-yt] .play").forEach(b => b.addEventListener("click", () => {
     const box = b.closest("[data-yt]"), f = document.createElement("iframe");

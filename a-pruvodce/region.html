@@ -6,6 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Zimní zahrady, zasklení a pergoly v regionu | Karásek s.r.o.</title>
 <meta name="description" id="mDesc" content="Zimní zahrady, zasklení teras, pergoly a stínění od Karásek s.r.o., showroom v Českých Budějovicích.">
+<meta name="kr:cilova-url" content="https://karasek.cz/region/&lt;kraj&gt;/">
+<script src="seo.js?v=20261128b" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;subset=latin-ext&amp;display=swap" rel="stylesheet">
@@ -107,7 +109,7 @@ body .rhero h1{font-size:54px;line-height:1.06;letter-spacing:-.03em}
   .svc .fk .ft-t b{font-size:16px;text-decoration-thickness:3px;text-underline-offset:5px}
 }
 </style>
-<link rel="stylesheet" href="vzhled.css?v=20261126g">
+<link rel="stylesheet" href="vzhled.css?v=20261128b">
 </head>
 <body data-page="region">
 <a class="skip" href="#obsah">Přeskočit na obsah</a>
@@ -134,7 +136,7 @@ body .rhero h1{font-size:54px;line-height:1.06;letter-spacing:-.03em}
 <footer id="kontakt"></footer>
 
 <script src="realizace-data.js"></script>
-<script src="web.js?v=20261128a"></script>
+<script src="web.js?v=20261128b"></script>
 <script>
 (() => {
   /* Region podle ?r=. Realizace jen ty, které mají v realizace-data.js doloženou lokalitu (pole lok). Nic nedomýšlet. */
@@ -154,17 +156,15 @@ body .rhero h1{font-size:54px;line-height:1.06;letter-spacing:-.03em}
   }
   const S = r.lok ? KR.filter({ lokalita: r.lok }) : [];
   const hero = S[0] || KR.stavby.find(s => s.id === "29570");
-  document.title = `Zimní zahrady, zasklení a pergoly – ${r.n} | Karásek s.r.o.`;
-  $("#mDesc").content = `Zimní zahrady, zasklení teras, pergoly a stínění ${r.v} od Karásek s.r.o. Firma od roku 1995, showroom v Českých Budějovicích, Nemanická 5.`;
   const jine = KR.stavby.filter(s => !S.includes(s) && s !== hero).slice(0, 3);
-  const karta = s => `<a class="fk" href="stavba.html?id=${s.id}"><img src="../assets/foto/${s.id}.jpg" alt="${esc(s.n)}" loading="lazy" width="944" height="708"><span class="ft-t"><span>${s.typ.map(t => KR.label.typ[t]).join(" + ")}${s.lok ? " · " + esc(KR.label.lokalita[s.lok]) : ""}</span><b>${esc(s.n)}</b></span></a>`;
+  const karta = s => `<a class="fk" href="stavba.html?id=${s.id}"><img decoding="async" src="../assets/foto/${s.id}.jpg" alt="${esc(s.n)}" loading="lazy" width="944" height="708"><span class="ft-t"><span>${s.typ.map(t => KR.label.typ[t]).join(" + ")}${s.lok ? " · " + esc(KR.label.lokalita[s.lok]) : ""}</span><b>${esc(s.n)}</b></span></a>`;
   $("#rBody").innerHTML = `<section class="rhero" aria-labelledby="h1">
   <div>
-    <h1 id="h1">Zimní zahrady, zasklení a pergoly <span>${r.n}</span></h1>
+    <h1 id="h1">Zimní zahrady, zasklení teras a pergoly <span>${r.v}</span></h1>
     <p class="lead">Karásek s.r.o. staví zimní zahrady, zasklení teras, pergoly a stínění od roku 1995. Sídlíme v Českých Budějovicích, kde máme showroom. ${key === "jizni-cechy" ? "Systémy si u nás prohlédnete naživo." : "Jste-li z dálky, vzorky přivezeme na zaměření."}</p>
     <div class="acts"><button type="button" class="btn btn-red" data-poptat="">Nezávazná poptávka</button><a class="lnk" href="tel:+420777727328">+420 777 727 328</a></div>
   </div>
-  <figure><a class="fk" href="stavba.html?id=${hero.id}"><img src="../assets/foto/${hero.id}.jpg" alt="${esc(hero.n)}" width="944" height="708" fetchpriority="high"><span class="ft-t"><span>${S.length ? "Realizace " + r.v : "Ukázka realizace"}</span><b>${esc(hero.n)}</b></span></a></figure>
+  <figure><a class="fk" href="stavba.html?id=${hero.id}"><img decoding="async" src="../assets/foto/${hero.id}.jpg" alt="${esc(hero.n)}" width="944" height="708" fetchpriority="high"><span class="ft-t"><span>${S.length ? "Realizace " + r.v : "Ukázka realizace"}</span><b>${esc(hero.n)}</b></span></a></figure>
 </section>
 <ul class="facts" aria-label="Ve zkratce">
   <li><b>od roku 1995</b><span>Karásek s.r.o.</span></li>
@@ -174,7 +174,7 @@ body .rhero h1{font-size:54px;line-height:1.06;letter-spacing:-.03em}
   $("#rReal").innerHTML = `<div class="head"><h2 id="h-real">Realizace ${r.v}</h2><p>${S.length ? "Stavby, u kterých lokalitu uvádíme v popisu realizace." : "Ukázky z tohoto regionu na webu zatím nemáme označené."}</p></div>
 ${S.length ? `<div class="grid3">${S.map(karta).join("")}</div><p class="note">U většiny zveřejněných staveb lokalitu zatím neuvádíme. Další ukázky najdete ve <a href="realizace.html">všech realizacích</a>.</p>`
   : `<div class="none"><div><h3>Ukázky ${r.v} připravujeme</h3><p>Mezitím se podívejte na hotové stavby z jiných míst. Systémy i provedení jsou stejné.</p></div><a class="btn btn-line" href="realizace.html">Všechny realizace</a></div><div class="grid3">${jine.map(karta).join("")}</div>`}`;
-  $("#rSvc").innerHTML = SL.map(([k, n, f]) => `<li style="--kc:var(--kat-${k})"><a class="fk" href="kategorie.html?oblast=${k}"><img src="../assets/foto/${f}.jpg" alt="" loading="lazy" width="944" height="708"><span class="ft-t"><b>${n}</b><span>${KR.filter({ typ: k }).length} ${KR.stavbyNom(KR.filter({ typ: k }).length)} ve fotogalerii</span></span></a></li>`).join("");
+  $("#rSvc").innerHTML = SL.map(([k, n, f]) => `<li style="--kc:var(--kat-${k})"><a class="fk" href="kategorie.html?oblast=${k}"><img decoding="async" src="../assets/foto/${f}.jpg" alt="" loading="lazy" width="944" height="708"><span class="ft-t"><b>${n}</b><span>${KR.filter({ typ: k }).length} ${KR.stavbyNom(KR.filter({ typ: k }).length)} ve fotogalerii</span></span></a></li>`).join("");
   $("#rNote").innerHTML = key === "jizni-cechy"
     ? "Markýzy, venkovní žaluzie a rolety a vnitřní zastínění realizujeme pouze v Jižních Čechách. <a href=\"kategorie.html?oblast=stineni\">Stínění</a>"
     : `Markýzy, venkovní žaluzie a rolety a vnitřní zastínění realizujeme pouze v Jižních Čechách. Co z <a href="kategorie.html?oblast=stineni">stínění</a> postavíme ${r.v}, vám řekneme při poptávce.`;

@@ -228,7 +228,7 @@ body:has(.hd-menu.open) .bn{display:none!important}
     ft.className = "ft";
     const li = (h, n, ex = "") => `<li><a href="${h}"${ex}>${n}</a></li>`;
     ft.innerHTML = `<div class="wrap"><nav class="cols" aria-label="Mapa webu">
-  <div><img src="../assets/logo-bila.svg?v=20261126" alt="Karásek" width="112" height="56"><p>Karásek s.r.o.<br><a class="kr-trasa" href="https://www.google.com/maps/dir/?api=1&destination=Kar%C3%A1sek%20s.r.o.%2C%20Nemanick%C3%A1%20437%2F5%2C%20%C4%8Cesk%C3%A9%20Bud%C4%9Bjovice" target="_blank" rel="noopener" aria-label="Trasa do showroomu v Mapách Google">Nemanická 5, České Budějovice</a><br>Showroom Po–Pá 8–16<br><a href="tel:+420777727328">+420 777 727 328</a><br>IČO 25164589</p></div>
+  <div><img src="../assets/logo-bila.svg?v=20261126" alt="Karásek" width="112" height="56" loading="lazy" decoding="async"><p>Karásek s.r.o.<br><a class="kr-trasa" href="https://www.google.com/maps/dir/?api=1&destination=Kar%C3%A1sek%20s.r.o.%2C%20Nemanick%C3%A1%20437%2F5%2C%20%C4%8Cesk%C3%A9%20Bud%C4%9Bjovice" target="_blank" rel="noopener" aria-label="Trasa do showroomu v Mapách Google">Nemanická 5, České Budějovice</a><br>Showroom Po–Pá 8–16<br><a href="tel:+420777727328">+420 777 727 328</a><br>IČO 25164589</p></div>
   <div class="fs"><h3>Služby</h3><ul>${SL.map(([k, n]) => li(`kategorie.html?oblast=${k}`, n)).join("")}${li("sluzby.html", "Všechny služby", ' class="all"')}</ul>
     <h3>Kde stavíme</h3><ul>${REG.map(([k, n]) => li(`region.html?r=${k}`, n)).join("")}</ul></div>
   <div><h3>Realizace</h3><ul>${li("realizace.html", "Hotové stavby")}${li(P.recenze, "Recenze")}${li(P.videa, "Videa")}</ul>
@@ -342,14 +342,17 @@ form.kf{display:grid;grid-template-columns:1fr!important;background:none!importa
   .rk .go .btn{width:100%;min-height:50px}
   .kf input[type=text],.kf input[type=tel],.kf input[type=email]{min-height:52px}
   .mbar{display:none!important}
-  body{padding-bottom:calc(66px + env(safe-area-inset-bottom))!important}
-  .bn{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;left:0;right:0;bottom:0;z-index:90;height:calc(66px + env(safe-area-inset-bottom));padding:0 6px env(safe-area-inset-bottom);background:#fff;border-top:1px solid var(--line);box-shadow:0 -6px 18px rgba(15,20,24,.06)}
+  body.s-bn{padding-bottom:calc(66px + env(safe-area-inset-bottom))!important}
+  .bn{display:grid;grid-template-columns:1fr 1fr 1fr 1.35fr;transition:transform .2s;position:fixed;left:0;right:0;bottom:0;z-index:90;height:calc(66px + env(safe-area-inset-bottom));padding:0 6px env(safe-area-inset-bottom);background:#fff;border-top:1px solid var(--line);box-shadow:0 -6px 18px rgba(15,20,24,.06)}
   .bn>a,.bn>button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;margin:6px 3px;border:0;border-radius:12px;background:none;font:600 14px/1.1 var(--f);color:var(--ink);text-decoration:none;cursor:pointer;padding:0}
   .bn svg{width:24px;height:24px}
   .bn [aria-current]{font-weight:700;background:#f1f3f4}
   .bn .bn-red{background:var(--red);color:#fff;font-weight:700}
   .bn .bn-red:active{background:var(--red-h)}
+  .bn .bn-red{font-size:15px}
+  .bn.skryt{transform:translateY(110%)}
 }
+@media (prefers-reduced-motion:reduce){ .bn{transition:none} }
 @media (max-width:520px){ .kf-2{grid-template-columns:1fr} }
 @media (prefers-reduced-motion:reduce){ .kp-box,.kp-scrim{transition:none} }`;
 
@@ -549,11 +552,14 @@ ${facts.length ? `<ul class="facts" aria-label="Systém a barva">${facts.map(([t
       if (s) T.push([`realizace.html?typ=${s.typ[0]}`, NAZ[s.typ[0]]], ["", s.n]); else T.push(["", "Stavba nenalezena"]);
     } else if (page === "region") {
       const r = REG.find(x => x[0] === q.get("r"));
-      T.push(["sluzby.html", "Služby"], ["", r ? r[1] : "Region"]);
+      /* mapa kap. 1.1: regiony visí přímo pod úvodem (patička „Kde stavíme“ není samostatná stránka) */
+      T.push(["", r ? r[1] : "Region"]);
     } else if (page === "dekujeme") T.push(["poptavka.html", "Nezávazná poptávka"], ["", "Děkujeme"]);
     else T.push(["", STR[page] || document.title.split("|")[0].trim()]);
     return T;
   };
+  /* cesta pro BreadcrumbList v seo.js: [[href, název], …] */
+  window.KRcesta = cesta;
   window.KRdrobky = () => {
     if (!page || page === "uvod") return;
     let N = [...document.querySelectorAll("nav.crumbs")];
@@ -578,18 +584,27 @@ ${facts.length ? `<ul class="facts" aria-label="Systém a barva">${facts.map(([t
   /* ---------- mobilní spodní navigace (Mark 2026-11-20: „vlastní bottom bar na lepší procházení“) ---------- */
   const I = d => `<svg viewBox="0 0 24 24" aria-hidden="true">${d}</svg>`;
   const S = 'fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
-  const bn = document.createElement("nav");
-  bn.className = "bn"; bn.setAttribute("aria-label", "Rychlá navigace");
-  const pop = page === "uvod" || page === "kategorie";
-  bn.innerHTML = `<button type="button" class="bn-sl"${document.getElementById("hdMenu") ? "" : " hidden"}>${I(`<path ${S} d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/>`)}Služby</button>
+  /* dávka 3b: jasné „Poptat“ (formulář s předvyplněnou službou stránky) + „Volat“; Služby a Realizace zůstávají pro procházení.
+     Na poptávce a děkovné stránce lišta není; skryje se, když je na obrazovce formulář. */
+  if (page !== "poptavka" && page !== "dekujeme") {
+    const bn = document.createElement("nav");
+    bn.className = "bn"; bn.setAttribute("aria-label", "Rychlá navigace");
+    const pop = page === "uvod" || page === "kategorie";
+    bn.innerHTML = `<button type="button" class="bn-sl"${document.getElementById("hdMenu") ? "" : " hidden"}>${I(`<path ${S} d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/>`)}Služby</button>
 <a href="realizace.html"${cur(page === "realizace" || page === "stavba")}>${I(`<rect ${S} x="3" y="5" width="18" height="14" rx="2"/><path ${S} d="M3 16l5-5 4 4 3-3 6 6"/><circle cx="16" cy="9" r="1.6" fill="currentColor"/>`)}Realizace</a>
-<a href="tel:+420777727328" aria-label="Zavolat +420 777 727 328">${I(`<path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/>`)}Zavolat</a>
-${pop ? `<a class="bn-red" href="#poptavka">` : `<button type="button" class="bn-red">`}${I(`<path ${S} d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/>`)}Poptávka${pop ? "</a>" : "</button>"}`;
-  document.body.appendChild(bn);
-  const bsl = bn.querySelector(".bn-sl"), mbb = document.querySelector(".hd-mb");
-  if (mbb) bsl.addEventListener("click", () => mbb.click());
-  if (!pop) bn.querySelector(".bn-red").addEventListener("click", () => {
-    const f = page === "poptavka" && document.querySelector("main form");
-    if (f) { f.scrollIntoView({ behavior: "smooth", block: "start" }); const i = f.querySelector("input,textarea"); if (i) i.focus({ preventScroll: true }); } else KRpoptat(askO());
-  });
+<a href="tel:+420777727328" aria-label="Volat +420 777 727 328">${I(`<path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/>`)}Volat</a>
+${pop ? `<a class="bn-red" href="#poptavka">` : `<button type="button" class="bn-red">`}${I(`<path ${S} d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/>`)}Poptat${pop ? "</a>" : "</button>"}`;
+    document.body.appendChild(bn); document.body.classList.add("s-bn");
+    const bsl = bn.querySelector(".bn-sl"), mbb = document.querySelector(".hd-mb");
+    if (mbb) bsl.addEventListener("click", () => mbb.click());
+    if (!pop) bn.querySelector(".bn-red").addEventListener("click", () => KRpoptat(askO()));
+    /* formulář se může vykreslit i později (stavba, kategorie), proto se hledá při každém posunu (jednou za snímek) */
+    let tik = 0;
+    const hlidej = () => { tik = 0;
+      const H = innerHeight - 66, v = [...document.querySelectorAll("main form, #poptavka")].some(f => { const r = f.getBoundingClientRect(); return r.height && r.bottom > 80 && r.top < H - 80; });
+      bn.classList.toggle("skryt", v);
+    };
+    addEventListener("scroll", () => { if (!tik) tik = requestAnimationFrame(hlidej); }, { passive: true });
+    addEventListener("resize", hlidej); addEventListener("load", hlidej);
+  }
 })();
