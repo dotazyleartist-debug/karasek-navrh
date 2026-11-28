@@ -22,6 +22,8 @@
   const home = page === "uvod" ? "" : "index.html";
   const ask = page === "uvod" || page === "kategorie" ? "#poptavka" : "poptavka.html";
   /* stránky s vlastním obsahem (Mark 2026-11-23: „klikací prototyp, každá page vlastní obsah“) */
+  /* regiony (stránka region.html?r=…); obsah stránky je v region.html */
+  const REG = [["jizni-cechy", "Jižní Čechy"], ["plzensko", "Plzeňsko"], ["vysocina", "Vysočina"]];
   const P = { postup: "postup.html", showroom: "showroom.html", kontakt: "kontakt.html", onas: "o-nas.html", recenze: "recenze.html", videa: "videa.html" };
   const TEL = `<svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>`;
   const SIP = `<svg aria-hidden="true" viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
@@ -148,7 +150,7 @@ body:has(.hd-menu.open) .bn{display:none!important}
     hd.innerHTML = `<div class="wrap">
   <a class="hd-logo" href="index.html" aria-label="Karásek s.r.o. – úvod"><img src="../assets/logo.svg?v=20261126" alt="Karásek" width="104" height="52"></a>
   <nav class="hd-nav" aria-label="Hlavní menu">
-    <button type="button" class="hd-sl${page === "kategorie" || page === "produkt" ? " cur" : ""}" aria-expanded="false" aria-controls="hdMega">Služby</button>
+    <button type="button" class="hd-sl${["kategorie", "produkt", "sluzby", "region"].includes(page) ? " cur" : ""}" aria-expanded="false" aria-controls="hdMega">Služby</button>
     <a href="realizace.html"${ca(realiz)}>Realizace</a>
     <a href="radce.html"${ca(page === "radce")}>Rádce</a>
     <a href="${P.postup}"${ca(page === "postup")}>Jak to probíhá</a>
@@ -164,7 +166,7 @@ body:has(.hd-menu.open) .bn{display:none!important}
 </div>
 <div class="hd-mega" id="hdMega"><div class="wrap">
   <div class="g">${SL.map(s => `<div class="col">${tile(s, "mt")}<ul class="ms" aria-label="${s[1]}: typy">${subL(s[0])}</ul></div>`).join("")}</div>
-  <div class="low"><a href="realizace.html">Všechny hotové stavby s filtrem</a><a href="radce.html">Rádce: jak vybrat</a><a href="${P.postup}">Jak to probíhá</a><a href="${P.videa}">Videa z realizací</a><span><a class="kr-trasa" href="https://www.google.com/maps/dir/?api=1&destination=Kar%C3%A1sek%20s.r.o.%2C%20Nemanick%C3%A1%20437%2F5%2C%20%C4%8Cesk%C3%A9%20Bud%C4%9Bjovice" target="_blank" rel="noopener" aria-label="Trasa do showroomu v Mapách Google">Showroom Nemanická 5, České Budějovice</a> · Po–Pá 8–16</span></div>
+  <div class="low"><a href="sluzby.html">Všechny služby a typy</a><a href="realizace.html">Všechny hotové stavby s filtrem</a><a href="radce.html">Rádce: jak vybrat</a><a href="${P.postup}">Jak to probíhá</a><a href="${P.videa}">Videa z realizací</a><span><a class="kr-trasa" href="https://www.google.com/maps/dir/?api=1&destination=Kar%C3%A1sek%20s.r.o.%2C%20Nemanick%C3%A1%20437%2F5%2C%20%C4%8Cesk%C3%A9%20Bud%C4%9Bjovice" target="_blank" rel="noopener" aria-label="Trasa do showroomu v Mapách Google">Showroom Nemanická 5, České Budějovice</a> · Po–Pá 8–16</span></div>
 </div></div>
 <div class="hd-menu" id="hdMenu" role="dialog" aria-modal="true" aria-label="Menu">
   <div class="hm-top"><img src="../assets/logo.svg?v=20261126" alt="Karásek" width="84" height="42"><button type="button" class="hm-x"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 1.5l7 7M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Zavřít</button></div>
@@ -172,6 +174,7 @@ body:has(.hd-menu.open) .bn{display:none!important}
   <ul class="hm-s">${SL.map(([k, n, f]) => `<li><div class="hm-r"><a class="hm-t" href="kategorie.html?oblast=${k}"${ca(page === "kategorie" && obl() === k)}><img src="../assets/foto/${f}.jpg" alt="" loading="lazy"><b>${n}</b></a><button type="button" class="hm-ab" aria-expanded="false" aria-controls="hmS-${k}" aria-label="Typy: ${n}">Typy</button></div>
     <ul class="hm-sub" id="hmS-${k}" hidden>${subL(k)}<li><a href="kategorie.html?oblast=${k}">Vše o službě ${n}</a></li></ul></li>`).join("")}</ul>
   <ul class="hm-l">
+    <li><a href="sluzby.html"${ca(page === "sluzby")}>Všechny služby${SIP}</a></li>
     <li><a href="realizace.html"${ca(realiz)}>Realizace${SIP}</a></li>
     <li><a href="radce.html"${ca(page === "radce")}>Rádce${SIP}</a></li>
     <li><a href="${P.postup}"${ca(page === "postup")}>Jak to probíhá${SIP}</a></li>
@@ -226,11 +229,12 @@ body:has(.hd-menu.open) .bn{display:none!important}
     const li = (h, n, ex = "") => `<li><a href="${h}"${ex}>${n}</a></li>`;
     ft.innerHTML = `<div class="wrap"><nav class="cols" aria-label="Mapa webu">
   <div><img src="../assets/logo-bila.svg?v=20261126" alt="Karásek" width="112" height="56"><p>Karásek s.r.o.<br><a class="kr-trasa" href="https://www.google.com/maps/dir/?api=1&destination=Kar%C3%A1sek%20s.r.o.%2C%20Nemanick%C3%A1%20437%2F5%2C%20%C4%8Cesk%C3%A9%20Bud%C4%9Bjovice" target="_blank" rel="noopener" aria-label="Trasa do showroomu v Mapách Google">Nemanická 5, České Budějovice</a><br>Showroom Po–Pá 8–16<br><a href="tel:+420777727328">+420 777 727 328</a><br>IČO 25164589</p></div>
-  <div class="fs"><h3>Služby</h3><ul>${SL.map(([k, n]) => li(`kategorie.html?oblast=${k}`, n)).join("")}${li(`${home}#produkty`, "Všechny typy staveb", ' class="all"')}</ul></div>
+  <div class="fs"><h3>Služby</h3><ul>${SL.map(([k, n]) => li(`kategorie.html?oblast=${k}`, n)).join("")}${li("sluzby.html", "Všechny služby", ' class="all"')}</ul>
+    <h3>Kde stavíme</h3><ul>${REG.map(([k, n]) => li(`region.html?r=${k}`, n)).join("")}</ul></div>
   <div><h3>Realizace</h3><ul>${li("realizace.html", "Hotové stavby")}${li(P.recenze, "Recenze")}${li(P.videa, "Videa")}</ul>
     <h3>Rádce</h3><ul>${li("radce.html", "Jak vybrat a na co myslet")}</ul></div>
   <div><h3>O firmě</h3><ul>${li(P.onas, "O nás")}${li(P.postup, "Jak to probíhá")}${li(P.showroom, "Showroom")}${li(P.kontakt, "Kontakt")}${li("poptavka.html", "Nezávazná poptávka")}</ul></div>
-  <div><h3>Právní informace</h3><ul>${li("https://karasek.cz/ochrana-osobnich-udaju/", "Ochrana osobních údajů")}${li("https://karasek.cz/cookies-web/", "Cookies")}</ul></div>
+  <div><h3>Právní informace</h3><ul>${li("ochrana-osobnich-udaju.html", "Ochrana osobních údajů")}${li("cookies.html", "Cookies")}</ul></div>
 </nav><div class="low"><span>© Karásek s.r.o. · <a class="kr-trasa" href="https://www.google.com/maps/dir/?api=1&destination=Kar%C3%A1sek%20s.r.o.%2C%20Nemanick%C3%A1%20437%2F5%2C%20%C4%8Cesk%C3%A9%20Bud%C4%9Bjovice" target="_blank" rel="noopener" aria-label="Trasa do showroomu v Mapách Google">Nemanická 5, České Budějovice</a> · IČO 25164589</span><span>Zimní zahrady · Zasklení teras · Pergoly · Stínění</span></div></div>`;
   }
 
@@ -310,6 +314,7 @@ form.kf{display:grid;grid-template-columns:1fr!important;background:none!importa
 .kf-err{font-size:14px;font-weight:600;color:#b51f28;margin:0}
 .kf-err:empty{display:none}
 .kf-gd{margin:0;font-size:14px;line-height:1.45;color:var(--muted)}
+.kf-gd a{color:var(--ink);font-weight:600;text-underline-offset:3px}
 .kf-cb{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.45;color:var(--muted);cursor:pointer}
 .kf-cb input{width:20px;height:20px;margin:1px 0 0;flex:none;accent-color:var(--ink)}
 .kf .btn-red{width:100%;min-height:56px;font-size:17px}
@@ -405,7 +410,7 @@ form.kf{display:grid;grid-template-columns:1fr!important;background:none!importa
   <div class="kf-f"><label for="${p}z">Zpráva</label><textarea id="${p}z" name="zprava" rows="3" placeholder="Co plánujete, přibližné rozměry, co se vám líbí…">${esc(keep.zprava || zprava(s, o.zamer === "info" ? "info" : "podobna", o.tema))}</textarea></div>
   <div class="kf-up" data-kup></div>
   ${s ? `<input type="hidden" name="stavba" value="${s.id}">` : ""}
-  <p class="kf-gd">Odesláním souhlasíte se zpracováním údajů pro vyřízení poptávky.</p>
+  <p class="kf-gd">Odesláním souhlasíte se zpracováním údajů pro vyřízení poptávky. <a href="ochrana-osobnich-udaju.html">Jak s údaji nakládáme</a></p>
   <button type="submit" class="btn btn-red">Odeslat poptávku</button>
   <p class="kf-tel">nebo zavolejte <a href="tel:+420777727328">777 727 328</a></p>
 </form>`;
@@ -426,9 +431,10 @@ form.kf{display:grid;grid-template-columns:1fr!important;background:none!importa
       ];
       chyby.forEach(([i, t]) => { i.setAttribute("aria-invalid", String(!!t)); document.getElementById(i.getAttribute("aria-describedby")).textContent = t; });
       const prvni = chyby.find(c => c[1]); if (prvni) { prvni[0].focus(); return; }
-      /* demo: bez sítě, jen poděkování */
-      el.innerHTML = `<div class="kf-dik" role="status" tabindex="-1"><h3>Děkujeme, poptávku máme</h3><p>Ukázka návrhu: poptávka se nikam neodeslala.</p><p>Nechcete čekat? Zavolejte <a href="tel:+420777727328">777 727 328</a>.</p></div>`;
-      el.querySelector(".kf-dik").focus();
+      /* demo: bez sítě; po kontrole polí přesměrování na děkovnou stránku (oblast = výběr ukázek realizací) */
+      const vo = (f.oblast && f.oblast.value) || (s ? s.typ[0] : "");
+      el.innerHTML = `<div class="kf-dik" role="status" tabindex="-1"><h3>Děkujeme, poptávku máme</h3><p>Ukázka návrhu: poptávka se nikam neodeslala.</p></div>`;
+      location.href = "dekujeme.html" + (vo ? "?oblast=" + encodeURIComponent(vo) : "");
     });
     return f;
   }
@@ -520,6 +526,54 @@ ${facts.length ? `<ul class="facts" aria-label="Systém a barva">${facts.map(([t
   if (page !== "uvod" && page !== "kategorie" && page !== "poptavka") document.querySelectorAll("[data-hd-ask]").forEach(a => a.addEventListener("click", e => {
     e.preventDefault(); KRpoptat(askO());
   }));
+
+  /* ---------- drobečková navigace (dávka 2, 28. 11. 2026): jedna sdílená funkce pro všechny stránky kromě úvodu.
+     Cesta podle data-page, data-oblast a parametrů o/p (produkt), id (stavba), r (region); vyplní každé nav.crumbs na stránce,
+     stránka bez něj dostane nové nahoře v main. Spouští se po skriptech stránky (DOMContentLoaded). JSON-LD zatím ne. */
+  const STR = { realizace: "Realizace", radce: "Rádce", postup: "Jak to probíhá", showroom: "Showroom", onas: "O nás", kontakt: "Kontakt",
+    poptavka: "Nezávazná poptávka", videa: "Videa", recenze: "Recenze", sluzby: "Služby", gdpr: "Ochrana osobních údajů", cookies: "Cookies", nenalezeno: "Stránka nenalezena" };
+  const NAZ = Object.fromEntries(SL.map(([k, n]) => [k, n]));
+  const cesta = () => {
+    const q = new URLSearchParams(location.search), T = [["index.html", "Úvod"]];
+    if (page === "kategorie" || page === "produkt") {
+      const o = page === "produkt" ? q.get("o") || "" : obl();
+      T.push(["sluzby.html", "Služby"]);
+      if (page === "kategorie") T.push(["", NAZ[o] || "Služba"]);
+      else {
+        const p = (SUB[o] || []).find(x => x[0] === q.get("p"));
+        if (p) T.push([`kategorie.html?oblast=${o}`, NAZ[o]], ["", p[1]]); else T.push(["", "Typ nenalezen"]);
+      }
+    } else if (page === "stavba") {
+      const s = najdi(q.get("id") || document.body.dataset.stavba);
+      T.push(["realizace.html", "Realizace"]);
+      if (s) T.push([`realizace.html?typ=${s.typ[0]}`, NAZ[s.typ[0]]], ["", s.n]); else T.push(["", "Stavba nenalezena"]);
+    } else if (page === "region") {
+      const r = REG.find(x => x[0] === q.get("r"));
+      T.push(["sluzby.html", "Služby"], ["", r ? r[1] : "Region"]);
+    } else if (page === "dekujeme") T.push(["poptavka.html", "Nezávazná poptávka"], ["", "Děkujeme"]);
+    else T.push(["", STR[page] || document.title.split("|")[0].trim()]);
+    return T;
+  };
+  window.KRdrobky = () => {
+    if (!page || page === "uvod") return;
+    let N = [...document.querySelectorAll("nav.crumbs")];
+    if (!N.length) {
+      const m = document.querySelector("main"); if (!m) return;
+      const w = document.createElement("div"); w.className = "wrap";
+      w.innerHTML = '<nav class="crumbs" aria-label="Drobečková navigace"></nav>';
+      m.prepend(w); N = [w.firstChild];
+    }
+    const T = cesta();
+    const h = T.map(([u, n], i) => (i ? '<span aria-hidden="true">/</span>' : "") + (u && i < T.length - 1 ? `<a href="${u}">${esc(n)}</a>` : `<span aria-current="page" title="${esc(n)}">${esc(n)}</span>`)).join("");
+    N.forEach(n => { n.innerHTML = h; n.setAttribute("aria-label", "Drobečková navigace"); });
+  };
+  st.textContent += `
+.crumbs{flex-wrap:nowrap!important;white-space:nowrap;min-width:0;max-width:100%;overflow:hidden}
+.crumbs>*{flex:none}
+.crumbs>[aria-current]{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.crumbs a{white-space:nowrap}
+@media (max-width:820px){ .crumbs{gap:8px!important} }`;
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", window.KRdrobky); else window.KRdrobky();
 
   /* ---------- mobilní spodní navigace (Mark 2026-11-20: „vlastní bottom bar na lepší procházení“) ---------- */
   const I = d => `<svg viewBox="0 0 24 24" aria-hidden="true">${d}</svg>`;
