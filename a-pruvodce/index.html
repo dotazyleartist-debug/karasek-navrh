@@ -497,7 +497,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
   .people{gap:12px}
 }
 </style>
-<link rel="stylesheet" href="vzhled.css?v=20261128b">
+<link rel="stylesheet" href="vzhled.css?v=20261128g">
 </head>
 <body data-page="uvod">
 <a class="skip" href="#obsah">Přeskočit na obsah</a>
@@ -520,7 +520,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
 <div class="hero">
   <picture><source media="(max-width: 820px)" srcset="../assets/video/hero-mobil-poster.jpg" width="720" height="1280"><img width="1920" height="1080" decoding="async" fetchpriority="high" class="poster" id="poster" src="../assets/video/hero-pc-poster.jpg" alt=""></picture>
   <video id="hv" muted loop playsinline preload="none" aria-hidden="true"></video>
-  <div class="pf" id="pf" aria-hidden="true"><img alt="" decoding="async"><img alt="" decoding="async"></div>
+  <div class="pf" id="pf" aria-hidden="true"><img alt="" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><img alt="" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></div>
   <div class="shade"></div>
   <div class="wrap hero-in">
     <h1><span class="sr">Zimní zahrady, zasklení teras, pergoly a stínění od roku 1995</span><span class="rot" aria-hidden="true"><span class="rw" id="rw" style="--k:var(--kat-zahrada)">Zimní zahrada<span class="pq">,</span></span></span><span class="rs" id="rs" aria-hidden="true">kterou využijete celý rok<span class="pq">.</span></span></h1>
@@ -753,7 +753,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
 <div class="lbbg" id="lbbg" hidden></div>
 
 <footer id="kontakt"></footer>
-<script src="web.js?v=20261128e"></script>
+<script src="web.js?v=20261128g"></script>
 
 <div class="mbar">
   <a class="call" href="tel:+420777727328" aria-label="Zavolat +420 777 727 328"><svg aria-hidden="true"><use href="#i-tel"/></svg></a>
@@ -773,7 +773,7 @@ footer .low{margin-top:48px;padding-top:22px;border-top:1px solid #2c353c;displa
   poster.src = pst; v.poster = pst;
   // TOP-CR U2 (28. 11. 2026): mobil video nestahuje sám (2,3 MB) – plakát + „Přehrát video“; slova se točí podle hodin, po spuštění podle videa
   let vidOn = false;
-  const startVid = () => { if (!vidOn) { vidOn = true; v.preload = "auto"; v.src = mobile ? "../assets/video/hero-mobil.mp4?v=20261128e" : "../assets/video/hero-pc.mp4?v=20261128e"; } return v.play().catch(() => {}); };
+  const startVid = () => { if (!vidOn) { vidOn = true; v.preload = "auto"; v.src = mobile ? "../assets/video/hero-mobil.mp4?v=20261128g" : "../assets/video/hero-pc.mp4?v=20261128g"; } return v.play().catch(() => {}); };
   const setPause = stop => {
     pause.setAttribute("aria-pressed", String(stop));
     $("#pauseTx").textContent = stop ? "Přehrát video" : "Pozastavit video";

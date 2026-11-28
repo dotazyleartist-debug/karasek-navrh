@@ -216,3 +216,101 @@ body .kd .kd-a button{color:var(--modra)}
 
 /* dávka 3b: obrázky s width/height se škálují podle šířky, poměr stran drží atributy */
 :where(img[height]){height:auto}
+
+/* 13. Rozlišení (kontrola 28. 11. 2026): kategorie, tablet 700–1023, úzké mobily */
+h1,h2{text-wrap:balance}
+/* kategorie: nadpis panelu přes celou šířku, dlaždice pod ním, akce v jedné nebo dvou čistých řadách (bez zlomu čísla) */
+.acts a b{white-space:nowrap}
+@media (min-width:821px){
+  body[data-page="kategorie"] .choose .panel{grid-template-columns:minmax(0,1fr);grid-template-areas:"h" "picks" "acts";gap:22px}
+  body[data-page="kategorie"] .acts{flex-wrap:wrap;gap:12px 36px;padding-top:20px;border-top:1px solid var(--line)}
+  body[data-page="kategorie"] .acts a{white-space:nowrap}
+  body[data-page="kategorie"] .pick .pt{min-width:0}
+}
+/* popisky typů v dlaždicích se zalamují místo ořezu */
+body[data-page="kategorie"] .pick .ps{white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere}
+body[data-page="kategorie"] .pick .pt b{min-width:0;overflow-wrap:break-word;hyphens:auto}
+@media (max-width:820px){
+  body[data-page="kategorie"] .pick{height:auto;min-height:124px;display:flex;align-items:flex-end}
+  body[data-page="kategorie"] .pick .pt{position:relative;left:auto;right:auto;bottom:auto;width:100%;min-width:0}
+  body[data-page="kategorie"] .pick .pt b{padding-bottom:6px}
+  body[data-page="kategorie"] .pick .ps{font-size:14px;line-height:1.3}
+}
+@media (max-width:420px){
+  body[data-page="kategorie"] .pick b{font-size:15px}
+  body[data-page="kategorie"] .pick b svg{display:none}
+  body[data-page="kategorie"] .pick .pt{padding:10px 10px 10px}
+  body[data-page="kategorie"] .pick b::before{left:10px}
+}
+/* úvod: dlaždice se nelámou uprostřed slov, popisek hero max 2 řádky */
+.picks .pick b{overflow-wrap:normal;word-break:normal;hyphens:none}
+@media (max-width:420px){
+  body[data-page="uvod"] .picks .pick b{font-size:15px;padding:10px 12px}
+  .nv{font-size:14px;line-height:1.3;gap:8px}
+  .nv>span{-webkit-line-clamp:2}
+  .nv svg{display:none}
+}
+/* postup: fotka „Přijedeme také k vám“ nepřesahuje kontejner */
+.dojed,.dojed *{max-width:100%}
+.dojed figure{min-width:0}
+
+/* produkt: důkaz (4,9) celý v první obrazovce – nižší fotka a menší mezera pod hero */
+@media (min-width:700px){
+  body .ph-hero{padding-bottom:24px}
+  body .ph-img img{aspect-ratio:16/10}
+}
+/* tablet 700–1023: vlastní rozvržení, ne natažený mobil */
+@media (min-width:700px) and (max-width:1023px){
+  body .ph-hero{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:center}
+  body .ph-hero h1{font-size:40px}
+  body .ph-hero .acts .btn{width:auto}
+  body .ph-hero .ph-img.vl,body .ph-hero.pod .ph-img{order:0}
+  .prod,.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+  .pc{grid-template-columns:minmax(0,1fr)}
+  .pc .media{min-height:0;aspect-ratio:16/10}
+  .pc .body{padding:20px 20px 22px}
+  .people{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+  .person:first-child{grid-column:auto}
+  .person:first-child img{aspect-ratio:4/5}
+  .person img{max-height:300px}
+  .sv{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;padding:56px 0}
+  .sv-r .sv-media{order:2}
+  .sv-media{position:static;margin:0}
+  .sv-big{border-radius:var(--r-card)}
+  .sv-mini{padding:0}
+  .hero h1{font-size:56px}
+}
+@media (min-width:1024px){
+  body .ph-hero h1{font-size:50px;line-height:1.06}
+  body .ph-hero{padding-bottom:16px}
+  body .ph-hero .acts{margin-top:22px}
+  body .ph-pan,body .ph-hero .ko{gap:14px}
+}
+@media (min-width:1024px) and (max-width:1439px){
+  body .ph-hero h1{font-size:44px}
+  body .ko{margin-top:16px}
+  body .ko dl>div{padding:9px 0}
+}
+@media (min-width:1200px) and (max-width:1439px){ body .ph-hero{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)} }
+
+/* kolo 2 (design-eye 28. 11.): hero produktu 2 sloupce od 700 do 1100 px bez díry, vyrovnané, fotka nad ohybem */
+@media (min-width:700px) and (max-width:1100px){
+  body .ph-hero{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:28px;align-items:start}
+  body .ph-hero h1{font-size:32px;line-height:1.1}
+  body .ph-hero .ph-img.vl,body .ph-hero.pod .ph-img{order:0}
+  body .ph-hero .acts .btn{width:auto}
+  body[data-page="kategorie"] .pick b{font-size:17px}
+}
+@media (min-width:901px) and (max-width:1100px){ body .ph-hero h1{font-size:40px} }
+@media (max-width:699px){ body .ph-img img{aspect-ratio:16/10;max-height:42vh} }
+@media (min-width:1024px) and (max-width:1100px){
+  body .ph-hero{padding-bottom:8px}
+  body .ph-hero h1{font-size:36px}
+  body .ko{margin-top:12px}
+  body .ko dl>div{padding:6px 0}
+  body .ko dd{font-size:15px;line-height:1.4}
+  body .ph-hero .acts{margin-top:14px}
+  body .pd{padding-top:12px}
+}
+/* 1024-1100: pruh důkazů (4,9) vždy začíná pod ohybem (hero má minimální výšku podle okna), nikdy useknutý */
+@media (min-width:1024px) and (max-width:1100px){ body .ph-hero{min-height:calc(100vh - 108px)} }

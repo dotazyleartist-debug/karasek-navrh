@@ -130,9 +130,14 @@ body:has(.hd-menu.open) .bn{display:none!important}
   .ft .cols{grid-template-columns:repeat(3,1fr)}
   .ft .cols>div:first-child{grid-column:1/-1}
 }
+/* 821–1100 px: PC hlavička s tlačítkem poptávky vedle telefonu a Menu (dřív tu poptávka chyběla) */
+@media (min-width:821px) and (max-width:1100px){
+  .hd>.wrap>.btn-red{display:inline-flex!important;margin-left:auto;padding:12px 18px;font-size:16px;white-space:nowrap}
+  .hd-m{margin-left:0}
+}
 @media (max-width:820px){
   .hd .wrap{height:64px}
-  .hd-logo img{height:42px}
+  .hd-logo img{height:44px}
   .ft{padding:44px 0 28px}
   .ft .cols{grid-template-columns:1fr 1fr;gap:28px 20px}
   .ft .cols>.fs{grid-column:1/-1}
@@ -313,7 +318,7 @@ form.kf{display:grid;grid-template-columns:1fr!important;background:none!importa
 .kf [aria-invalid="true"]{border-color:#b51f28!important;box-shadow:inset 0 0 0 1px #b51f28}
 .kf-err{font-size:14px;font-weight:600;color:#b51f28;margin:0}
 .kf-err:empty{display:none}
-.kf-gd{margin:0;font-size:14px;line-height:1.45;color:var(--muted)}
+.kf-gd{margin:0;font-size:15px;line-height:1.45;color:var(--muted)}
 .kf-gd a{color:var(--ink);font-weight:600;text-underline-offset:3px}
 .kf-cb{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.45;color:var(--muted);cursor:pointer}
 .kf-cb input{width:20px;height:20px;margin:1px 0 0;flex:none;accent-color:var(--ink)}
@@ -449,7 +454,7 @@ a.kr-trasa.kr-trasa:hover,a.kr-trasa.kr-trasa:focus-visible{text-decoration:unde
 .kup{display:grid;gap:6px;min-width:0}
 .kup-l{font-size:15px;font-weight:600}
 .kup-l i{font-style:normal;font-weight:500;color:var(--muted)}
-.kup-h{margin:0;font-size:14px;line-height:1.45;color:var(--muted)}
+.kup-h{margin:0;font-size:15px;line-height:1.45;color:var(--muted)}
 .kup-in{position:absolute;opacity:0;width:1px;height:1px;margin:0;overflow:hidden}
 .kup-b{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border:1px solid #6b757c;border-radius:10px;background:#fff;font:700 16px/1 var(--f);color:var(--ink);cursor:pointer;justify-self:start}
 .kup-b:hover{border-color:var(--ink);background:#f1f3f4}
